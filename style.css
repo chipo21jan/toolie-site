@@ -1648,3 +1648,24 @@ input[readonly] {
   color: #fff;
   font-weight: 700;
 }
+
+/* "Last verified" stamp + feedback line shown on time-sensitive tools */
+.verified-stamp {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.verified-stamp a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.verified-stamp a:hover {
+  color: var(--accent);
+}
