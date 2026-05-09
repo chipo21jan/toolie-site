@@ -686,8 +686,13 @@
     });
 
     function formatExplanation(text) {
-      text = text.replace(/\*\*(.+?)\*\*/g, "<h3>$1</h3>");
+      // Convert standalone-line bold (**Header**) to h3 — section headers only
+      text = text.replace(/^[ \t]*\*\*(.+?)\*\*[ \t]*$/gm, "<h3>$1</h3>");
+      // Convert any remaining mid-line bold to <strong> — emphasis within text/lists
+      text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      // Force blank line after each h3 so headers become their own blocks
       text = text.replace(/(<\/h3>)\s*/g, "$1\n\n");
+      // Insert newlines before list markers that follow sentence punctuation
       text = text.replace(/([.!?])\s+(?=\d+\.\s)/g, "$1\n");
       text = text.replace(/([.!?])\s+(?=-\s)/g, "$1\n");
       const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);

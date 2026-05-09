@@ -164,8 +164,11 @@
     });
 
     function formatExplanation(text) {
-      // Convert markdown-style bold headers
-      text = text.replace(/\*\*(.+?)\*\*/g, "<h3>$1</h3>");
+      // Convert standalone-line bold (**Header**) to h3 — section headers only
+      text = text.replace(/^[ \t]*\*\*(.+?)\*\*[ \t]*$/gm, "<h3>$1</h3>");
+
+      // Convert any remaining mid-line bold to <strong> — emphasis within lists
+      text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 
       // Force a blank line after each header so the header becomes its own block
       text = text.replace(/(<\/h3>)\s*/g, "$1\n\n");
