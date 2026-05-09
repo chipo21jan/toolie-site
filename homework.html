@@ -167,31 +167,47 @@
       // Convert markdown-style bold headers
       text = text.replace(/\*\*(.+?)\*\*/g, "<h3>$1</h3>");
 
+      // Pre-process: insert real newlines before list markers that follow sentence punctuation.
+      // This converts inline "1. step. 2. step. 3. step." into proper newline-separated lines.
+      text = text.replace(/([.!?])\s+(?=\d+\.\s)/g, "$1\n");
+      text = text.replace(/([.!?])\s+(?=-\s)/g, "$1\n");
+
       const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
 
       return blocks.map(block => {
         if (block.startsWith("<h3>")) return block;
 
-        // Detect numbered list — handles both inline ("1. step 2. step") and newline-separated
-        const numberedMarkers = block.match(/(?:^|[\s\n])\d+\.\s+/g);
-        if (numberedMarkers && numberedMarkers.length >= 2) {
-          const parts = block.split(/(?=(?:^|[\s\n])\d+\.\s+)/)
-            .map(p => p.trim())
-            .filter(p => /^\d+\.\s/.test(p));
-          const items = parts
-            .map(p => "<li>" + p.replace(/^\d+\.\s*/, "").trim() + "</li>")
+        const lines = block.split(/\n+/).map(l => l.trim()).filter(Boolean);
+
+        // Numbered list: every line starts with N.
+        if (lines.length >= 2 && lines.every(l => /^\d+\.\s/.test(l))) {
+          const items = lines
+            .map(l => "<li>" + l.replace(/^\d+\.\s*/, "").trim() + "</li>")
             .join("");
           return "<ol>" + items + "</ol>";
         }
 
-        // Detect bulleted list — handles both inline ("- item - item") and newline-separated
-        const bulletMarkers = block.match(/(?:^|[\s\n])[-*]\s+/g);
-        if (bulletMarkers && bulletMarkers.length >= 2) {
-          const parts = block.split(/(?=(?:^|[\s\n])[-*]\s+)/)
-            .map(p => p.trim())
-            .filter(p => /^[-*]\s/.test(p));
-          const items = parts
-            .map(p => "<li>" + p.replace(/^[-*]\s*/, "").trim() + "</li>")
+        // Bulleted list: every line starts with - or *
+        if (lines.length >= 2 && lines.every(l => /^[-*]\s/.test(l))) {
+          const items = lines
+            .map(l => "<li>" + l.replace(/^[-*]\s*/, "").trim() + "</li>")
+            .join("");
+          return "<ul>" + items + "</ul>";
+        }
+
+        // Mixed block — try to detect a list inside a paragraph
+        // Split where lines start with N. or - markers, render rest as <p>
+        const numberedLines = lines.filter(l => /^\d+\.\s/.test(l));
+        if (numberedLines.length >= 2 && numberedLines.length >= lines.length - 1) {
+          const items = numberedLines
+            .map(l => "<li>" + l.replace(/^\d+\.\s*/, "").trim() + "</li>")
+            .join("");
+          return "<ol>" + items + "</ol>";
+        }
+        const bulletLines = lines.filter(l => /^[-*]\s/.test(l));
+        if (bulletLines.length >= 2 && bulletLines.length >= lines.length - 1) {
+          const items = bulletLines
+            .map(l => "<li>" + l.replace(/^[-*]\s*/, "").trim() + "</li>")
             .join("");
           return "<ul>" + items + "</ul>";
         }
