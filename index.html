@@ -24,23 +24,33 @@
   <main>
     <section class="hero">
       <div class="hero-inner">
-        <span class="status">Launching soon</span>
+        <span class="status">1 tool live &middot; more coming</span>
 
         <h1>Africa's everyday tools,<br><span class="hl">in one place.</span></h1>
 
         <p class="lead">Smart, simple tools for life across the SADC region. Free. Made with care.</p>
 
-        <form class="signup" name="signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?signed-up=1">
-          <input type="hidden" name="form-name" value="signup">
-          <p class="visually-hidden">
-            <label>Don't fill this out if you're a human: <input name="bot-field"></label>
-          </p>
-          <label for="email" class="visually-hidden">Your email address</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
-          <button type="submit">Notify me</button>
-        </form>
-        <p class="form-note">Get a quiet email when our first tools go live. No spam, ever.</p>
-        <p class="early-tool"><a href="/homework">First tool live: Parent Homework Helper &rarr;</a></p>
+        <a class="featured-tool" href="/homework" aria-label="Open the Parent Homework Helper tool">
+          <span class="featured-tool-pill">CAPS Grade R&ndash;7 &middot; Free</span>
+          <h2 class="featured-tool-title">Parent Homework Helper</h2>
+          <p class="featured-tool-desc">A parent-friendly explanation of any Grade R&ndash;7 CAPS homework question. Help your child even if school was a long time ago.</p>
+          <span class="featured-tool-cta">Open the tool &rarr;</span>
+        </a>
+        <p class="featured-tool-note">Other SADC curricula coming soon.</p>
+
+        <div class="signup-block">
+          <p class="signup-prompt">Get notified when new tools launch.</p>
+          <form class="signup" name="signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?signed-up=1">
+            <input type="hidden" name="form-name" value="signup">
+            <p class="visually-hidden">
+              <label>Don't fill this out if you're a human: <input name="bot-field"></label>
+            </p>
+            <label for="email" class="visually-hidden">Your email address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+            <button type="submit">Notify me</button>
+          </form>
+          <p class="form-note">No spam, ever. One quiet email when something new is ready.</p>
+        </div>
       </div>
     </section>
   </main>

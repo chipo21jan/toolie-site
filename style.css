@@ -490,3 +490,110 @@ main {
   .tool-main { padding: 1.5rem 1.25rem 2rem; }
   .tool-header { padding: 1.25rem 1.5rem; }
 }
+
+/* ===== Homepage featured tool card ===== */
+
+.featured-tool {
+  display: block;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  margin: 0 auto 2.5rem;
+  max-width: 520px;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.featured-tool:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15, 76, 92, 0.12);
+  border-color: var(--accent);
+}
+
+.featured-tool:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.featured-tool-pill {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.85rem;
+}
+
+.featured-tool-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.featured-tool-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+}
+
+.featured-tool-cta {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease;
+}
+
+.featured-tool:hover .featured-tool-cta {
+  transform: translateX(2px);
+}
+
+/* Signup block (refactored to live below the featured tool) */
+.signup-block {
+  max-width: 460px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.signup-prompt {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  .featured-tool {
+    padding: 1.5rem 1.25rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .featured-tool-title {
+    font-size: 1.3rem;
+  }
+}
+
+.featured-tool-note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: -1.75rem auto 2.5rem;
+  max-width: 520px;
+}
