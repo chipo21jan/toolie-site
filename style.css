@@ -589,6 +589,18 @@ main {
   }
 }
 
+/* Tools grid for homepage with multiple tools */
+.tools-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tools-grid .featured-tool {
+  margin-bottom: 0;
+}
+
 .featured-tool-note {
   text-align: center;
   font-size: 0.82rem;
@@ -663,4 +675,395 @@ main {
 .footer-link:hover {
   color: var(--primary);
   border-bottom-color: var(--primary);
+}
+
+/* APS Calculator-specific styles */
+.form-section-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.005em;
+}
+
+.form-section-heading.second-heading {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.form-section-help {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+}
+
+.subject-row {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  align-items: end;
+}
+
+.mark-field {
+  min-width: 0;
+}
+
+.lo-note {
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+input[readonly] {
+  background: var(--footer-bg);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+@media (max-width: 540px) {
+  .subject-row {
+    grid-template-columns: 1fr 90px;
+  }
+}
+
+/* APS result card */
+.aps-result-card {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.aps-result-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.85;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.aps-result-score {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0.25rem 0 0.1rem;
+}
+
+.aps-result-max {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 0.85rem;
+}
+
+.aps-result-tier {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+.tier-strong { background: rgba(255, 255, 255, 0.28); }
+.tier-mid { background: rgba(255, 255, 255, 0.20); }
+.tier-borderline { background: rgba(227, 111, 61, 0.85); }
+.tier-low { background: rgba(227, 111, 61, 0.95); }
+
+/* Subject breakdown */
+.aps-breakdown {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.breakdown-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.85rem;
+}
+
+.breakdown-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.85rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.92rem;
+  align-items: baseline;
+}
+
+.breakdown-row:last-child {
+  border-bottom: 0;
+}
+
+.breakdown-name {
+  color: var(--text);
+}
+
+.breakdown-name em {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.breakdown-mark {
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 3rem;
+  text-align: right;
+}
+
+.breakdown-level {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: var(--primary);
+  min-width: 4rem;
+  text-align: right;
+}
+
+.breakdown-lo {
+  background: var(--footer-bg);
+  margin: 0.5rem -1.25rem -1rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* Output sections */
+.output-section-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.output-section-help {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+}
+
+/* University list */
+.uni-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.uni-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+}
+
+.badge-strong-row { border-left-color: #2D8659; }
+.badge-meets-row  { border-left-color: var(--primary); }
+.badge-below-row  { border-left-color: var(--text-muted); }
+
+.uni-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.uni-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.005em;
+}
+
+.uni-region {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.uni-faculty {
+  font-size: 0.92rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.uni-thresholds {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.uni-thresholds strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.uni-note {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+
+.uni-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+}
+
+.badge-strong { background: #E5F4EC; color: #2D8659; }
+.badge-meets  { background: var(--accent-soft); color: var(--accent); }
+.badge-below  { background: #F2F2F2; color: var(--text-muted); }
+
+@media (max-width: 540px) {
+  .uni-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .uni-badge {
+    align-self: flex-start;
+  }
+}
+
+.no-matches {
+  background: var(--footer-bg);
+  border-radius: var(--radius);
+  padding: 1rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Other SA universities block */
+.other-unis-block {
+  background: var(--footer-bg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.other-unis-block h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+}
+
+.other-unis-block p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+  line-height: 1.5;
+}
+
+.other-unis-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.4rem 1.25rem;
+  padding: 0;
+}
+
+.other-unis-list li {
+  font-size: 0.88rem;
+  padding: 0.25rem 0;
+}
+
+.other-unis-list a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--primary);
+  padding-bottom: 1px;
+}
+
+.other-unis-list a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* AI explainer block */
+.ai-explainer-block {
+  background: var(--surface);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.ai-explanation {
+  margin-top: 1rem;
+  text-align: left;
+  background: var(--footer-bg);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+}
+
+.ai-explanation h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.ai-explanation h3:first-child {
+  margin-top: 0;
+}
+
+.ai-explanation p {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.ai-explanation ol,
+.ai-explanation ul {
+  margin: 0.4rem 0 0.8rem 1.4rem;
+  padding: 0;
+}
+
+.ai-explanation li {
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.ai-loading,
+.ai-error {
+  font-style: italic;
+  color: var(--text-muted);
 }

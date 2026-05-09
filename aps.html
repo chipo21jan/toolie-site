@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APS Calculator + University Matcher — Toolie</title>
+  <meta name="description" content="Calculate your South African APS score and see which universities you qualify for, by faculty. Free, made for SA matric students and parents.">
+  <meta property="og:title" content="APS Calculator + University Matcher — Toolie">
+  <meta property="og:description" content="Calculate your APS and see which SA universities you qualify for. Free, honest, made for matric students.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gettoolie.com/aps">
+  <meta name="theme-color" content="#0F4C5C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header tool-header">
+    <a href="/" class="logo" aria-label="Toolie home">Toolie</a>
+    <nav class="tool-nav">
+      <a href="/" class="nav-link">All tools</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero">
+      <span class="tool-pill">Education · Free</span>
+      <h1 class="tool-title">APS Calculator + University Matcher</h1>
+      <p class="tool-subtitle">Work out your APS score from your Grade 12 marks, then see which South African universities you qualify for — by faculty. Honest about minimums versus what's actually competitive.</p>
+    </section>
+
+    <section class="tool-card">
+      <form id="apsForm" class="tool-form">
+
+        <h2 class="form-section-heading">Your seven Grade 12 subjects</h2>
+        <p class="form-section-help">Enter your final mark (or current average) for each subject as a percentage. Life Orientation is included for completeness but excluded from your APS — that's standard practice.</p>
+
+        <div class="subject-row">
+          <div class="form-field">
+            <label for="subj1">Home Language</label>
+            <select id="subj1" name="subj1" required>
+              <option value="">Select language…</option>
+              <option value="English Home Language">English Home Language</option>
+              <option value="Afrikaans Home Language">Afrikaans Home Language</option>
+              <option value="isiZulu Home Language">isiZulu Home Language</option>
+              <option value="isiXhosa Home Language">isiXhosa Home Language</option>
+              <option value="Sesotho Home Language">Sesotho Home Language</option>
+              <option value="Setswana Home Language">Setswana Home Language</option>
+              <option value="Sepedi Home Language">Sepedi Home Language</option>
+              <option value="Xitsonga Home Language">Xitsonga Home Language</option>
+              <option value="Tshivenda Home Language">Tshivenda Home Language</option>
+              <option value="siSwati Home Language">siSwati Home Language</option>
+              <option value="isiNdebele Home Language">isiNdebele Home Language</option>
+            </select>
+          </div>
+          <div class="form-field mark-field">
+            <label for="mark1">Mark %</label>
+            <input type="number" id="mark1" name="mark1" min="0" max="100" required placeholder="e.g. 72">
+          </div>
+        </div>
+
+        <div class="subject-row">
+          <div class="form-field">
+            <label for="subj2">First Additional Language</label>
+            <select id="subj2" name="subj2" required>
+              <option value="">Select language…</option>
+              <option value="English First Additional Language">English First Additional Language</option>
+              <option value="Afrikaans First Additional Language">Afrikaans First Additional Language</option>
+              <option value="isiZulu First Additional Language">isiZulu First Additional Language</option>
+              <option value="isiXhosa First Additional Language">isiXhosa First Additional Language</option>
+              <option value="Sesotho First Additional Language">Sesotho First Additional Language</option>
+              <option value="Setswana First Additional Language">Setswana First Additional Language</option>
+              <option value="Sepedi First Additional Language">Sepedi First Additional Language</option>
+              <option value="Xitsonga First Additional Language">Xitsonga First Additional Language</option>
+              <option value="Tshivenda First Additional Language">Tshivenda First Additional Language</option>
+              <option value="siSwati First Additional Language">siSwati First Additional Language</option>
+              <option value="isiNdebele First Additional Language">isiNdebele First Additional Language</option>
+            </select>
+          </div>
+          <div class="form-field mark-field">
+            <label for="mark2">Mark %</label>
+            <input type="number" id="mark2" name="mark2" min="0" max="100" required placeholder="e.g. 65">
+          </div>
+        </div>
+
+        <div class="subject-row">
+          <div class="form-field">
+            <label for="subj3">Mathematics or Math Literacy</label>
+            <select id="subj3" name="subj3" required>
+              <option value="">Select…</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Mathematical Literacy">Mathematical Literacy</option>
+            </select>
+          </div>
+          <div class="form-field mark-field">
+            <label for="mark3">Mark %</label>
+            <input type="number" id="mark3" name="mark3" min="0" max="100" required placeholder="e.g. 60">
+          </div>
+        </div>
+
+        <div class="subject-row">
+          <div class="form-field">
+            <label for="subj4">Subject 4</label>
+            <select id="subj4" name="subj4" required>
+              <option value="">Select subject…</option>
+              <optgroup label="Sciences">
+                <option value="Physical Sciences">Physical Sciences</option>
+                <option value="Life Sciences">Life Sciences</option>
+                <option value="Agricultural Sciences">Agricultural Sciences</option>
+              </optgroup>
+              <optgroup label="Commerce">
+                <option value="Accounting">Accounting</option>
+                <option value="Business Studies">Business Studies</option>
+                <option value="Economics">Economics</option>
+              </optgroup>
+              <optgroup label="Humanities">
+                <option value="Geography">Geography</option>
+                <option value="History">History</option>
+                <option value="Religion Studies">Religion Studies</option>
+              </optgroup>
+              <optgroup label="Technology & Computing">
+                <option value="Information Technology">Information Technology</option>
+                <option value="Computer Applications Technology">Computer Applications Technology</option>
+                <option value="Engineering Graphics and Design">Engineering Graphics &amp; Design</option>
+                <option value="Civil Technology">Civil Technology</option>
+                <option value="Mechanical Technology">Mechanical Technology</option>
+                <option value="Electrical Technology">Electrical Technology</option>
+              </optgroup>
+              <optgroup label="Services & Arts">
+                <option value="Tourism">Tourism</option>
+                <option value="Hospitality Studies">Hospitality Studies</option>
+                <option value="Consumer Studies">Consumer Studies</option>
+                <option value="Visual Arts">Visual Arts</option>
+                <option value="Dramatic Arts">Dramatic Arts</option>
+                <option value="Music">Music</option>
+                <option value="Dance Studies">Dance Studies</option>
+                <option value="Design">Design</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="Other">Other / Not listed</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-field mark-field">
+            <label for="mark4">Mark %</label>
+            <input type="number" id="mark4" name="mark4" min="0" max="100" required placeholder="e.g. 68">
+          </div>
+        </div>
+
+        <div class="subject-row">
+          <div class="form-field">
+            <label for="subj5">Subject 5</label>
+            <select id="subj5" name="subj5" required>
+              <option value="">Select subject…</option>
+              <optgroup label="Sciences">
+                <option value="Physical Sciences">Physical Sciences</option>
+                <option value="Life Sciences">Life Sciences</option>
+                <option value="Agricultural Sciences">Agricultural Sciences</option>
+              </optgroup>
+              <optgroup label="Commerce">
+                <option value="Accounting">Accounting</option>
+                <option value="Business Studies">Business Studies</option>
+                <option value="Economics">Economics</option>
+              </optgroup>
+              <optgroup label="Humanities">
+                <option value="Geography">Geography</option>
+                <option value="History">History</option>
+                <option value="Religion Studies">Religion Studies</option>
+              </optgroup>
+              <optgroup label="Technology & Computing">
+                <option value="Information Technology">Information Technology</option>
+                <option value="Computer Applications Technology">Computer Applications Technology</option>
+                <option value="Engineering Graphics and Design">Engineering Graphics &amp; Design</option>
+                <option value="Civil Technology">Civil Technology</option>
+                <option value="Mechanical Technology">Mechanical Technology</option>
+                <option value="Electrical Technology">Electrical Technology</option>
+              </optgroup>
+              <optgroup label="Services & Arts">
+                <option value="Tourism">Tourism</option>
+                <option value="Hospitality Studies">Hospitality Studies</option>
+                <option value="Consumer Studies">Consumer Studies</option>
+                <option value="Visual Arts">Visual Arts</option>
+                <option value="Dramatic Arts">Dramatic Arts</option>
+                <option value="Music">Music</option>
+                <option value="Dance Studies">Dance Studies</option>
+                <option value="Design">Design</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="Other">Other / Not listed</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-field mark-field">
+            <label for="mark5">Mark %</label>
+            <input type="number" id="mark5" name="mark5" min="0" max="100" required placeholder="e.g. 58">
+          </div>
+        </div>
+
+        <div class="subject-row">
+          <div class="form-field">
+            <label for="subj6">Subject 6</label>
+            <select id="subj6" name="subj6" required>
+              <option value="">Select subject…</option>
+              <optgroup label="Sciences">
+                <option value="Physical Sciences">Physical Sciences</option>
+                <option value="Life Sciences">Life Sciences</option>
+                <option value="Agricultural Sciences">Agricultural Sciences</option>
+              </optgroup>
+              <optgroup label="Commerce">
+                <option value="Accounting">Accounting</option>
+                <option value="Business Studies">Business Studies</option>
+                <option value="Economics">Economics</option>
+              </optgroup>
+              <optgroup label="Humanities">
+                <option value="Geography">Geography</option>
+                <option value="History">History</option>
+                <option value="Religion Studies">Religion Studies</option>
+              </optgroup>
+              <optgroup label="Technology & Computing">
+                <option value="Information Technology">Information Technology</option>
+                <option value="Computer Applications Technology">Computer Applications Technology</option>
+                <option value="Engineering Graphics and Design">Engineering Graphics &amp; Design</option>
+                <option value="Civil Technology">Civil Technology</option>
+                <option value="Mechanical Technology">Mechanical Technology</option>
+                <option value="Electrical Technology">Electrical Technology</option>
+              </optgroup>
+              <optgroup label="Services & Arts">
+                <option value="Tourism">Tourism</option>
+                <option value="Hospitality Studies">Hospitality Studies</option>
+                <option value="Consumer Studies">Consumer Studies</option>
+                <option value="Visual Arts">Visual Arts</option>
+                <option value="Dramatic Arts">Dramatic Arts</option>
+                <option value="Music">Music</option>
+                <option value="Dance Studies">Dance Studies</option>
+                <option value="Design">Design</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="Other">Other / Not listed</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-field mark-field">
+            <label for="mark6">Mark %</label>
+            <input type="number" id="mark6" name="mark6" min="0" max="100" required placeholder="e.g. 55">
+          </div>
+        </div>
+
+        <div class="subject-row">
+          <div class="form-field">
+            <label for="subj7">Life Orientation <span class="lo-note">(not counted in APS)</span></label>
+            <input type="text" id="subj7" name="subj7" value="Life Orientation" readonly aria-readonly="true">
+          </div>
+          <div class="form-field mark-field">
+            <label for="mark7">Mark %</label>
+            <input type="number" id="mark7" name="mark7" min="0" max="100" required placeholder="e.g. 70">
+          </div>
+        </div>
+
+        <h2 class="form-section-heading second-heading">Field of study you're aiming for</h2>
+        <div class="form-field">
+          <label for="faculty">Faculty</label>
+          <select id="faculty" name="faculty" required>
+            <option value="">Select a faculty…</option>
+            <option value="engineering">Engineering &amp; Built Environment</option>
+            <option value="health">Health Sciences (Medicine, Pharmacy, Nursing)</option>
+            <option value="commerce">Commerce (Accounting, Business, Economics)</option>
+            <option value="humanities">Humanities &amp; Social Sciences</option>
+            <option value="science">Science (BSc programmes)</option>
+            <option value="education">Education / Teaching</option>
+            <option value="law">Law (LLB)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span class="btn-text">Calculate my APS</span>
+          <span class="btn-loading">Calculating…</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="tool-output" id="output" hidden>
+      <div class="aps-result-card" id="apsResultCard">
+        <p class="aps-result-label">Your APS score</p>
+        <p class="aps-result-score" id="apsScore">0</p>
+        <p class="aps-result-max">out of 42</p>
+        <p class="aps-result-tier" id="apsTier"></p>
+      </div>
+
+      <div class="aps-breakdown" id="apsBreakdown"></div>
+
+      <h2 class="output-section-heading">Where you can study</h2>
+      <p class="output-section-help" id="facultySummary"></p>
+
+      <div class="uni-list" id="uniList"></div>
+
+      <div class="ai-explainer-block">
+        <button class="btn-secondary" id="explainBtn">
+          <span class="btn-text">Explain my score in plain language</span>
+          <span class="btn-loading">Thinking…</span>
+        </button>
+        <div class="ai-explanation" id="aiExplanation" hidden></div>
+      </div>
+
+      <div class="output-footer">
+        <button class="btn-secondary" id="recalcBtn">Recalculate</button>
+      </div>
+    </section>
+
+    <section class="tool-error" id="errorBox" hidden>
+      <p id="errorText"></p>
+    </section>
+
+    <section class="tool-note">
+      <p><strong>Important:</strong> APS minimums shown here are based on published 2026 prospectuses and represent approximate guidelines. Final admission depends on your specific subject combination, NBT scores (where required), and faculty selection processes. Always verify directly with the university before making decisions. <em>Other SADC universities — Botswana, Namibia, Zimbabwe — coming soon.</em> <em>Private universities (Boston, Varsity College, IIE-MSA, Rosebank) coming soon.</em></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="copyright">&copy; 2026 Toolie. Made in Africa, reaching the world. <a href="/privacy" class="footer-link">Privacy</a> &middot; <a href="/terms" class="footer-link">Terms</a> &middot; <a href="/about" class="footer-link">About</a></p>
+      <p class="elroi-credit" tabindex="0" aria-label="Powered by Elroi">
+        <svg class="hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 11V6a2 2 0 0 0-4 0v5"/>
+          <path d="M14 10V4a2 2 0 0 0-4 0v6"/>
+          <path d="M10 10.5V6a2 2 0 0 0-4 0v8"/>
+          <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+        </svg>
+        <span>Powered by Elroi</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const WORKER_URL = "https://toolie-ai.chipo21jan.workers.dev";
+
+    // Convert percentage mark to APS level (1-7)
+    function markToAPS(mark) {
+      const m = Number(mark);
+      if (isNaN(m)) return 0;
+      if (m >= 80) return 7;
+      if (m >= 70) return 6;
+      if (m >= 60) return 5;
+      if (m >= 50) return 4;
+      if (m >= 40) return 3;
+      if (m >= 30) return 2;
+      return 1;
+    }
+
+    // Top 10 SA public university faculty thresholds (approximate, 2026)
+    const UNIVERSITIES = [
+      {
+        name: "University of Cape Town (UCT)",
+        region: "Western Cape",
+        note: "UCT primarily uses its own Faculty Points Score. APS shown here is an approximate equivalent.",
+        faculties: {
+          engineering:  { name: "Engineering & the Built Environment", min: 35, competitive: 40 },
+          health:       { name: "Health Sciences (incl. MBChB)",       min: 41, competitive: 42 },
+          commerce:     { name: "Commerce",                            min: 30, competitive: 38 },
+          humanities:   { name: "Humanities",                          min: 30, competitive: 36 },
+          science:      { name: "Science",                             min: 33, competitive: 38 },
+          law:          { name: "Law (LLB)",                           min: 33, competitive: 38 }
+        }
+      },
+      {
+        name: "University of the Witwatersrand (Wits)",
+        region: "Gauteng",
+        faculties: {
+          engineering:  { name: "Engineering & the Built Environment", min: 36, competitive: 42 },
+          health:       { name: "Health Sciences (incl. MBChB)",       min: 40, competitive: 42 },
+          commerce:     { name: "Commerce, Law & Management",          min: 36, competitive: 40 },
+          humanities:   { name: "Humanities",                          min: 30, competitive: 36 },
+          science:      { name: "Science",                             min: 36, competitive: 40 },
+          law:          { name: "Law (LLB)",                           min: 38, competitive: 42 }
+        }
+      },
+      {
+        name: "Stellenbosch University (SU)",
+        region: "Western Cape",
+        faculties: {
+          engineering:  { name: "Engineering",                          min: 35, competitive: 38 },
+          health:       { name: "Health Sciences (incl. MBChB)",        min: 40, competitive: 42 },
+          commerce:     { name: "Economic & Management Sciences",       min: 38, competitive: 42 },
+          humanities:   { name: "Arts & Social Sciences",               min: 26, competitive: 32 },
+          science:      { name: "Science",                              min: 30, competitive: 36 },
+          education:    { name: "Education",                            min: 26, competitive: 32 },
+          law:          { name: "Law (LLB)",                            min: 32, competitive: 38 }
+        }
+      },
+      {
+        name: "University of Pretoria (UP)",
+        region: "Gauteng",
+        faculties: {
+          engineering:  { name: "Engineering, Built Environment & IT",  min: 32, competitive: 38 },
+          health:       { name: "Health Sciences (incl. MBChB)",        min: 35, competitive: 40 },
+          commerce:     { name: "Economic & Management Sciences",       min: 30, competitive: 36 },
+          humanities:   { name: "Humanities",                           min: 26, competitive: 32 },
+          science:      { name: "Natural & Agricultural Sciences",      min: 30, competitive: 36 },
+          education:    { name: "Education",                            min: 26, competitive: 30 },
+          law:          { name: "Law (LLB)",                            min: 32, competitive: 36 }
+        }
+      },
+      {
+        name: "University of Johannesburg (UJ)",
+        region: "Gauteng",
+        faculties: {
+          engineering:  { name: "Engineering & the Built Environment",  min: 32, competitive: 36 },
+          health:       { name: "Health Sciences (Nursing, Pharmacy)",  min: 28, competitive: 34 },
+          commerce:     { name: "College of Business & Economics",      min: 30, competitive: 36 },
+          humanities:   { name: "Humanities",                           min: 24, competitive: 30 },
+          science:      { name: "Science",                              min: 28, competitive: 34 },
+          education:    { name: "Education",                            min: 26, competitive: 30 },
+          law:          { name: "Law (LLB)",                            min: 30, competitive: 34 }
+        }
+      },
+      {
+        name: "University of KwaZulu-Natal (UKZN)",
+        region: "KwaZulu-Natal",
+        faculties: {
+          engineering:  { name: "Engineering",                          min: 32, competitive: 36 },
+          health:       { name: "Health Sciences (incl. MBChB)",        min: 30, competitive: 38 },
+          commerce:     { name: "Law & Management Studies",             min: 28, competitive: 32 },
+          humanities:   { name: "Humanities",                           min: 26, competitive: 30 },
+          science:      { name: "Agriculture, Engineering & Science",   min: 28, competitive: 32 },
+          education:    { name: "Education",                            min: 26, competitive: 30 },
+          law:          { name: "Law (LLB)",                            min: 30, competitive: 34 }
+        }
+      },
+      {
+        name: "North-West University (NWU)",
+        region: "North West",
+        faculties: {
+          engineering:  { name: "Engineering",                          min: 32, competitive: 36 },
+          health:       { name: "Health Sciences",                      min: 30, competitive: 38 },
+          commerce:     { name: "Economic & Management Sciences",       min: 26, competitive: 32 },
+          humanities:   { name: "Humanities",                           min: 24, competitive: 30 },
+          science:      { name: "Natural & Agricultural Sciences",      min: 26, competitive: 32 },
+          education:    { name: "Education",                            min: 26, competitive: 30 },
+          law:          { name: "Law (LLB)",                            min: 30, competitive: 34 }
+        }
+      },
+      {
+        name: "University of the Free State (UFS)",
+        region: "Free State",
+        faculties: {
+          engineering:  { name: "Built Environment & IT",               min: 30, competitive: 34 },
+          health:       { name: "Health Sciences (incl. MBChB)",        min: 35, competitive: 40 },
+          commerce:     { name: "Economic & Management Sciences",       min: 30, competitive: 34 },
+          humanities:   { name: "Humanities",                           min: 26, competitive: 30 },
+          science:      { name: "Natural & Agricultural Sciences",      min: 28, competitive: 32 },
+          education:    { name: "Education",                            min: 27, competitive: 30 },
+          law:          { name: "Law (LLB)",                            min: 30, competitive: 34 }
+        }
+      },
+      {
+        name: "Rhodes University",
+        region: "Eastern Cape",
+        note: "Rhodes is known for selective admissions; competitive scores tend to run high.",
+        faculties: {
+          health:       { name: "Pharmacy",                             min: 38, competitive: 42 },
+          commerce:     { name: "Commerce",                             min: 35, competitive: 40 },
+          humanities:   { name: "Humanities",                           min: 35, competitive: 38 },
+          science:      { name: "Science",                              min: 35, competitive: 40 },
+          education:    { name: "Education",                            min: 30, competitive: 34 },
+          law:          { name: "Law (LLB)",                            min: 35, competitive: 40 }
+        }
+      },
+      {
+        name: "Nelson Mandela University (NMU)",
+        region: "Eastern Cape",
+        faculties: {
+          engineering:  { name: "Engineering, Built Environment & IT",  min: 32, competitive: 36 },
+          health:       { name: "Health Sciences",                      min: 30, competitive: 38 },
+          commerce:     { name: "Business & Economic Sciences",         min: 27, competitive: 32 },
+          humanities:   { name: "Humanities",                           min: 24, competitive: 30 },
+          science:      { name: "Science",                              min: 27, competitive: 32 },
+          education:    { name: "Education",                            min: 26, competitive: 30 },
+          law:          { name: "Law (LLB)",                            min: 30, competitive: 34 }
+        }
+      }
+    ];
+
+    // Other SA public universities — link out for these
+    const OTHER_SA_UNIS = [
+      { name: "University of South Africa (UNISA)",                 url: "https://www.unisa.ac.za/sites/myunisa/default/Apply-for-admission" },
+      { name: "University of Limpopo (UL)",                         url: "https://www.ul.ac.za/admissions" },
+      { name: "University of Venda (UNIVEN)",                       url: "https://www.univen.ac.za" },
+      { name: "University of Zululand (UNIZULU)",                   url: "https://www.unizulu.ac.za" },
+      { name: "University of Fort Hare (UFH)",                      url: "https://www.ufh.ac.za" },
+      { name: "Walter Sisulu University (WSU)",                     url: "https://www.wsu.ac.za" },
+      { name: "University of Mpumalanga (UMP)",                     url: "https://www.ump.ac.za" },
+      { name: "Sol Plaatje University (SPU)",                       url: "https://www.spu.ac.za" },
+      { name: "Sefako Makgatho Health Sciences University (SMU)",   url: "https://www.smu.ac.za" },
+      { name: "Tshwane University of Technology (TUT)",             url: "https://www.tut.ac.za" },
+      { name: "Durban University of Technology (DUT)",              url: "https://www.dut.ac.za" },
+      { name: "Cape Peninsula University of Technology (CPUT)",     url: "https://www.cput.ac.za" },
+      { name: "Vaal University of Technology (VUT)",                url: "https://www.vut.ac.za" },
+      { name: "Mangosuthu University of Technology (MUT)",          url: "https://www.mut.ac.za" },
+      { name: "Central University of Technology (CUT)",             url: "https://www.cut.ac.za" }
+    ];
+
+    const FACULTY_LABELS = {
+      engineering: "Engineering & Built Environment",
+      health:      "Health Sciences",
+      commerce:    "Commerce",
+      humanities:  "Humanities & Social Sciences",
+      science:     "Science",
+      education:   "Education",
+      law:         "Law (LLB)"
+    };
+
+    function tierForScore(aps) {
+      if (aps >= 38) return { label: "Strong score", className: "tier-strong" };
+      if (aps >= 30) return { label: "Solid mid-range score", className: "tier-mid" };
+      if (aps >= 24) return { label: "Workable score with care",  className: "tier-borderline" };
+      return { label: "Below most university minimums",  className: "tier-low" };
+    }
+
+    const form = document.getElementById("apsForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const output = document.getElementById("output");
+    const errorBox = document.getElementById("errorBox");
+    const errorText = document.getElementById("errorText");
+    const recalcBtn = document.getElementById("recalcBtn");
+    const explainBtn = document.getElementById("explainBtn");
+
+    let lastResult = null;
+
+    recalcBtn.addEventListener("click", function() {
+      output.hidden = true;
+      form.scrollIntoView({behavior: "smooth"});
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      errorBox.hidden = true;
+      submitBtn.classList.add("loading");
+      submitBtn.disabled = true;
+
+      try {
+        const subjects = [];
+        for (let i = 1; i <= 6; i++) {
+          subjects.push({
+            name: document.getElementById("subj" + i).value,
+            mark: Number(document.getElementById("mark" + i).value),
+            level: markToAPS(document.getElementById("mark" + i).value)
+          });
+        }
+        const lo = {
+          name: "Life Orientation",
+          mark: Number(document.getElementById("mark7").value),
+          level: markToAPS(document.getElementById("mark7").value)
+        };
+        const faculty = document.getElementById("faculty").value;
+
+        // Validate marks
+        for (const s of subjects.concat([lo])) {
+          if (isNaN(s.mark) || s.mark < 0 || s.mark > 100) {
+            throw new Error("Please enter a valid mark between 0 and 100 for every subject.");
+          }
+        }
+
+        const aps = subjects.reduce((sum, s) => sum + s.level, 0);
+
+        lastResult = { subjects, lo, aps, faculty };
+        renderResult(lastResult);
+        output.hidden = false;
+        output.scrollIntoView({behavior: "smooth"});
+      } catch (err) {
+        errorText.textContent = err.message;
+        errorBox.hidden = false;
+      } finally {
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+      }
+    });
+
+    function renderResult({ subjects, lo, aps, faculty }) {
+      // Score card
+      document.getElementById("apsScore").textContent = aps;
+      const tier = tierForScore(aps);
+      const tierEl = document.getElementById("apsTier");
+      tierEl.textContent = tier.label;
+      tierEl.className = "aps-result-tier " + tier.className;
+
+      // Breakdown
+      const breakdownLines = subjects.map(s => {
+        return `<div class="breakdown-row"><span class="breakdown-name">${escapeHtml(s.name || 'Subject')}</span><span class="breakdown-mark">${s.mark}%</span><span class="breakdown-level">Level ${s.level}</span></div>`;
+      }).join("");
+      const loLine = `<div class="breakdown-row breakdown-lo"><span class="breakdown-name">${escapeHtml(lo.name)} <em>(excluded)</em></span><span class="breakdown-mark">${lo.mark}%</span><span class="breakdown-level">&mdash;</span></div>`;
+      document.getElementById("apsBreakdown").innerHTML = "<h3 class='breakdown-heading'>Your subject breakdown</h3>" + breakdownLines + loLine;
+
+      // Faculty summary
+      const facultyLabel = FACULTY_LABELS[faculty] || faculty;
+      document.getElementById("facultySummary").textContent = `Showing ${facultyLabel} programmes at South Africa's top 10 public universities, sorted by minimum APS.`;
+
+      // Match universities
+      const matches = UNIVERSITIES
+        .filter(u => u.faculties[faculty])
+        .map(u => ({
+          name: u.name,
+          region: u.region,
+          note: u.note || "",
+          faculty: u.faculties[faculty],
+          qualifies: aps >= u.faculties[faculty].min,
+          competitive: aps >= u.faculties[faculty].competitive
+        }))
+        .sort((a, b) => a.faculty.min - b.faculty.min);
+
+      let listHtml = "";
+      if (matches.length === 0) {
+        listHtml = "<p class='no-matches'>No matching faculty data for this combination yet. Try a different faculty or check the universities below directly.</p>";
+      } else {
+        listHtml = matches.map(m => {
+          let badge, badgeClass;
+          if (m.competitive) {
+            badge = "Strong fit";
+            badgeClass = "badge-strong";
+          } else if (m.qualifies) {
+            badge = "Meets minimum";
+            badgeClass = "badge-meets";
+          } else {
+            badge = "Below minimum";
+            badgeClass = "badge-below";
+          }
+          const noteHtml = m.note ? `<p class="uni-note"><em>${escapeHtml(m.note)}</em></p>` : "";
+          return `<div class="uni-item ${badgeClass}-row">
+            <div class="uni-info">
+              <h4 class="uni-name">${escapeHtml(m.name)}</h4>
+              <p class="uni-region">${escapeHtml(m.region)}</p>
+              <p class="uni-faculty">${escapeHtml(m.faculty.name)}</p>
+              <p class="uni-thresholds">Minimum APS <strong>${m.faculty.min}</strong> · Competitive APS <strong>${m.faculty.competitive}</strong></p>
+              ${noteHtml}
+            </div>
+            <span class="uni-badge ${badgeClass}">${badge}</span>
+          </div>`;
+        }).join("");
+      }
+
+      // Add the "other SA unis" link block
+      const otherUnis = OTHER_SA_UNIS.map(u => `<li><a href="${u.url}" target="_blank" rel="noopener">${escapeHtml(u.name)}</a></li>`).join("");
+      listHtml += `<div class="other-unis-block">
+        <h3>Also worth checking — South Africa's 16 other public universities</h3>
+        <p>Detailed faculty matching for these is on the way. For now, here are direct links to their admissions pages:</p>
+        <ul class="other-unis-list">${otherUnis}</ul>
+      </div>`;
+
+      document.getElementById("uniList").innerHTML = listHtml;
+
+      // Reset AI explanation if previously shown
+      const aiBox = document.getElementById("aiExplanation");
+      aiBox.hidden = true;
+      aiBox.innerHTML = "";
+    }
+
+    explainBtn.addEventListener("click", async function() {
+      if (!lastResult) return;
+      const aiBox = document.getElementById("aiExplanation");
+      aiBox.hidden = false;
+      aiBox.innerHTML = "<p class='ai-loading'>Reading your score…</p>";
+      explainBtn.classList.add("loading");
+      explainBtn.disabled = true;
+
+      try {
+        const payload = {
+          aps: lastResult.aps,
+          faculty: FACULTY_LABELS[lastResult.faculty] || lastResult.faculty,
+          subjects: lastResult.subjects.map(s => ({ name: s.name, mark: s.mark, level: s.level }))
+        };
+
+        const res = await fetch(WORKER_URL + "/aps-explain", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        aiBox.innerHTML = formatExplanation(data.explanation || "");
+      } catch (err) {
+        aiBox.innerHTML = "<p class='ai-error'>Couldn't reach the explainer right now. Please try again in a moment.</p>";
+      } finally {
+        explainBtn.classList.remove("loading");
+        explainBtn.disabled = false;
+      }
+    });
+
+    function formatExplanation(text) {
+      text = text.replace(/\*\*(.+?)\*\*/g, "<h3>$1</h3>");
+      text = text.replace(/(<\/h3>)\s*/g, "$1\n\n");
+      text = text.replace(/([.!?])\s+(?=\d+\.\s)/g, "$1\n");
+      text = text.replace(/([.!?])\s+(?=-\s)/g, "$1\n");
+      const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
+
+      function renderBlock(block) {
+        if (/^<h3>/.test(block)) return block;
+        const lines = block.split(/\n+/).map(l => l.trim()).filter(Boolean);
+
+        if (lines.length >= 2 && lines.every(l => /^\d+\.\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^\d+\.\s*/, "").trim() + "</li>").join("");
+          return "<ol>" + items + "</ol>";
+        }
+        if (lines.length >= 2 && lines.every(l => /^[-*]\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^[-*]\s*/, "").trim() + "</li>").join("");
+          return "<ul>" + items + "</ul>";
+        }
+        return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+      }
+      return blocks.map(renderBlock).join("");
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+
+</body>
+</html>
