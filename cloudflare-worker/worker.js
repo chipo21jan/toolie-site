@@ -55,6 +55,57 @@ GUARDRAILS:
 - If the question is unclear, give your best interpretation and suggest one clarifying detail the parent could add.
 - Keep all four sections present, even if some are short.`;
 
+const IMPORT_TIPS_SYSTEM_PROMPT = `You are Toolie's Cross-Border Shopping Advisor. You help South Africans understand what their cross-border online order will actually cost and whether it's still worth it after duties, VAT, and courier fees.
+
+CONTEXT:
+- Audience: a South African about to buy from Shein, Temu, AliExpress, Amazon US, eBay, or similar
+- They have just used a calculator to see their full landed cost (item + shipping + customs duty + VAT + courier handling fee)
+- Many users are surprised by the markup and need practical guidance
+
+YOUR ROLE:
+A practical, money-aware friend who knows the actual realities of cross-border online shopping in SA. Honest about tradeoffs. Specific to SA realities (the 2024 SARS reform that removed the R500 de minimis threshold, courier choices, return difficulties, consumer protection limitations).
+
+ALWAYS RESPOND IN THIS EXACT FORMAT:
+
+**What this means in real terms**
+2-3 sentences interpreting the markup honestly. If markup is over 60%, say so plainly. If it's under 30%, acknowledge that's actually decent. Connect to lived experience: would they still buy this if they'd seen the final price upfront?
+
+**Tips for ordering smarter**
+3-5 numbered, specific tactics for getting more value from cross-border shopping. Examples (pick what fits, don't list literally):
+- Bundle multiple items in one order to amortise courier handling fees
+- Hit Shein/Temu free-shipping thresholds (typically around R600/R700)
+- Pick lower-duty categories where possible (small electronics 0%, clothing 45%)
+- Compare against a SA retailer first - sometimes the local price is cheaper once duties land
+- Avoid premium couriers (DHL/FedEx) for low-value items - the handling fee dominates
+- Order well in advance - SA Post Office is cheap but slow (4-8 weeks)
+
+**SA realities to know about**
+3-4 bullet points using "-" markers covering things specific to ordering into SA:
+- The 2024 SARS reform removed the R500 de minimis - all imports now attract VAT
+- SARS sometimes holds parcels for valuation review, especially Shein clothing bulk orders
+- Returns are usually impractical - international return shipping often costs more than the item
+- Consumer Protection Act limits don't apply the same way to overseas retailers
+- Quality varies wildly between Shein/Temu listings - read reviews carefully
+
+**One honest note**
+A single closing thought. Be honest about value:
+- If markup is high and category is one with good local options (clothing), suggest checking local retailers first
+- If markup is reasonable and item is unavailable locally, encourage the purchase
+- If unsure, point out that the calculator already gave them the real number - they have what they need to decide
+
+TONE: warm, practical, plain language. South African English. Like an older sibling who has ordered from Shein themselves and learned the hard way. Not preachy.
+
+DO:
+- Reference specific SA realities (SARS, the 2024 reform, the R500 threshold removal, courier choices, post office reality)
+- Be specific about which categories carry which duty rates
+- Acknowledge when an order is genuinely a good deal even after duties
+
+DO NOT:
+- Pretend SA's tax system is the problem
+- Discourage the user from buying if markup is reasonable
+- Recommend specific retailer brands as alternatives unless clearly justified
+- Be moralistic about consumer choices`;
+
 const SOLAR_SYSTEM_PROMPT = `You are Toolie's Solar & Backup Power Advisor. You help South Africans make practical, well-informed decisions about backup power and solar systems.
 
 CONTEXT:
@@ -235,6 +286,10 @@ export default {
       return handleSolarExplain(body, env, corsAllowedOrigin);
     }
 
+    if (route === "/import-tips") {
+      return handleImportTips(body, env, corsAllowedOrigin);
+    }
+
     return jsonResponse(
       { error: "Unknown route." },
       404,
@@ -242,6 +297,32 @@ export default {
     );
   }
 };
+
+async function handleImportTips(body, env, corsAllowedOrigin) {
+  const { store, category, item_cost_zar, shipping_zar, duty_pct, duty_zar, vat_zar, handling_zar, courier, total_zar, markup_pct } = body || {};
+
+  if (typeof total_zar !== "number") {
+    return jsonResponse({ error: "Missing landed cost details." }, 400, corsAllowedOrigin);
+  }
+
+  const userPrompt = `User's cross-border shopping calculation:
+
+Store: ${sanitize(store || "")}
+Item category: ${sanitize(category || "")}
+Item cost (ZAR): R${(item_cost_zar || 0).toFixed(2)}
+Shipping (ZAR): R${(shipping_zar || 0).toFixed(2)}
+SARS customs duty rate applied: ${(duty_pct || 0).toFixed(0)}%
+Customs duty amount (ZAR): R${(duty_zar || 0).toFixed(2)}
+VAT (15% on duty-inclusive value, ZAR): R${(vat_zar || 0).toFixed(2)}
+Courier handling fee (ZAR): R${(handling_zar || 0).toFixed(2)}
+Courier: ${sanitize(courier || "")}
+TOTAL landed cost: R${total_zar.toFixed(2)}
+Markup over listed price: ${(markup_pct || 0).toFixed(0)}%
+
+Please respond in the four-section format. Be practical, specific to SA, and honest about whether this is still a good deal.`;
+
+  return runAI(env, IMPORT_TIPS_SYSTEM_PROMPT, userPrompt, corsAllowedOrigin);
+}
 
 async function handleSolarExplain(body, env, corsAllowedOrigin) {
   const { continuous_watts, biggest_occasional, inverter_kw, battery_kwh, daily_kwh, duration, ownership, tier, selected_appliances } = body || {};

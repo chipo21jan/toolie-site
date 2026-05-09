@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shein, Temu &amp; AliExpress Landed Cost Calculator — Toolie</title>
+  <meta name="description" content="Find out exactly what your Shein, Temu, AliExpress, or Amazon US order will cost by the time it lands in South Africa — with customs duty, VAT, and courier fees included.">
+  <meta property="og:title" content="Shein, Temu & AliExpress Landed Cost Calculator — Toolie">
+  <meta property="og:description" content="See what your cross-border order will actually cost after SARS customs duty, VAT, and courier fees.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gettoolie.com/import">
+  <meta name="theme-color" content="#0F4C5C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742354292252484" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header class="site-header tool-header">
+    <a href="/" class="logo" aria-label="Toolie home">Toolie</a>
+    <nav class="tool-nav">
+      <a href="/" class="nav-link">All tools</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero">
+      <span class="tool-pill">Shopping &middot; Free</span>
+      <h1 class="tool-title">Shein, Temu &amp; AliExpress Landed Cost Calculator</h1>
+      <p class="tool-subtitle">Find out what your cross-border online order will actually cost by the time it lands in South Africa &mdash; with customs duty, VAT, and courier fees properly factored in. No more checkout-price surprises.</p>
+    </section>
+
+    <section class="tool-card">
+      <form id="importForm" class="tool-form">
+
+        <h2 class="form-section-heading">Step 1 &mdash; Where are you ordering from?</h2>
+        <div class="form-field">
+          <label for="store">Store</label>
+          <select id="store" name="store" required>
+            <option value="">Select…</option>
+            <option value="shein">Shein</option>
+            <option value="temu">Temu</option>
+            <option value="aliexpress">AliExpress</option>
+            <option value="amazon">Amazon US</option>
+            <option value="ebay">eBay</option>
+            <option value="other">Other cross-border store</option>
+          </select>
+        </div>
+
+        <h2 class="form-section-heading second-heading">Step 2 &mdash; What are you buying?</h2>
+
+        <div class="form-field">
+          <label for="category">Item category</label>
+          <p class="field-help">Customs duty depends on what's in the package. Pick the closest category to what you're ordering.</p>
+          <select id="category" name="category" required>
+            <option value="">Select…</option>
+            <option value="clothing">Clothing &amp; apparel (T-shirts, dresses, jeans, etc.)</option>
+            <option value="footwear">Footwear (sneakers, sandals, boots)</option>
+            <option value="bags">Bags, wallets &amp; accessories</option>
+            <option value="cosmetics">Cosmetics &amp; beauty products</option>
+            <option value="electronics-small">Small electronics (cables, chargers, earphones, gadgets)</option>
+            <option value="phones-computers">Phones, tablets, laptops</option>
+            <option value="toys">Toys &amp; games</option>
+            <option value="home">Home decor, kitchen &amp; household</option>
+            <option value="tools">Tools &amp; hardware</option>
+            <option value="health">Health, wellness, supplements</option>
+            <option value="jewellery">Jewellery</option>
+            <option value="books">Books</option>
+            <option value="other">Other / not sure</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="itemValue">Item cost (before shipping)</label>
+            <input type="number" id="itemValue" name="itemValue" min="0" step="0.01" required placeholder="e.g. 25.99">
+          </div>
+          <div class="form-field">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency" required>
+              <option value="USD">USD ($)</option>
+              <option value="CNY">CNY (¥)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="ZAR">ZAR (R)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="exchangeRate">Exchange rate to ZAR (auto-filled, you can adjust)</label>
+          <p class="field-help">Default values are approximate May 2026 rates. For precision, check the day's rate at xe.com.</p>
+          <input type="number" id="exchangeRate" name="exchangeRate" min="0" step="0.01" required>
+        </div>
+
+        <h2 class="form-section-heading second-heading">Step 3 &mdash; Shipping</h2>
+
+        <div class="form-field">
+          <label for="shippingCost">Shipping cost charged at checkout (in same currency as item)</label>
+          <p class="field-help">Enter 0 if shipping is free or already included.</p>
+          <input type="number" id="shippingCost" name="shippingCost" min="0" step="0.01" required value="0">
+        </div>
+
+        <div class="form-field">
+          <label for="courier">Who delivers to your door?</label>
+          <select id="courier" name="courier" required>
+            <option value="">Select…</option>
+            <option value="postal">SA Post Office / Postnet (cheapest, slowest)</option>
+            <option value="local-courier">Local courier (Aramex, DPD, Buffalo, RAM)</option>
+            <option value="premium-courier">DHL / FedEx / UPS (premium, fastest)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span class="btn-text">Calculate landed cost</span>
+          <span class="btn-loading">Calculating…</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="tool-output" id="output" hidden>
+      <div class="import-headline">
+        <p class="import-headline-label">Your total landed cost</p>
+        <p class="import-headline-value" id="totalLandedZar">R0</p>
+        <p class="import-headline-markup" id="markupText"></p>
+      </div>
+
+      <div class="import-breakdown" id="importBreakdown"></div>
+
+      <div class="ai-explainer-block">
+        <button class="btn-secondary" id="explainBtn">
+          <span class="btn-text">What else should I know about ordering this?</span>
+          <span class="btn-loading">Thinking…</span>
+        </button>
+        <div class="ai-explanation" id="aiExplanation" hidden></div>
+      </div>
+
+      <div class="output-footer">
+        <button class="btn-secondary" id="recalcBtn">Recalculate</button>
+      </div>
+    </section>
+
+    <section class="tool-error" id="errorBox" hidden>
+      <p id="errorText"></p>
+    </section>
+
+    <section class="tool-note">
+      <p><strong>Important:</strong> Customs duty rates and currency exchange estimates shown here reflect typical 2026 SARS schedules and rough market values. SARS publishes exact rates by HS code &mdash; if your purchase is large, verify with your courier or via the SARS tariff schedule. The 2024 SARS reform removed the previous R500 de minimis threshold, so all imports now attract VAT regardless of value. <em>Tax regimes for Eswatini, Botswana, Namibia, Zimbabwe coming soon.</em></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="copyright">&copy; 2026 Toolie. Made in Africa, reaching the world. <a href="/privacy" class="footer-link">Privacy</a> &middot; <a href="/terms" class="footer-link">Terms</a> &middot; <a href="/about" class="footer-link">About</a></p>
+      <p class="elroi-credit" tabindex="0" aria-label="Powered by Elroi">
+        <svg class="hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 11V6a2 2 0 0 0-4 0v5"/>
+          <path d="M14 10V4a2 2 0 0 0-4 0v6"/>
+          <path d="M10 10.5V6a2 2 0 0 0-4 0v8"/>
+          <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+        </svg>
+        <span>Powered by Elroi</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const WORKER_URL = "https://toolie-ai.chipo21jan.workers.dev";
+
+    // Approximate SARS customs duty rates by category (2026)
+    // These are simplifications - actual rates depend on specific HS codes
+    const DUTY_RATES = {
+      "clothing":          { rate: 0.45, name: "Clothing & apparel" },
+      "footwear":          { rate: 0.30, name: "Footwear" },
+      "bags":              { rate: 0.30, name: "Bags & accessories" },
+      "cosmetics":         { rate: 0.25, name: "Cosmetics & beauty" },
+      "electronics-small": { rate: 0.00, name: "Small electronics" },
+      "phones-computers":  { rate: 0.00, name: "Phones, tablets, laptops" },
+      "toys":              { rate: 0.00, name: "Toys & games" },
+      "home":              { rate: 0.20, name: "Home & kitchen" },
+      "tools":             { rate: 0.20, name: "Tools & hardware" },
+      "health":            { rate: 0.20, name: "Health & wellness" },
+      "jewellery":         { rate: 0.20, name: "Jewellery" },
+      "books":             { rate: 0.00, name: "Books" },
+      "other":             { rate: 0.25, name: "Other (estimated)" }
+    };
+
+    // Default exchange rates (May 2026 estimates - users can override)
+    const DEFAULT_RATES = {
+      "USD": 18.50,
+      "CNY": 2.55,
+      "EUR": 20.00,
+      "GBP": 23.00,
+      "ZAR": 1.00
+    };
+
+    // Courier handling fee estimates
+    const COURIER_FEES = {
+      "postal":          { name: "SA Post Office / Postnet", fee: 100 },
+      "local-courier":   { name: "Local courier", fee: 200 },
+      "premium-courier": { name: "DHL / FedEx / UPS", fee: 350 }
+    };
+
+    const STORE_NAMES = {
+      "shein":      "Shein",
+      "temu":       "Temu",
+      "aliexpress": "AliExpress",
+      "amazon":     "Amazon US",
+      "ebay":       "eBay",
+      "other":      "the store"
+    };
+
+    // SA VAT rate
+    const VAT_RATE = 0.15;
+
+    const currencyEl = document.getElementById("currency");
+    const exchangeRateEl = document.getElementById("exchangeRate");
+
+    function updateExchangeRateField() {
+      const cur = currencyEl.value;
+      exchangeRateEl.value = DEFAULT_RATES[cur] || 18.50;
+      if (cur === "ZAR") {
+        exchangeRateEl.disabled = true;
+      } else {
+        exchangeRateEl.disabled = false;
+      }
+    }
+
+    currencyEl.addEventListener("change", updateExchangeRateField);
+    updateExchangeRateField();
+
+    const form = document.getElementById("importForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const output = document.getElementById("output");
+    const errorBox = document.getElementById("errorBox");
+    const errorText = document.getElementById("errorText");
+    const recalcBtn = document.getElementById("recalcBtn");
+    const explainBtn = document.getElementById("explainBtn");
+
+    let lastResult = null;
+
+    recalcBtn.addEventListener("click", function() {
+      output.hidden = true;
+      form.scrollIntoView({behavior: "smooth"});
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      errorBox.hidden = true;
+      submitBtn.classList.add("loading");
+      submitBtn.disabled = true;
+
+      try {
+        const store = document.getElementById("store").value;
+        const category = document.getElementById("category").value;
+        const itemValue = Number(document.getElementById("itemValue").value);
+        const currency = document.getElementById("currency").value;
+        const exchangeRate = Number(document.getElementById("exchangeRate").value);
+        const shippingCost = Number(document.getElementById("shippingCost").value);
+        const courier = document.getElementById("courier").value;
+
+        if (!store || !category || !courier) throw new Error("Please fill in every field.");
+        if (isNaN(itemValue) || itemValue < 0) throw new Error("Please enter a valid item cost.");
+        if (isNaN(exchangeRate) || exchangeRate <= 0) throw new Error("Please enter a valid exchange rate.");
+        if (isNaN(shippingCost) || shippingCost < 0) throw new Error("Please enter a valid shipping cost (0 if free).");
+
+        // ----------- Calculations -----------
+        const itemValueZar = itemValue * exchangeRate;
+        const shippingZar = shippingCost * exchangeRate;
+        const dutyInfo = DUTY_RATES[category];
+        const dutyAmount = (itemValueZar + shippingZar) * dutyInfo.rate;
+        const dutyInclusiveValue = itemValueZar + shippingZar + dutyAmount;
+        const vatAmount = dutyInclusiveValue * VAT_RATE;
+        const courierInfo = COURIER_FEES[courier];
+        const handlingFee = courierInfo.fee;
+        const totalLandedZar = itemValueZar + shippingZar + dutyAmount + vatAmount + handlingFee;
+        const listedPriceZar = itemValueZar + shippingZar;
+        const markupAmount = totalLandedZar - listedPriceZar;
+        const markupPercent = listedPriceZar > 0 ? (markupAmount / listedPriceZar) * 100 : 0;
+
+        lastResult = {
+          store, category, itemValue, currency, exchangeRate, shippingCost, courier,
+          itemValueZar, shippingZar, dutyRate: dutyInfo.rate, dutyName: dutyInfo.name,
+          dutyAmount, vatAmount, handlingFee, courierName: courierInfo.name,
+          totalLandedZar, listedPriceZar, markupAmount, markupPercent
+        };
+
+        renderResult(lastResult);
+        output.hidden = false;
+        output.scrollIntoView({behavior: "smooth"});
+      } catch (err) {
+        errorText.textContent = err.message;
+        errorBox.hidden = false;
+      } finally {
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+      }
+    });
+
+    function formatZar(amount) {
+      return "R" + amount.toLocaleString("en-ZA", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function formatCurrency(amount, currency) {
+      const symbol = { USD: "$", CNY: "¥", EUR: "€", GBP: "£", ZAR: "R" }[currency] || "";
+      return symbol + amount.toLocaleString("en-ZA", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderResult(r) {
+      document.getElementById("totalLandedZar").textContent = formatZar(r.totalLandedZar);
+
+      const markupEl = document.getElementById("markupText");
+      if (r.listedPriceZar > 0 && r.markupPercent > 0) {
+        markupEl.textContent = "That's " + formatZar(r.markupAmount) + " (" + Math.round(r.markupPercent) + "%) more than the listed price you saw.";
+      } else {
+        markupEl.textContent = "Includes all customs duty, VAT, and courier handling.";
+      }
+
+      let html = '<h3 class="breakdown-heading">How that breaks down</h3>';
+
+      // Item cost
+      html += `<div class="breakdown-row">
+        <span class="breakdown-name">Item cost ${r.currency !== "ZAR" ? "(" + formatCurrency(r.itemValue, r.currency) + " × " + r.exchangeRate + ")" : ""}</span>
+        <span class="breakdown-mark">${formatZar(r.itemValueZar)}</span>
+      </div>`;
+
+      // Shipping
+      if (r.shippingZar > 0) {
+        html += `<div class="breakdown-row">
+          <span class="breakdown-name">Shipping ${r.currency !== "ZAR" ? "(" + formatCurrency(r.shippingCost, r.currency) + " × " + r.exchangeRate + ")" : ""}</span>
+          <span class="breakdown-mark">${formatZar(r.shippingZar)}</span>
+        </div>`;
+      } else {
+        html += `<div class="breakdown-row">
+          <span class="breakdown-name">Shipping</span>
+          <span class="breakdown-mark">Free</span>
+        </div>`;
+      }
+
+      // Customs duty
+      const dutyPct = (r.dutyRate * 100).toFixed(0);
+      if (r.dutyAmount > 0) {
+        html += `<div class="breakdown-row breakdown-cost">
+          <span class="breakdown-name">SARS customs duty (${dutyPct}% on ${r.dutyName.toLowerCase()})</span>
+          <span class="breakdown-mark">+ ${formatZar(r.dutyAmount)}</span>
+        </div>`;
+      } else {
+        html += `<div class="breakdown-row">
+          <span class="breakdown-name">SARS customs duty (${r.dutyName} are duty-free)</span>
+          <span class="breakdown-mark">R0.00</span>
+        </div>`;
+      }
+
+      // VAT
+      html += `<div class="breakdown-row breakdown-cost">
+        <span class="breakdown-name">VAT (15% on item + shipping + duty)</span>
+        <span class="breakdown-mark">+ ${formatZar(r.vatAmount)}</span>
+      </div>`;
+
+      // Courier handling
+      html += `<div class="breakdown-row breakdown-cost">
+        <span class="breakdown-name">${r.courierName} handling fee</span>
+        <span class="breakdown-mark">+ ${formatZar(r.handlingFee)}</span>
+      </div>`;
+
+      // Total
+      html += `<div class="breakdown-row breakdown-total">
+        <span class="breakdown-name"><strong>Total landed cost</strong></span>
+        <span class="breakdown-mark"><strong>${formatZar(r.totalLandedZar)}</strong></span>
+      </div>`;
+
+      document.getElementById("importBreakdown").innerHTML = html;
+
+      const aiBox = document.getElementById("aiExplanation");
+      aiBox.hidden = true;
+      aiBox.innerHTML = "";
+    }
+
+    // ----------- AI explainer -----------
+    explainBtn.addEventListener("click", async function() {
+      if (!lastResult) return;
+      const aiBox = document.getElementById("aiExplanation");
+      aiBox.hidden = false;
+      aiBox.innerHTML = "<p class='ai-loading'>Reading your order…</p>";
+      explainBtn.classList.add("loading");
+      explainBtn.disabled = true;
+
+      try {
+        const payload = {
+          store: STORE_NAMES[lastResult.store] || lastResult.store,
+          category: lastResult.dutyName,
+          item_cost_zar: lastResult.itemValueZar,
+          shipping_zar: lastResult.shippingZar,
+          duty_pct: lastResult.dutyRate * 100,
+          duty_zar: lastResult.dutyAmount,
+          vat_zar: lastResult.vatAmount,
+          handling_zar: lastResult.handlingFee,
+          courier: lastResult.courierName,
+          total_zar: lastResult.totalLandedZar,
+          markup_pct: lastResult.markupPercent
+        };
+
+        const res = await fetch(WORKER_URL + "/import-tips", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        aiBox.innerHTML = formatExplanation(data.explanation || "");
+      } catch (err) {
+        aiBox.innerHTML = "<p class='ai-error'>Couldn't reach the helper right now. Please try again in a moment.</p>";
+      } finally {
+        explainBtn.classList.remove("loading");
+        explainBtn.disabled = false;
+      }
+    });
+
+    function formatExplanation(text) {
+      text = text.replace(/^[ \t]*\*\*(.+?)\*\*[ \t]*$/gm, "<h3>$1</h3>");
+      text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      text = text.replace(/(<\/h3>)\s*/g, "$1\n\n");
+      text = text.replace(/([.!?])\s+(?=\d+\.\s)/g, "$1\n");
+      text = text.replace(/([.!?])\s+(?=-\s)/g, "$1\n");
+      const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
+
+      function renderBlock(block) {
+        if (/^<h3>/.test(block)) return block;
+        const lines = block.split(/\n+/).map(l => l.trim()).filter(Boolean);
+        if (lines.length >= 2 && lines.every(l => /^\d+\.\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^\d+\.\s*/, "").trim() + "</li>").join("");
+          return "<ol>" + items + "</ol>";
+        }
+        if (lines.length >= 2 && lines.every(l => /^[-*]\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^[-*]\s*/, "").trim() + "</li>").join("");
+          return "<ul>" + items + "</ul>";
+        }
+        return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+      }
+      return blocks.map(renderBlock).join("");
+    }
+  </script>
+
+</body>
+</html>

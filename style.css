@@ -1573,3 +1573,78 @@ input[readonly] {
   padding: 1.25rem 1.25rem 1rem;
   margin-bottom: 1.5rem;
 }
+
+/* Import / landed cost calculator styles */
+.import-headline {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.import-headline-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.85;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.import-headline-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0.4rem 0 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.import-headline-markup {
+  font-size: 0.95rem;
+  opacity: 0.92;
+  line-height: 1.5;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.import-breakdown {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.breakdown-cost {
+  background: var(--accent-soft);
+  margin: 0 -1.4rem;
+  padding-left: 1.4rem;
+  padding-right: 1.4rem;
+}
+
+.breakdown-cost .breakdown-mark {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.breakdown-total {
+  background: var(--primary);
+  color: #fff;
+  margin: 0.5rem -1.4rem -1rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border-bottom: 0;
+  font-size: 1.05rem;
+}
+
+.breakdown-total .breakdown-name strong,
+.breakdown-total .breakdown-mark strong {
+  color: #fff;
+  font-weight: 700;
+}
