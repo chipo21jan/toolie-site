@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent Homework Helper — Toolie</title>
+  <meta name="description" content="Get a parent-friendly explanation of any Grade R-7 CAPS homework question. Free, made for South African parents. Powered by Toolie.">
+  <meta property="og:title" content="Parent Homework Helper — Toolie">
+  <meta property="og:description" content="Help your child with Grade R-7 homework. Plain-English explanations for tired parents.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gettoolie.com/homework">
+  <meta name="theme-color" content="#0F4C5C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header tool-header">
+    <a href="/" class="logo" aria-label="Toolie home">Toolie</a>
+    <nav class="tool-nav">
+      <a href="/" class="nav-link">All tools</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero">
+      <span class="tool-pill">Education · Free</span>
+      <h1 class="tool-title">Parent Homework Helper</h1>
+      <p class="tool-subtitle">Get a parent-friendly explanation of any Grade R–7 CAPS homework question. So you can help your child, even if school was a long time ago.</p>
+    </section>
+
+    <section class="tool-card">
+      <form id="homeworkForm" class="tool-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="grade">Grade</label>
+            <select id="grade" name="grade" required>
+              <option value="">Select grade…</option>
+              <option value="R">Grade R</option>
+              <option value="1">Grade 1</option>
+              <option value="2">Grade 2</option>
+              <option value="3">Grade 3</option>
+              <option value="4">Grade 4</option>
+              <option value="5">Grade 5</option>
+              <option value="6">Grade 6</option>
+              <option value="7">Grade 7</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select subject…</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="English">English (Home / First Additional)</option>
+              <option value="Afrikaans">Afrikaans</option>
+              <option value="isiZulu">isiZulu</option>
+              <option value="isiXhosa">isiXhosa</option>
+              <option value="Sesotho">Sesotho</option>
+              <option value="Setswana">Setswana</option>
+              <option value="Natural Sciences">Natural Sciences &amp; Technology</option>
+              <option value="Social Sciences">Social Sciences (History / Geography)</option>
+              <option value="Life Skills">Life Skills</option>
+              <option value="Economic and Management Sciences">Economic &amp; Management Sciences</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="question">Paste the homework question</label>
+          <textarea id="question" name="question" rows="5" required maxlength="2000" placeholder="Type or paste the question here. The more context you include — the question, any examples given, what the textbook is asking for — the better we can help."></textarea>
+          <p class="field-help">We don't store your questions. Each one is processed and forgotten.</p>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span class="btn-text">Help me understand</span>
+          <span class="btn-loading">Thinking…</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="tool-output" id="output" hidden>
+      <div class="output-content" id="outputContent"></div>
+      <div class="output-footer">
+        <button class="btn-secondary" id="askAnotherBtn">Ask another question</button>
+      </div>
+    </section>
+
+    <section class="tool-error" id="errorBox" hidden>
+      <p id="errorText"></p>
+    </section>
+
+    <section class="tool-note">
+      <p><strong>How to use this well.</strong> This tool explains the concept so you can teach your child. It deliberately doesn't give a copy-and-paste answer — that wouldn't help anyone. Read the explanation, then sit with your child and walk through it together.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="copyright">&copy; 2026 Toolie. Made in Africa, reaching the world.</p>
+      <p class="elroi-credit" tabindex="0" aria-label="Powered by Elroi">
+        <svg class="hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 11V6a2 2 0 0 0-4 0v5"/>
+          <path d="M14 10V4a2 2 0 0 0-4 0v6"/>
+          <path d="M10 10.5V6a2 2 0 0 0-4 0v8"/>
+          <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+        </svg>
+        <span>Powered by Elroi</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // PASTE YOUR CLOUDFLARE WORKER URL HERE AFTER DEPLOYING IT.
+    // It will look something like: https://toolie-ai.YOUR-SUBDOMAIN.workers.dev
+    const WORKER_URL = "https://toolie-ai.YOUR-SUBDOMAIN.workers.dev/homework";
+
+    const form = document.getElementById("homeworkForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const output = document.getElementById("output");
+    const outputContent = document.getElementById("outputContent");
+    const errorBox = document.getElementById("errorBox");
+    const errorText = document.getElementById("errorText");
+    const askAnotherBtn = document.getElementById("askAnotherBtn");
+
+    askAnotherBtn.addEventListener("click", function() {
+      output.hidden = true;
+      form.scrollIntoView({behavior: "smooth"});
+      document.getElementById("question").focus();
+    });
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      output.hidden = true;
+      errorBox.hidden = true;
+      submitBtn.classList.add("loading");
+      submitBtn.disabled = true;
+
+      const payload = {
+        grade: document.getElementById("grade").value,
+        subject: document.getElementById("subject").value,
+        question: document.getElementById("question").value
+      };
+
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        outputContent.innerHTML = formatExplanation(data.explanation || "");
+        output.hidden = false;
+        output.scrollIntoView({behavior: "smooth"});
+      } catch (err) {
+        errorText.textContent = err.message || "Couldn't reach the helper right now. Please try again in a moment.";
+        errorBox.hidden = false;
+      } finally {
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+      }
+    });
+
+    function formatExplanation(text) {
+      // Simple markdown-ish to HTML
+      text = text.replace(/\*\*(.+?)\*\*/g, "<h3>$1</h3>");
+      const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
+      return blocks.map(block => {
+        if (block.startsWith("<h3>")) return block;
+        // Numbered list
+        if (/^\d+\.\s/.test(block)) {
+          const items = block.split(/\n(?=\d+\.\s)/).map(line => {
+            return "<li>" + line.replace(/^\d+\.\s/, "").trim() + "</li>";
+          }).join("");
+          return "<ol>" + items + "</ol>";
+        }
+        // Bulleted list
+        if (/^[-*]\s/.test(block)) {
+          const items = block.split(/\n(?=[-*]\s)/).map(line => {
+            return "<li>" + line.replace(/^[-*]\s/, "").trim() + "</li>";
+          }).join("");
+          return "<ul>" + items + "</ul>";
+        }
+        return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+      }).join("");
+    }
+  </script>
+
+</body>
+</html>
