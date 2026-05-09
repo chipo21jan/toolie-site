@@ -167,15 +167,18 @@
       // Convert markdown-style bold headers
       text = text.replace(/\*\*(.+?)\*\*/g, "<h3>$1</h3>");
 
-      // Pre-process: insert real newlines before list markers that follow sentence punctuation.
-      // This converts inline "1. step. 2. step. 3. step." into proper newline-separated lines.
+      // Force a blank line after each header so the header becomes its own block
+      text = text.replace(/(<\/h3>)\s*/g, "$1\n\n");
+
+      // Insert real newlines before list markers that follow sentence punctuation.
+      // Converts "step one. 2. step two. 3. step three." into newline-separated lines.
       text = text.replace(/([.!?])\s+(?=\d+\.\s)/g, "$1\n");
       text = text.replace(/([.!?])\s+(?=-\s)/g, "$1\n");
 
       const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
 
-      return blocks.map(block => {
-        if (block.startsWith("<h3>")) return block;
+      function renderBlock(block) {
+        if (/^<h3>/.test(block)) return block;
 
         const lines = block.split(/\n+/).map(l => l.trim()).filter(Boolean);
 
@@ -195,26 +198,11 @@
           return "<ul>" + items + "</ul>";
         }
 
-        // Mixed block — try to detect a list inside a paragraph
-        // Split where lines start with N. or - markers, render rest as <p>
-        const numberedLines = lines.filter(l => /^\d+\.\s/.test(l));
-        if (numberedLines.length >= 2 && numberedLines.length >= lines.length - 1) {
-          const items = numberedLines
-            .map(l => "<li>" + l.replace(/^\d+\.\s*/, "").trim() + "</li>")
-            .join("");
-          return "<ol>" + items + "</ol>";
-        }
-        const bulletLines = lines.filter(l => /^[-*]\s/.test(l));
-        if (bulletLines.length >= 2 && bulletLines.length >= lines.length - 1) {
-          const items = bulletLines
-            .map(l => "<li>" + l.replace(/^[-*]\s*/, "").trim() + "</li>")
-            .join("");
-          return "<ul>" + items + "</ul>";
-        }
-
         // Plain paragraph
         return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
-      }).join("");
+      }
+
+      return blocks.map(renderBlock).join("");
     }
   </script>
 
