@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar &amp; Backup Power Decision Tool — Toolie</title>
+  <meta name="description" content="Work out what size inverter and battery you actually need to survive load-shedding — or go fully off-grid. Free SA-specific solar sizing tool.">
+  <meta property="og:title" content="Solar & Backup Power Decision Tool — Toolie">
+  <meta property="og:description" content="Find out exactly what size inverter and battery you need. Free, SA-specific.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gettoolie.com/solar">
+  <meta name="theme-color" content="#0F4C5C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742354292252484" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header class="site-header tool-header">
+    <a href="/" class="logo" aria-label="Toolie home">Toolie</a>
+    <nav class="tool-nav">
+      <a href="/" class="nav-link">All tools</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero">
+      <span class="tool-pill">Energy &middot; Free</span>
+      <h1 class="tool-title">Solar &amp; Backup Power Decision Tool</h1>
+      <p class="tool-subtitle">Tell us what you want to keep running and for how long. We'll work out the inverter size, battery capacity, and tier of system you actually need &mdash; with realistic cost ranges for the SA market.</p>
+    </section>
+
+    <section class="tool-card">
+      <form id="solarForm" class="tool-form">
+
+        <h2 class="form-section-heading">Step 1 &mdash; What do you want to keep running?</h2>
+        <p class="form-section-help">Tick the appliances you'd want available during load-shedding. Wattages shown are typical SA running values &mdash; actual figures vary by model.</p>
+
+        <div class="appliance-group">
+          <h3 class="appliance-group-heading">Continuous loads (always running)</h3>
+          <div class="appliance-grid">
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="80" data-name="LED lighting (whole home)"><span><span class="app-label">LED lighting (whole home)</span><span class="app-watts">80 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="15" data-name="WiFi router + modem"><span><span class="app-label">WiFi router + modem</span><span class="app-watts">15 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="30" data-name="Alarm system"><span><span class="app-label">Alarm system</span><span class="app-watts">30 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="150" data-name="Fridge (cycling average)"><span><span class="app-label">Fridge</span><span class="app-watts">150 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="100" data-name="Freezer (cycling average)"><span><span class="app-label">Freezer</span><span class="app-watts">100 W</span></span></label>
+          </div>
+        </div>
+
+        <div class="appliance-group">
+          <h3 class="appliance-group-heading">Entertainment &amp; office</h3>
+          <div class="appliance-grid">
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="120" data-name="Television (LED)"><span><span class="app-label">Television (LED)</span><span class="app-watts">120 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="80" data-name="Laptop / desktop computer"><span><span class="app-label">Laptop / desktop</span><span class="app-watts">80 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="20" data-name="Phone charging (multiple)"><span><span class="app-label">Phone charging (×2-3)</span><span class="app-watts">20 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="40" data-name="Sound system / speaker"><span><span class="app-label">Sound system</span><span class="app-watts">40 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="70" data-name="Ceiling fan"><span><span class="app-label">Ceiling fan</span><span class="app-watts">70 W</span></span></label>
+          </div>
+        </div>
+
+        <div class="appliance-group">
+          <h3 class="appliance-group-heading">Kitchen (occasional, high-power)</h3>
+          <p class="appliance-group-note">These run for short bursts. They drive up inverter size but use little total energy.</p>
+          <div class="appliance-grid">
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="2000" data-occasional="true" data-name="Kettle"><span><span class="app-label">Kettle</span><span class="app-watts">2,000 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="1000" data-occasional="true" data-name="Microwave"><span><span class="app-label">Microwave</span><span class="app-watts">1,000 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="1200" data-occasional="true" data-name="Toaster"><span><span class="app-label">Toaster</span><span class="app-watts">1,200 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="2000" data-occasional="true" data-name="Stove plate (single)"><span><span class="app-label">Stove plate</span><span class="app-watts">2,000 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="2500" data-occasional="true" data-name="Electric oven"><span><span class="app-label">Electric oven</span><span class="app-watts">2,500 W</span></span></label>
+          </div>
+        </div>
+
+        <div class="appliance-group">
+          <h3 class="appliance-group-heading">Climate control &amp; heating</h3>
+          <p class="appliance-group-note">Geysers and heaters are the biggest energy hogs. Most home backup systems exclude these &mdash; people usually wait for power to return.</p>
+          <div class="appliance-grid">
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="3000" data-name="Electric geyser (200 L)"><span><span class="app-label">Electric geyser</span><span class="app-watts">3,000 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="2000" data-name="Oil heater"><span><span class="app-label">Oil heater</span><span class="app-watts">2,000 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="1200" data-name="Air conditioner (12k BTU)"><span><span class="app-label">Air conditioner</span><span class="app-watts">1,200 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="1500" data-occasional="true" data-name="Hair dryer"><span><span class="app-label">Hair dryer</span><span class="app-watts">1,500 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="1500" data-occasional="true" data-name="Iron"><span><span class="app-label">Iron</span><span class="app-watts">1,500 W</span></span></label>
+          </div>
+        </div>
+
+        <div class="appliance-group">
+          <h3 class="appliance-group-heading">Outdoor &amp; utility</h3>
+          <div class="appliance-grid">
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="500" data-name="Washing machine (motor)"><span><span class="app-label">Washing machine</span><span class="app-watts">500 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="1500" data-name="Borehole pump"><span><span class="app-label">Borehole pump</span><span class="app-watts">1,500 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="750" data-name="Pool pump"><span><span class="app-label">Pool pump</span><span class="app-watts">750 W</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="500" data-occasional="true" data-name="Garage door motor"><span><span class="app-label">Garage door motor</span><span class="app-watts">500 W (peak)</span></span></label>
+            <label class="appliance-item"><input type="checkbox" class="app-check" data-watts="100" data-name="Electric gate motor"><span><span class="app-label">Electric gate motor</span><span class="app-watts">100 W</span></span></label>
+          </div>
+        </div>
+
+        <div class="live-total">
+          <span class="live-total-label">Running selection:</span>
+          <span class="live-total-value" id="liveTotal">0 W</span>
+        </div>
+
+        <h2 class="form-section-heading second-heading">Step 2 &mdash; How long do you need backup for?</h2>
+        <div class="form-field">
+          <label for="duration">Backup duration during a typical load-shedding session</label>
+          <select id="duration" name="duration" required>
+            <option value="">Select…</option>
+            <option value="2">2 hours (typical Stage 2)</option>
+            <option value="4">4 hours (typical Stage 4)</option>
+            <option value="6">6 hours (typical Stage 6)</option>
+            <option value="8">8 hours (extended outage)</option>
+            <option value="24">24 hours (full off-grid day)</option>
+          </select>
+        </div>
+
+        <h2 class="form-section-heading second-heading">Step 3 &mdash; A bit about your situation</h2>
+        <div class="form-field">
+          <label for="ownership">Do you own or rent the property?</label>
+          <select id="ownership" name="ownership" required>
+            <option value="">Select…</option>
+            <option value="own">I own (or my family owns) the property</option>
+            <option value="rent">I rent</option>
+            <option value="other">Other / shared / complex</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="budget">Rough budget (optional &mdash; helps with tier recommendation)</label>
+          <select id="budget" name="budget">
+            <option value="">Skip / not sure yet</option>
+            <option value="under-30k">Under R30,000</option>
+            <option value="30k-80k">R30,000 - R80,000</option>
+            <option value="80k-150k">R80,000 - R150,000</option>
+            <option value="150k-300k">R150,000 - R300,000</option>
+            <option value="above-300k">Above R300,000</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span class="btn-text">Work out my system</span>
+          <span class="btn-loading">Calculating…</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="tool-output" id="output" hidden>
+      <div class="solar-results">
+        <div class="solar-result-card">
+          <p class="solar-result-label">Inverter size needed</p>
+          <p class="solar-result-value" id="inverterValue">0 kW</p>
+        </div>
+        <div class="solar-result-card">
+          <p class="solar-result-label">Battery capacity needed</p>
+          <p class="solar-result-value" id="batteryValue">0 kWh</p>
+        </div>
+        <div class="solar-result-card">
+          <p class="solar-result-label">Daily energy use (during outage)</p>
+          <p class="solar-result-value" id="dailyValue">0 kWh</p>
+        </div>
+      </div>
+
+      <div class="solar-tier-card" id="solarTierCard">
+        <p class="solar-tier-label">Recommended tier</p>
+        <h3 class="solar-tier-name" id="tierName">—</h3>
+        <p class="solar-tier-cost" id="tierCost">—</p>
+        <p class="solar-tier-desc" id="tierDesc">—</p>
+      </div>
+
+      <div class="solar-breakdown" id="solarBreakdown"></div>
+
+      <div class="ai-explainer-block">
+        <button class="btn-secondary" id="explainBtn">
+          <span class="btn-text">What should I actually think about?</span>
+          <span class="btn-loading">Thinking…</span>
+        </button>
+        <div class="ai-explanation" id="aiExplanation" hidden></div>
+      </div>
+
+      <div class="output-footer">
+        <button class="btn-secondary" id="recalcBtn">Recalculate</button>
+      </div>
+    </section>
+
+    <section class="tool-error" id="errorBox" hidden>
+      <p id="errorText"></p>
+    </section>
+
+    <section class="tool-note">
+      <p><strong>Important:</strong> Wattages and cost ranges shown are based on typical 2026 SA market values. Your actual system needs depend on your specific appliances, usage patterns, and roof orientation. Before purchasing, get a written quote from a registered solar installer who can do a proper site assessment, ensure compliance with municipal SSEG requirements where applicable, and provide a Certificate of Compliance (CoC). <em>Tax-rebate calculations and other Southern African market data coming soon.</em></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="copyright">&copy; 2026 Toolie. Made in Africa, reaching the world. <a href="/privacy" class="footer-link">Privacy</a> &middot; <a href="/terms" class="footer-link">Terms</a> &middot; <a href="/about" class="footer-link">About</a></p>
+      <p class="elroi-credit" tabindex="0" aria-label="Powered by Elroi">
+        <svg class="hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 11V6a2 2 0 0 0-4 0v5"/>
+          <path d="M14 10V4a2 2 0 0 0-4 0v6"/>
+          <path d="M10 10.5V6a2 2 0 0 0-4 0v8"/>
+          <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+        </svg>
+        <span>Powered by Elroi</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const WORKER_URL = "https://toolie-ai.chipo21jan.workers.dev";
+
+    const checks = document.querySelectorAll(".app-check");
+    const liveTotalEl = document.getElementById("liveTotal");
+
+    function updateLiveTotal() {
+      let total = 0;
+      checks.forEach(c => {
+        if (c.checked && c.dataset.occasional !== "true") {
+          total += Number(c.dataset.watts);
+        }
+      });
+      liveTotalEl.textContent = total.toLocaleString() + " W";
+    }
+
+    checks.forEach(c => c.addEventListener("change", updateLiveTotal));
+
+    const form = document.getElementById("solarForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const output = document.getElementById("output");
+    const errorBox = document.getElementById("errorBox");
+    const errorText = document.getElementById("errorText");
+    const recalcBtn = document.getElementById("recalcBtn");
+    const explainBtn = document.getElementById("explainBtn");
+
+    let lastResult = null;
+
+    recalcBtn.addEventListener("click", function() {
+      output.hidden = true;
+      form.scrollIntoView({behavior: "smooth"});
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      errorBox.hidden = true;
+      submitBtn.classList.add("loading");
+      submitBtn.disabled = true;
+
+      try {
+        const selectedContinuous = [];
+        const selectedOccasional = [];
+        let continuousWatts = 0;
+        let biggestOccasional = 0;
+
+        checks.forEach(c => {
+          if (c.checked) {
+            const w = Number(c.dataset.watts);
+            const name = c.dataset.name;
+            if (c.dataset.occasional === "true") {
+              selectedOccasional.push({ name, watts: w });
+              if (w > biggestOccasional) biggestOccasional = w;
+            } else {
+              selectedContinuous.push({ name, watts: w });
+              continuousWatts += w;
+            }
+          }
+        });
+
+        if (continuousWatts === 0 && selectedOccasional.length === 0) {
+          throw new Error("Please tick at least one appliance.");
+        }
+
+        const duration = Number(document.getElementById("duration").value);
+        const ownership = document.getElementById("ownership").value;
+        const budget = document.getElementById("budget").value;
+
+        if (!duration) throw new Error("Please choose a backup duration.");
+        if (!ownership) throw new Error("Please tell us about ownership.");
+
+        // ----------- Calculations -----------
+        // Inverter sizing: continuous load + biggest occasional peak, plus 30% safety margin
+        const inverterRawW = (continuousWatts + biggestOccasional) * 1.3;
+        const inverterKW = roundUpToInverter(inverterRawW / 1000);
+
+        // Battery capacity: continuous load × hours, accounting for efficiency and DoD
+        // Lithium assumption: 90% DoD, 95% round-trip efficiency
+        const usefulKWh = (continuousWatts * duration) / 1000;
+        const batteryRawKWh = usefulKWh / 0.9 / 0.95;
+        const batteryKWh = roundUpToBattery(batteryRawKWh);
+
+        // Daily kWh consumption (during outage)
+        const dailyKWh = (continuousWatts * duration) / 1000;
+
+        // Tier
+        const tier = determineTier(inverterKW, batteryKWh, dailyKWh, ownership, budget, duration);
+
+        lastResult = {
+          continuousWatts,
+          biggestOccasional,
+          inverterKW,
+          batteryKWh,
+          dailyKWh,
+          duration,
+          ownership,
+          budget,
+          tier,
+          selectedContinuous,
+          selectedOccasional
+        };
+
+        renderResult(lastResult);
+        output.hidden = false;
+        output.scrollIntoView({behavior: "smooth"});
+      } catch (err) {
+        errorText.textContent = err.message;
+        errorBox.hidden = false;
+      } finally {
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+      }
+    });
+
+    function roundUpToInverter(kw) {
+      const sizes = [1, 1.5, 2, 3, 5, 8, 10, 15];
+      for (const s of sizes) {
+        if (kw <= s) return s;
+      }
+      return Math.ceil(kw);
+    }
+
+    function roundUpToBattery(kwh) {
+      const sizes = [2.5, 5, 7.5, 10, 15, 20, 30, 40];
+      for (const s of sizes) {
+        if (kwh <= s) return s;
+      }
+      return Math.ceil(kwh / 5) * 5;
+    }
+
+    function determineTier(inverterKW, batteryKWh, dailyKWh, ownership, budget, duration) {
+      const goingHybrid = duration >= 8 || dailyKWh > 8;
+      const goingOffGrid = duration >= 24 || dailyKWh > 20;
+
+      if (goingOffGrid) {
+        return {
+          id: "offgrid",
+          name: "Full off-grid hybrid system",
+          cost: "R250,000 - R600,000+",
+          desc: "Designed to run independently of Eskom indefinitely. Includes a large inverter, substantial battery bank, and a solar array sized to your daily consumption. Best for property owners with roof space and budget. Requires a registered installer, CoC, and likely municipal SSEG registration."
+        };
+      }
+
+      if (goingHybrid) {
+        return {
+          id: "hybrid",
+          name: "Hybrid system with solar",
+          cost: "R120,000 - R250,000",
+          desc: "An inverter plus battery plus solar panels. The panels charge the battery during the day and reduce your Eskom bill. Battery covers night-time outages. Pays back over 5-10 years through reduced electricity bills. Requires roof space, owner permission, and a registered installer for compliance."
+        };
+      }
+
+      if (inverterKW <= 2 && batteryKWh <= 5) {
+        return {
+          id: "basic",
+          name: "Basic backup",
+          cost: "R15,000 - R40,000",
+          desc: "A small inverter plus battery, no solar. Keeps essentials (lights, WiFi, TV, laptop, possibly fridge) running through typical load-shedding. Easy to install, can be done in a rented home with consent, no municipal registration. A good starting point that can sometimes be expanded later with solar panels."
+        };
+      }
+
+      return {
+        id: "midrange",
+        name: "Mid-range backup",
+        cost: "R40,000 - R100,000",
+        desc: "A larger inverter and battery, no solar yet. Covers more of your household needs (fridge, freezer, possibly microwave bursts) for a full Stage 6 outage. Most common upgrade path: add solar panels later to convert into a hybrid. Requires a qualified installer for proper integration."
+      };
+    }
+
+    function renderResult(r) {
+      document.getElementById("inverterValue").textContent = r.inverterKW + " kW";
+      document.getElementById("batteryValue").textContent = r.batteryKWh + " kWh";
+      document.getElementById("dailyValue").textContent = r.dailyKWh.toFixed(1) + " kWh";
+
+      document.getElementById("tierName").textContent = r.tier.name;
+      document.getElementById("tierCost").textContent = "Typical installed cost: " + r.tier.cost;
+      document.getElementById("tierDesc").textContent = r.tier.desc;
+
+      const breakdownHtml = `<h3 class="breakdown-heading">Your selection breakdown</h3>
+        <div class="breakdown-row"><span class="breakdown-name">Continuous load (lights, fridge, electronics, etc.)</span><span class="breakdown-mark">${r.continuousWatts.toLocaleString()} W</span></div>
+        <div class="breakdown-row"><span class="breakdown-name">Biggest occasional peak (kettle, microwave, etc.)</span><span class="breakdown-mark">${r.biggestOccasional.toLocaleString()} W</span></div>
+        <div class="breakdown-row"><span class="breakdown-name">Backup duration</span><span class="breakdown-mark">${r.duration} hours</span></div>
+        <div class="breakdown-row"><span class="breakdown-name">Useful battery storage required</span><span class="breakdown-mark">${(r.continuousWatts * r.duration / 1000).toFixed(1)} kWh</span></div>
+        <div class="breakdown-row"><span class="breakdown-name">Sized battery (with depth-of-discharge buffer)</span><span class="breakdown-mark">${r.batteryKWh} kWh</span></div>`;
+      document.getElementById("solarBreakdown").innerHTML = breakdownHtml;
+
+      const aiBox = document.getElementById("aiExplanation");
+      aiBox.hidden = true;
+      aiBox.innerHTML = "";
+    }
+
+    // ----------- AI explainer -----------
+    explainBtn.addEventListener("click", async function() {
+      if (!lastResult) return;
+      const aiBox = document.getElementById("aiExplanation");
+      aiBox.hidden = false;
+      aiBox.innerHTML = "<p class='ai-loading'>Reading your setup…</p>";
+      explainBtn.classList.add("loading");
+      explainBtn.disabled = true;
+
+      try {
+        const payload = {
+          continuous_watts: lastResult.continuousWatts,
+          biggest_occasional: lastResult.biggestOccasional,
+          inverter_kw: lastResult.inverterKW,
+          battery_kwh: lastResult.batteryKWh,
+          daily_kwh: lastResult.dailyKWh,
+          duration: lastResult.duration,
+          ownership: lastResult.ownership,
+          tier: lastResult.tier.name,
+          selected_appliances: lastResult.selectedContinuous.concat(lastResult.selectedOccasional).map(a => a.name)
+        };
+
+        const res = await fetch(WORKER_URL + "/solar-explain", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        aiBox.innerHTML = formatExplanation(data.explanation || "");
+      } catch (err) {
+        aiBox.innerHTML = "<p class='ai-error'>Couldn't reach the explainer right now. Please try again in a moment.</p>";
+      } finally {
+        explainBtn.classList.remove("loading");
+        explainBtn.disabled = false;
+      }
+    });
+
+    function formatExplanation(text) {
+      text = text.replace(/^[ \t]*\*\*(.+?)\*\*[ \t]*$/gm, "<h3>$1</h3>");
+      text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      text = text.replace(/(<\/h3>)\s*/g, "$1\n\n");
+      text = text.replace(/([.!?])\s+(?=\d+\.\s)/g, "$1\n");
+      text = text.replace(/([.!?])\s+(?=-\s)/g, "$1\n");
+      const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
+
+      function renderBlock(block) {
+        if (/^<h3>/.test(block)) return block;
+        const lines = block.split(/\n+/).map(l => l.trim()).filter(Boolean);
+        if (lines.length >= 2 && lines.every(l => /^\d+\.\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^\d+\.\s*/, "").trim() + "</li>").join("");
+          return "<ol>" + items + "</ol>";
+        }
+        if (lines.length >= 2 && lines.every(l => /^[-*]\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^[-*]\s*/, "").trim() + "</li>").join("");
+          return "<ul>" + items + "</ul>";
+        }
+        return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+      }
+      return blocks.map(renderBlock).join("");
+    }
+  </script>
+
+</body>
+</html>

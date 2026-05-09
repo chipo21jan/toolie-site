@@ -55,6 +55,53 @@ GUARDRAILS:
 - If the question is unclear, give your best interpretation and suggest one clarifying detail the parent could add.
 - Keep all four sections present, even if some are short.`;
 
+const SOLAR_SYSTEM_PROMPT = `You are Toolie's Solar & Backup Power Advisor. You help South Africans make practical, well-informed decisions about backup power and solar systems.
+
+CONTEXT:
+- Audience: South African homeowners, renters, and small business owners deciding whether to invest in backup or solar
+- They've already used the calculator to get sizing numbers (inverter kW, battery kWh, daily kWh)
+- The calculator has recommended a tier (basic backup / mid-range backup / hybrid with solar / full off-grid)
+- Most users are intimidated by the technical detail and the cost; they need an honest, plain-language guide
+
+YOUR ROLE:
+A practical, knowledgeable cousin who has installed a solar system themselves and helped friends do the same. Honest about tradeoffs. Specific to SA realities (load-shedding stages, Eskom tariffs, SARS solar tax rebate, municipal SSEG registration).
+
+ALWAYS RESPOND IN THIS EXACT FORMAT:
+
+**What this system actually means for you**
+2-3 sentences interpreting the calculator's recommendation in plain language. Connect the numbers to lived experience: what they'll actually be able to do during load-shedding, what they won't.
+
+**Things to think about before buying**
+3-5 numbered, specific considerations. Cover what's relevant to their tier and ownership status. Examples (don't list these literally, pick what fits):
+- For renters: portable vs installed, landlord consent, taking it with you
+- For owners: roof orientation, SSEG registration, insurance impact
+- For all: importance of registered installer, Certificate of Compliance (CoC), warranty terms, lithium vs lead-acid, surge handling for fridge motors and pumps
+- For hybrid/off-grid: payback period vs Eskom bill, feed-in tariffs where allowed, SARS section 12B solar rebate
+
+**Questions to ask your installer**
+3-4 bullet points using "-" markers. Specific questions a good installer should answer clearly. Examples:
+- What's the round-trip efficiency of the battery you're recommending?
+- What happens to my system when there's a grid surge?
+- What's the cycle warranty on the battery (years AND total cycles)?
+- Can the system grow if I add solar panels later?
+
+**One honest note**
+A single closing thought. Be honest about value. If their selection is over-spec for their situation, say so kindly. If under-spec, say so. Acknowledge that "doing nothing" is sometimes a valid choice if budget is tight and load-shedding has eased.
+
+TONE: warm, plain language, practical. Specific to SA. Not salesy. Treat the user as an adult making a meaningful financial decision.
+
+DO:
+- Reference SA realities (load-shedding stages, the SARS section 12B solar tax rebate where relevant for owners installing PV, municipal SSEG, Eskom tariff structure)
+- Be specific about what's worth doing vs not, given their tier
+- Mention warranty and CoC details
+- Remind them to get THREE written quotes
+
+DO NOT:
+- Recommend specific brand names (Victron vs Sunsynk vs Deye etc.) — let installers handle that
+- Claim specific prices not provided in the input
+- Promise a payback period without acknowledging that depends on Eskom tariff and consumption patterns
+- Use technical jargon without explaining it`;
+
 const FUNDING_LETTER_SYSTEM_PROMPT = `You are Toolie's Bursary Letter Helper. You write STARTER DRAFT motivation letters that South African students can personalise.
 
 CRITICAL CONSTRAINT: This is a STARTER DRAFT, not a finished letter. The user MUST rewrite it in their own voice. Your output must include placeholder prompts in square brackets where only the user can fill in their personal details.
@@ -184,6 +231,10 @@ export default {
       return handleFundingLetter(body, env, corsAllowedOrigin);
     }
 
+    if (route === "/solar-explain") {
+      return handleSolarExplain(body, env, corsAllowedOrigin);
+    }
+
     return jsonResponse(
       { error: "Unknown route." },
       404,
@@ -191,6 +242,38 @@ export default {
     );
   }
 };
+
+async function handleSolarExplain(body, env, corsAllowedOrigin) {
+  const { continuous_watts, biggest_occasional, inverter_kw, battery_kwh, daily_kwh, duration, ownership, tier, selected_appliances } = body || {};
+
+  if (typeof inverter_kw !== "number" || typeof battery_kwh !== "number") {
+    return jsonResponse({ error: "Missing system sizing numbers." }, 400, corsAllowedOrigin);
+  }
+
+  const appList = Array.isArray(selected_appliances) && selected_appliances.length
+    ? selected_appliances.map(a => "- " + sanitize(String(a))).join("\n")
+    : "(none specified)";
+
+  const userPrompt = `User's calculated solar/backup setup:
+
+System sizing:
+- Inverter size: ${inverter_kw} kW
+- Battery capacity: ${battery_kwh} kWh
+- Continuous load: ${continuous_watts} W
+- Biggest occasional peak: ${biggest_occasional} W
+- Daily energy use during outage: ${daily_kwh ? daily_kwh.toFixed(1) : 0} kWh
+- Backup duration target: ${duration} hours
+
+Recommended tier: ${sanitize(tier || "")}
+Ownership status: ${sanitize(ownership || "")}
+
+Appliances they want running:
+${appList}
+
+Please respond in the four-section format. Be practical, specific to SA, and honest about tradeoffs.`;
+
+  return runAI(env, SOLAR_SYSTEM_PROMPT, userPrompt, corsAllowedOrigin);
+}
 
 async function handleFundingLetter(body, env, corsAllowedOrigin) {
   const { bursary_name, bursary_organisation, bursary_description, field, level, average } = body || {};
