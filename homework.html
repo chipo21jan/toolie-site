@@ -164,25 +164,39 @@
     });
 
     function formatExplanation(text) {
-      // Simple markdown-ish to HTML
+      // Convert markdown-style bold headers
       text = text.replace(/\*\*(.+?)\*\*/g, "<h3>$1</h3>");
+
       const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
+
       return blocks.map(block => {
         if (block.startsWith("<h3>")) return block;
-        // Numbered list
-        if (/^\d+\.\s/.test(block)) {
-          const items = block.split(/\n(?=\d+\.\s)/).map(line => {
-            return "<li>" + line.replace(/^\d+\.\s/, "").trim() + "</li>";
-          }).join("");
+
+        // Detect numbered list — handles both inline ("1. step 2. step") and newline-separated
+        const numberedMarkers = block.match(/(?:^|[\s\n])\d+\.\s+/g);
+        if (numberedMarkers && numberedMarkers.length >= 2) {
+          const parts = block.split(/(?=(?:^|[\s\n])\d+\.\s+)/)
+            .map(p => p.trim())
+            .filter(p => /^\d+\.\s/.test(p));
+          const items = parts
+            .map(p => "<li>" + p.replace(/^\d+\.\s*/, "").trim() + "</li>")
+            .join("");
           return "<ol>" + items + "</ol>";
         }
-        // Bulleted list
-        if (/^[-*]\s/.test(block)) {
-          const items = block.split(/\n(?=[-*]\s)/).map(line => {
-            return "<li>" + line.replace(/^[-*]\s/, "").trim() + "</li>";
-          }).join("");
+
+        // Detect bulleted list — handles both inline ("- item - item") and newline-separated
+        const bulletMarkers = block.match(/(?:^|[\s\n])[-*]\s+/g);
+        if (bulletMarkers && bulletMarkers.length >= 2) {
+          const parts = block.split(/(?=(?:^|[\s\n])[-*]\s+)/)
+            .map(p => p.trim())
+            .filter(p => /^[-*]\s/.test(p));
+          const items = parts
+            .map(p => "<li>" + p.replace(/^[-*]\s*/, "").trim() + "</li>")
+            .join("");
           return "<ul>" + items + "</ul>";
         }
+
+        // Plain paragraph
         return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
       }).join("");
     }
