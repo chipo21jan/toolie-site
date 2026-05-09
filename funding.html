@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funded Learning Path — Toolie</title>
+  <meta name="description" content="Find South African bursaries you actually qualify for. Free matcher across NSFAS, Funza Lushaka, ISFAP, Allan Gray, and the major corporate bursaries — sorted by your real eligibility.">
+  <meta property="og:title" content="Funded Learning Path — Toolie">
+  <meta property="og:description" content="Find SA bursaries you actually qualify for. Free, made for SA students.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gettoolie.com/funding">
+  <meta name="theme-color" content="#0F4C5C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742354292252484" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header class="site-header tool-header">
+    <a href="/" class="logo" aria-label="Toolie home">Toolie</a>
+    <nav class="tool-nav">
+      <a href="/" class="nav-link">All tools</a>
+    </nav>
+  </header>
+
+  <main class="tool-main">
+    <section class="tool-hero">
+      <span class="tool-pill">Education &middot; Free</span>
+      <h1 class="tool-title">Funded Learning Path</h1>
+      <p class="tool-subtitle">Find the South African bursaries you actually qualify for. We match across NSFAS, Funza Lushaka, ISFAP, Allan Gray, Mandela Rhodes, and the major corporate funders &mdash; sorted by your real eligibility.</p>
+    </section>
+
+    <section class="tool-card">
+      <form id="fundingForm" class="tool-form">
+        <h2 class="form-section-heading">Tell us about you</h2>
+        <p class="form-section-help">90 seconds, 9 questions. Skip any you'd rather not answer &mdash; we'll match conservatively.</p>
+
+        <div class="form-field">
+          <label for="citizenship">Citizenship</label>
+          <select id="citizenship" name="citizenship" required>
+            <option value="">Select…</option>
+            <option value="sa">South African citizen</option>
+            <option value="permanent-resident">Permanent resident of South Africa</option>
+            <option value="african">African national (other SADC / African country)</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="province">Province where you live (or plan to study)</label>
+          <select id="province" name="province" required>
+            <option value="">Select…</option>
+            <option value="gauteng">Gauteng</option>
+            <option value="western-cape">Western Cape</option>
+            <option value="kwazulu-natal">KwaZulu-Natal</option>
+            <option value="eastern-cape">Eastern Cape</option>
+            <option value="free-state">Free State</option>
+            <option value="limpopo">Limpopo</option>
+            <option value="mpumalanga">Mpumalanga</option>
+            <option value="north-west">North West</option>
+            <option value="northern-cape">Northern Cape</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="field">Field of study</label>
+          <select id="field" name="field" required>
+            <option value="">Select…</option>
+            <option value="engineering">Engineering &amp; Built Environment</option>
+            <option value="health">Health Sciences (Medicine, Pharmacy, Nursing, Allied)</option>
+            <option value="commerce">Commerce (Accounting, Finance, Economics, Actuarial)</option>
+            <option value="it">Information Technology &amp; Computer Science</option>
+            <option value="science">Sciences (Physical, Life, Mathematical, Earth)</option>
+            <option value="education">Education / Teaching</option>
+            <option value="law">Law</option>
+            <option value="humanities">Humanities &amp; Social Sciences</option>
+            <option value="other">Other / Not yet decided</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="level">Year of study (or about to start)</label>
+          <select id="level" name="level" required>
+            <option value="">Select…</option>
+            <option value="matric">Currently in Matric (Grade 12)</option>
+            <option value="undergrad">Undergraduate (1st to 3rd / 4th year)</option>
+            <option value="honours">Honours / Postgraduate Diploma</option>
+            <option value="masters">Master's degree</option>
+            <option value="phd">Doctorate (PhD)</option>
+            <option value="tvet">TVET College</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="average">Your most recent academic average</label>
+          <select id="average" name="average" required>
+            <option value="">Select…</option>
+            <option value="below-60">Below 60%</option>
+            <option value="60-69">60% &ndash; 69%</option>
+            <option value="70-79">70% &ndash; 79%</option>
+            <option value="80-plus">80% or higher</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="income">Combined household income (annual, before tax)</label>
+          <select id="income" name="income" required>
+            <option value="">Select…</option>
+            <option value="under-350k">Under R350,000 (NSFAS threshold)</option>
+            <option value="350k-600k">R350,000 &ndash; R600,000 (the "missing middle")</option>
+            <option value="600k-1m">R600,000 &ndash; R1 million</option>
+            <option value="above-1m">Above R1 million</option>
+            <option value="prefer-not">Prefer not to say</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="race">Race classification</label>
+          <p class="field-help">We ask because some bursaries restrict eligibility under SA equity legislation. Skip if you'd rather &mdash; we'll show all options conservatively.</p>
+          <select id="race" name="race" required>
+            <option value="">Select…</option>
+            <option value="black">Black African</option>
+            <option value="coloured">Coloured</option>
+            <option value="indian">Indian / Asian</option>
+            <option value="white">White</option>
+            <option value="prefer-not">Prefer not to say</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="gender">Gender</label>
+          <p class="field-help">Some women-in-STEM bursaries are women-only.</p>
+          <select id="gender" name="gender" required>
+            <option value="">Select…</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="other">Other / non-binary</option>
+            <option value="prefer-not">Prefer not to say</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="disability">Do you have a registered disability?</label>
+          <p class="field-help">A few bursaries are specifically for students with disabilities.</p>
+          <select id="disability" name="disability" required>
+            <option value="">Select…</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="prefer-not">Prefer not to say</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span class="btn-text">Find my bursary matches</span>
+          <span class="btn-loading">Matching…</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="tool-output" id="output" hidden>
+      <div class="match-summary" id="matchSummary"></div>
+
+      <div class="bursary-list" id="bursaryList"></div>
+
+      <div class="ai-letter-block" id="aiLetterBlock" hidden>
+        <h3 class="ai-letter-heading">Need help drafting a motivation letter?</h3>
+        <p class="ai-letter-help">Pick one bursary from your matches above, and we'll generate a starter draft. <strong>It's a starting point, not a finished letter</strong> &mdash; you'll need to add your own story and rewrite it in your own voice.</p>
+
+        <div class="form-field">
+          <label for="letterPick">Which bursary?</label>
+          <select id="letterPick">
+            <option value="">Select a bursary from your matches…</option>
+          </select>
+        </div>
+
+        <button class="btn-secondary" id="letterBtn">
+          <span class="btn-text">Generate a starter letter</span>
+          <span class="btn-loading">Writing…</span>
+        </button>
+
+        <div class="ai-letter-output" id="aiLetterOutput" hidden></div>
+      </div>
+
+      <div class="output-footer">
+        <button class="btn-secondary" id="restartBtn">Start over</button>
+      </div>
+    </section>
+
+    <section class="tool-error" id="errorBox" hidden>
+      <p id="errorText"></p>
+    </section>
+
+    <section class="tool-note">
+      <p><strong>Important:</strong> Bursary information shown here is based on publicly published criteria and represents approximate guidelines. Eligibility, deadlines, and coverage change every year. Always verify directly with each funder before applying. <em>Other SADC bursary schemes &mdash; Botswana, Namibia, Zimbabwe &mdash; coming soon.</em> <em>International scholarships (Chevening, Fulbright, DAAD, Commonwealth) coming soon.</em></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="copyright">&copy; 2026 Toolie. Made in Africa, reaching the world. <a href="/privacy" class="footer-link">Privacy</a> &middot; <a href="/terms" class="footer-link">Terms</a> &middot; <a href="/about" class="footer-link">About</a></p>
+      <p class="elroi-credit" tabindex="0" aria-label="Powered by Elroi">
+        <svg class="hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 11V6a2 2 0 0 0-4 0v5"/>
+          <path d="M14 10V4a2 2 0 0 0-4 0v6"/>
+          <path d="M10 10.5V6a2 2 0 0 0-4 0v8"/>
+          <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+        </svg>
+        <span>Powered by Elroi</span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const WORKER_URL = "https://toolie-ai.chipo21jan.workers.dev";
+
+    // Bursary database — ~27 major SA bursary schemes
+    // race_restricted means HARD eligibility restriction. transformation_focus means PREFERENCE for designated groups.
+    const BURSARIES = [
+      {
+        id: "nsfas",
+        name: "NSFAS",
+        full_name: "National Student Financial Aid Scheme",
+        organisation: "Department of Higher Education",
+        type: "government",
+        coverage: "Full tuition, accommodation/transport allowance, food allowance, learning materials",
+        citizenship: ["sa", "permanent-resident"],
+        levels: ["matric", "undergrad", "tvet"],
+        fields: ["all"],
+        income_max: 350000,
+        race_restricted: false,
+        transformation_focus: false,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: null,
+        deadline: "August to end of November (for the following academic year)",
+        apply_url: "https://www.nsfas.org.za",
+        description: "South Africa's largest tertiary funding scheme. Covers tuition and living costs at public universities and TVET colleges. SASSA-grant recipients automatically qualify.",
+        tips: "Apply EARLY in August. Have your ID, parent IDs, and proof of income ready. If your household earns under R350k OR you receive SASSA grants, apply."
+      },
+      {
+        id: "funza-lushaka",
+        name: "Funza Lushaka",
+        full_name: "Funza Lushaka Bursary Programme",
+        organisation: "Department of Basic Education",
+        type: "government",
+        coverage: "Full tuition, accommodation, meals, books, monthly stipend",
+        citizenship: ["sa"],
+        levels: ["undergrad", "honours"],
+        fields: ["education"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: false,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: null,
+        deadline: "September to early January",
+        apply_url: "https://www.funzalushaka.doe.gov.za",
+        description: "For students training to teach in priority subject areas (Maths, Sciences, African Languages, Foundation Phase). Comes with a teaching service obligation in a public school after qualifying.",
+        tips: "Priority subjects matter. Strongest applications are for Maths, Physical Sciences, and Foundation Phase. One year of service for each year of funding."
+      },
+      {
+        id: "isfap",
+        name: "ISFAP",
+        full_name: "Ikusasa Student Financial Aid Programme",
+        organisation: "Multiple corporate funders + government",
+        type: "trust",
+        coverage: "Full tuition, accommodation, books, food allowance, laptop, psychosocial support",
+        citizenship: ["sa"],
+        levels: ["matric", "undergrad"],
+        fields: ["engineering", "health", "commerce", "science", "it", "law"],
+        income_max: 600000,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "August to October",
+        apply_url: "https://www.isfap.org.za",
+        description: "For 'missing middle' students — household income too high for NSFAS but unable to comfortably afford university. Targets high-performing students in scarce-skill fields.",
+        tips: "ISFAP is built for the missing middle (R350k–R600k). Strong academic record matters. Scarce-skill fields like Medicine and Engineering are priorities."
+      },
+      {
+        id: "allan-gray",
+        name: "Allan Gray Orbis Foundation",
+        full_name: "Allan Gray Orbis Foundation Fellowship",
+        organisation: "Allan Gray Orbis Foundation",
+        type: "trust",
+        coverage: "Full tuition, accommodation, books, laptop, structured leadership programme, mentorship, peer network",
+        citizenship: ["sa"],
+        levels: ["matric"],
+        fields: ["all"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 70,
+        deadline: "April to early May (in your matric year, for university the following year)",
+        apply_url: "https://www.allangrayorbis.org",
+        description: "Highly selective fellowship for matric students with entrepreneurial mindset and leadership potential. Funds the full undergraduate degree plus a multi-year leadership development programme.",
+        tips: "One of SA's most prestigious fellowships. Looks for entrepreneurial thinking and leadership, not just academic results. Apply in your matric year, April–May."
+      },
+      {
+        id: "mandela-rhodes",
+        name: "Mandela Rhodes Foundation",
+        full_name: "Mandela Rhodes Scholarship",
+        organisation: "Mandela Rhodes Foundation",
+        type: "trust",
+        coverage: "Full postgraduate tuition, accommodation, monthly stipend, leadership development programme",
+        citizenship: ["sa", "african"],
+        levels: ["honours", "masters"],
+        fields: ["all"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: false,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 70,
+        deadline: "April",
+        apply_url: "https://www.mandelarhodes.org",
+        description: "Postgraduate scholarship for African students under 30 with leadership potential. Open to all African nationals, not only South Africans.",
+        tips: "Highly competitive. Looks for leadership, entrepreneurship, education, and reconciliation values. The leadership programme is as much the prize as the funding."
+      },
+      {
+        id: "saica-thuthuka",
+        name: "SAICA Thuthuka",
+        full_name: "SAICA Thuthuka Bursary Fund",
+        organisation: "South African Institute of Chartered Accountants",
+        type: "trust",
+        coverage: "Tuition, accommodation, books, meals, mentorship, training contracts toward CA(SA)",
+        citizenship: ["sa"],
+        levels: ["matric", "undergrad"],
+        fields: ["commerce"],
+        income_max: null,
+        race_restricted: true,
+        race_groups: ["black", "coloured"],
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 60,
+        deadline: "Varies by university — apply through Thuthuka coordinator",
+        apply_url: "https://www.saica.co.za/students/thuthuka-bursary-fund",
+        description: "Specifically for Black African and Coloured students pursuing the Chartered Accountancy (CA(SA)) qualification. Includes academic, mentoring, and life-skills support throughout the BCom (Acc), Honours, and articles.",
+        tips: "If you want to be a CA(SA) and qualify for designated-group consideration, this is the gold-standard programme. Apply through your prospective university's Thuthuka office."
+      },
+      {
+        id: "sasol",
+        name: "Sasol Bursary",
+        full_name: "Sasol Bursary Programme",
+        organisation: "Sasol Limited",
+        type: "corporate",
+        coverage: "Full tuition, accommodation, books, monthly allowance, vacation work, post-graduation employment",
+        citizenship: ["sa"],
+        levels: ["matric", "undergrad"],
+        fields: ["engineering", "science"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "March to August",
+        apply_url: "https://www.sasolbursaries.com",
+        description: "Chemical, mechanical, electrical, mining engineering and related sciences. Includes vacation work and a post-graduation work commitment.",
+        tips: "Strong on scarce engineering skills. You commit to working at Sasol for an equal period after qualifying. Strong physical sciences and maths required."
+      },
+      {
+        id: "eskom",
+        name: "Eskom Bursary",
+        full_name: "Eskom Engineering Bursary",
+        organisation: "Eskom Holdings",
+        type: "corporate",
+        coverage: "Full tuition, accommodation, books, monthly allowance, vacation work",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["engineering"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "Approximately April to June",
+        apply_url: "https://www.eskom.co.za/careers/bursaries-and-learnerships/",
+        description: "Engineering bursaries focused on electrical, mechanical, and electronic engineering. Includes vacation work and a service obligation after graduation.",
+        tips: "Eskom prioritises electrical engineering. Service-back commitment applies. Strong maths and physical sciences a must."
+      },
+      {
+        id: "anglo-american",
+        name: "Anglo American Bursary",
+        full_name: "Anglo American Bursary Programme",
+        organisation: "Anglo American",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowances, vacation work, mentorship",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["engineering", "science"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "July to September",
+        apply_url: "https://southafrica.angloamerican.com",
+        description: "Mining-related engineering and sciences. Includes mining engineering, metallurgy, geology, mechanical and electrical engineering.",
+        tips: "Strongly mining-focused. Service obligation applies. Most competitive for first-time university applicants from labour-sending communities."
+      },
+      {
+        id: "investec",
+        name: "Investec Bursary",
+        full_name: "Investec Bursary Programme",
+        organisation: "Investec",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, mentorship, vacation work",
+        citizenship: ["sa"],
+        levels: ["matric", "undergrad"],
+        fields: ["commerce"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 70,
+        deadline: "May to July",
+        apply_url: "https://www.investec.com/en_za/welcome-to-investec/about-us/csi/bursary-programme.html",
+        description: "Targeted at high-performing students in finance, accounting, economics, actuarial science, and computer science.",
+        tips: "Very academically selective. Strong in commerce, especially actuarial science. Service-back commitment after graduation."
+      },
+      {
+        id: "standard-bank",
+        name: "Standard Bank",
+        full_name: "Standard Bank Group Bursary",
+        organisation: "Standard Bank Group",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, monthly allowance, mentorship",
+        citizenship: ["sa"],
+        levels: ["matric", "undergrad"],
+        fields: ["commerce", "it"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "April to August",
+        apply_url: "https://www.standardbank.com/sbg/standard-bank-group/who-we-are/careers",
+        description: "Commerce, IT, and finance fields. Includes the Future Coders programme for IT students.",
+        tips: "Apply through their careers portal. Service obligation applies. Future Coders is a strong path for software engineering students."
+      },
+      {
+        id: "firstrand",
+        name: "FirstRand Bursary",
+        full_name: "FirstRand Group Bursary",
+        organisation: "FirstRand Group (RMB, FNB, WesBank)",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, mentorship, vacation work",
+        citizenship: ["sa"],
+        levels: ["matric", "undergrad"],
+        fields: ["commerce", "it"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 70,
+        deadline: "April to June",
+        apply_url: "https://www.firstrand.co.za/people/careers/",
+        description: "Finance, commerce, and IT bursaries across the FirstRand banking group.",
+        tips: "Very competitive. Actuarial science, computer science, and accounting are priority fields."
+      },
+      {
+        id: "discovery",
+        name: "Discovery Bursary",
+        full_name: "Discovery Foundation Bursaries",
+        organisation: "Discovery Limited",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowances, vacation work",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["commerce", "it", "health"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 70,
+        deadline: "March to June",
+        apply_url: "https://www.discovery.co.za/corporate/careers-bursaries",
+        description: "Actuarial science, data science, computer science, medicine. Discovery Foundation also funds postgraduate medical specialisation.",
+        tips: "Strong in actuarial science and data fields. Medical specialisation funding is for qualified doctors pursuing specialist training."
+      },
+      {
+        id: "mtn",
+        name: "MTN Bursary",
+        full_name: "MTN Foundation Bursary",
+        organisation: "MTN Group",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowance",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["it", "engineering"],
+        income_max: 600000,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "Approximately May to July",
+        apply_url: "https://www.mtn.com/sustainability/society-and-economic-development/",
+        description: "ICT and engineering. Particular focus on women in STEM.",
+        tips: "Women applicants encouraged. Strong in computer science and electrical engineering."
+      },
+      {
+        id: "vodacom",
+        name: "Vodacom Bursary",
+        full_name: "Vodacom Discover Bursary",
+        organisation: "Vodacom Group",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, mentorship, work experience",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["it", "engineering"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "April to June",
+        apply_url: "https://careers.vodacom.com",
+        description: "Software engineering, computer science, electrical engineering, data science.",
+        tips: "Strong tech focus. Service obligation applies. Particular interest in cybersecurity and AI/ML candidates."
+      },
+      {
+        id: "old-mutual",
+        name: "Old Mutual",
+        full_name: "Old Mutual Education Trust Bursary",
+        organisation: "Old Mutual",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowances",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["commerce"],
+        income_max: 600000,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "May to August",
+        apply_url: "https://www.oldmutual.co.za",
+        description: "Finance, actuarial science, accounting, and IT.",
+        tips: "Income-based as well as academic. Service-back applies."
+      },
+      {
+        id: "nedbank",
+        name: "Nedbank Bursary",
+        full_name: "Nedbank External Bursary Programme",
+        organisation: "Nedbank Group",
+        type: "corporate",
+        coverage: "Tuition, allowances, mentorship",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["commerce", "it"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "April to June",
+        apply_url: "https://www.nedbank.co.za",
+        description: "Banking, finance, IT, and computer science fields.",
+        tips: "Service-back commitment standard. Strong on data analytics and IT."
+      },
+      {
+        id: "absa",
+        name: "ABSA Bursary",
+        full_name: "ABSA Group Bursary Programme",
+        organisation: "ABSA Group",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, mentorship",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["commerce", "it"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "April to August",
+        apply_url: "https://www.absa.africa",
+        description: "Finance, IT, and commerce.",
+        tips: "Apply through their careers portal. Strongly transformation-focused."
+      },
+      {
+        id: "transnet",
+        name: "Transnet Bursary",
+        full_name: "Transnet Bursary Programme",
+        organisation: "Transnet",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, vacation work",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["engineering", "commerce"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "March to May",
+        apply_url: "https://www.transnet.net/Careers/",
+        description: "Engineering (mechanical, electrical, civil), supply chain, logistics, commerce.",
+        tips: "Logistics and rail-engineering focused. Service-back applies."
+      },
+      {
+        id: "sappi",
+        name: "Sappi Bursary",
+        full_name: "Sappi Bursary Scheme",
+        organisation: "Sappi Limited",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowance, vacation work",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["engineering", "science"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: false,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "May to July",
+        apply_url: "https://www.sappi.com/careers",
+        description: "Pulp and paper engineering, chemical engineering, mechanical engineering, forestry sciences.",
+        tips: "Forestry and pulp-paper heavy. Niche but well-funded."
+      },
+      {
+        id: "engen",
+        name: "Engen Bursary",
+        full_name: "Engen Bursary Programme",
+        organisation: "Engen Petroleum",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowance, vacation work",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["engineering", "science"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "March to June",
+        apply_url: "https://www.engen.co.za/careers",
+        description: "Chemical, mechanical, electrical engineering, and chemistry.",
+        tips: "Petroleum and downstream chemicals focus. Service-back applies."
+      },
+      {
+        id: "department-health",
+        name: "Department of Health Bursary",
+        full_name: "Provincial Department of Health Healthcare Bursary",
+        organisation: "Provincial Departments of Health",
+        type: "government",
+        coverage: "Tuition, accommodation, books, monthly stipend",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["health"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: false,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 60,
+        deadline: "Varies by province (typically January to April)",
+        apply_url: "https://www.health.gov.za/bursaries/",
+        description: "Medicine (MBChB), nursing, pharmacy, physiotherapy, occupational therapy, dentistry, radiography. Each province manages its own scheme.",
+        tips: "Service-back commitment is significant — typically one year per year of funding, in a public health facility. Apply through your home province's health department."
+      },
+      {
+        id: "nrf",
+        name: "NRF Postgraduate Funding",
+        full_name: "National Research Foundation Postgraduate Scholarships",
+        organisation: "National Research Foundation",
+        type: "government",
+        coverage: "Stipend, partial fees (varies by award category)",
+        citizenship: ["sa"],
+        levels: ["honours", "masters", "phd"],
+        fields: ["science", "engineering", "commerce", "humanities", "it"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: false,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "July to September",
+        apply_url: "https://www.nrf.ac.za/division/funding-and-grants/",
+        description: "Postgraduate scholarships across most academic disciplines. Honours and Master's are most accessible; PhD and postdoc funding also available.",
+        tips: "Apply through your university's research office. Each university has its own internal NRF deadline before the national one."
+      },
+      {
+        id: "sandf",
+        name: "SANDF Bursary",
+        full_name: "SA National Defence Force Bursary",
+        organisation: "SA Department of Defence",
+        type: "government",
+        coverage: "Full tuition, accommodation, allowance",
+        citizenship: ["sa"],
+        levels: ["matric", "undergrad"],
+        fields: ["engineering", "health", "science", "humanities"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: false,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 60,
+        deadline: "April to June",
+        apply_url: "https://www.dod.mil.za",
+        description: "Various fields including military health, engineering, aviation, intelligence. Comes with mandatory military service after qualifying.",
+        tips: "Service-back is significant: typically four years minimum in the SANDF. Suitable if you're considering a military career."
+      },
+      {
+        id: "sanlam",
+        name: "Sanlam Bursary",
+        full_name: "Sanlam Bursary Programme",
+        organisation: "Sanlam Group",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, mentorship",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["commerce"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 70,
+        deadline: "April to June",
+        apply_url: "https://www.sanlam.com/careers/bursaries/",
+        description: "Actuarial science, finance, accounting, IT.",
+        tips: "Particularly strong in actuarial science. Service-back applies."
+      },
+      {
+        id: "goldfields",
+        name: "Gold Fields Bursary",
+        full_name: "Gold Fields Bursary Scheme",
+        organisation: "Gold Fields",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowance, vacation work",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["engineering", "science"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "March to August",
+        apply_url: "https://www.goldfields.com",
+        description: "Mining engineering, metallurgy, geology, mechanical and electrical engineering with mining application.",
+        tips: "Mining specific. Service-back applies. Priority for students from host communities."
+      },
+      {
+        id: "implats",
+        name: "Implats Bursary",
+        full_name: "Implats Bursary Scheme",
+        organisation: "Impala Platinum (Implats)",
+        type: "corporate",
+        coverage: "Tuition, accommodation, books, allowance",
+        citizenship: ["sa"],
+        levels: ["undergrad"],
+        fields: ["engineering", "science"],
+        income_max: null,
+        race_restricted: false,
+        transformation_focus: true,
+        gender_restricted: false,
+        disability_only: false,
+        academic_min: 65,
+        deadline: "April to August",
+        apply_url: "https://www.implats.co.za",
+        description: "Mining engineering, mechanical, electrical, metallurgy, mineralogy.",
+        tips: "Mining specific. Service-back applies. Priority for students from labour-sending areas."
+      }
+    ];
+
+    // Field labels for display and matching
+    const FIELD_LABELS = {
+      engineering: "Engineering & Built Environment",
+      health: "Health Sciences",
+      commerce: "Commerce",
+      it: "Information Technology & Computer Science",
+      science: "Sciences",
+      education: "Education",
+      law: "Law",
+      humanities: "Humanities & Social Sciences",
+      other: "Other"
+    };
+
+    // Income bracket midpoints for matching
+    const INCOME_MID = {
+      "under-350k": 200000,
+      "350k-600k": 475000,
+      "600k-1m": 800000,
+      "above-1m": 1500000,
+      "prefer-not": null
+    };
+
+    // Average bracket midpoints
+    const AVG_MID = {
+      "below-60": 55,
+      "60-69": 65,
+      "70-79": 75,
+      "80-plus": 85
+    };
+
+    // ----------- Match logic -----------
+    function matchBursary(b, u) {
+      const reasons = [];
+      const cautions = [];
+
+      // Hard disqualifications first
+      if (b.citizenship && !b.citizenship.includes(u.citizenship)) {
+        return { eligible: false, hide: false, reasons: [], cautions: ["This bursary is for " + b.citizenship.join(", ") + " applicants only — your citizenship doesn't match."], score: 0 };
+      }
+
+      if (b.levels && !b.levels.includes(u.level)) {
+        return { eligible: false, hide: true, reasons: [], cautions: [], score: 0 };
+      }
+
+      if (b.fields && !b.fields.includes("all") && !b.fields.includes(u.field)) {
+        return { eligible: false, hide: true, reasons: [], cautions: [], score: 0 };
+      }
+
+      // Race restriction (HARD)
+      if (b.race_restricted && b.race_groups) {
+        if (u.race === "prefer-not") {
+          cautions.push("This bursary restricts eligibility to designated groups (" + b.race_groups.join(", ") + "). You'll need to confirm your eligibility when applying.");
+        } else if (!b.race_groups.includes(u.race)) {
+          return { eligible: false, hide: true, reasons: [], cautions: [], score: 0 };
+        } else {
+          reasons.push("Eligible for designated groups");
+        }
+      }
+
+      // Transformation focus (SOFT — affects scoring but doesn't disqualify)
+      if (b.transformation_focus && !b.race_restricted) {
+        if (u.race === "prefer-not") {
+          cautions.push("This bursary prioritises designated groups under SA equity legislation. Likely strongest for Black African, Coloured, or Indian applicants.");
+        } else if (["black", "coloured", "indian"].includes(u.race)) {
+          reasons.push("Transformation focus aligns");
+        } else if (u.race === "white") {
+          cautions.push("This bursary prioritises designated groups (Black African, Coloured, Indian). White applicants may still be considered but face stronger competition.");
+        }
+      }
+
+      // Income filter
+      if (b.income_max && u.income !== "prefer-not") {
+        const userIncome = INCOME_MID[u.income];
+        if (userIncome > b.income_max) {
+          return { eligible: false, hide: false, reasons: [], cautions: ["Household income above this bursary's R" + b.income_max.toLocaleString() + " threshold."], score: 0 };
+        } else {
+          reasons.push("Household income within threshold");
+        }
+      } else if (b.income_max && u.income === "prefer-not") {
+        cautions.push("This bursary has a household income cap of R" + b.income_max.toLocaleString() + ". Confirm your household income when applying.");
+      }
+
+      // Academic minimum
+      if (b.academic_min) {
+        const userAvg = AVG_MID[u.average];
+        if (userAvg < b.academic_min) {
+          cautions.push("Academic average appears below the typical " + b.academic_min + "% guideline. You can still apply, but it's a stretch.");
+        } else {
+          reasons.push("Academic average meets the guideline");
+        }
+      }
+
+      // Gender restriction
+      if (b.gender_restricted && b.gender_groups) {
+        if (u.gender === "prefer-not") {
+          cautions.push("This bursary is gender-restricted. Confirm eligibility when applying.");
+        } else if (!b.gender_groups.includes(u.gender)) {
+          return { eligible: false, hide: true, reasons: [], cautions: [], score: 0 };
+        }
+      }
+
+      // Disability only
+      if (b.disability_only && u.disability !== "yes") {
+        return { eligible: false, hide: true, reasons: [], cautions: [], score: 0 };
+      }
+
+      // Score: more reasons = stronger match
+      const score = reasons.length * 10 - cautions.length * 5;
+
+      return {
+        eligible: true,
+        hide: false,
+        reasons: reasons,
+        cautions: cautions,
+        score: score
+      };
+    }
+
+    // ----------- Form handling -----------
+    const form = document.getElementById("fundingForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const output = document.getElementById("output");
+    const errorBox = document.getElementById("errorBox");
+    const errorText = document.getElementById("errorText");
+    const restartBtn = document.getElementById("restartBtn");
+    const aiLetterBlock = document.getElementById("aiLetterBlock");
+    const letterBtn = document.getElementById("letterBtn");
+    const letterPick = document.getElementById("letterPick");
+    const aiLetterOutput = document.getElementById("aiLetterOutput");
+
+    let lastUserProfile = null;
+    let lastMatches = [];
+
+    restartBtn.addEventListener("click", function() {
+      output.hidden = true;
+      form.scrollIntoView({behavior: "smooth"});
+    });
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      errorBox.hidden = true;
+      submitBtn.classList.add("loading");
+      submitBtn.disabled = true;
+
+      try {
+        const u = {
+          citizenship: document.getElementById("citizenship").value,
+          province: document.getElementById("province").value,
+          field: document.getElementById("field").value,
+          level: document.getElementById("level").value,
+          average: document.getElementById("average").value,
+          income: document.getElementById("income").value,
+          race: document.getElementById("race").value,
+          gender: document.getElementById("gender").value,
+          disability: document.getElementById("disability").value
+        };
+
+        for (const key in u) {
+          if (!u[key]) throw new Error("Please answer every question.");
+        }
+
+        lastUserProfile = u;
+
+        // Match all bursaries
+        const matched = BURSARIES.map(b => ({ bursary: b, match: matchBursary(b, u) }));
+        const eligible = matched.filter(m => m.match.eligible).sort((a, b) => b.match.score - a.match.score);
+        const ineligibleVisible = matched.filter(m => !m.match.eligible && !m.match.hide).slice(0, 3);
+
+        lastMatches = eligible;
+
+        renderMatches(eligible, ineligibleVisible, u);
+        output.hidden = false;
+        output.scrollIntoView({behavior: "smooth"});
+      } catch (err) {
+        errorText.textContent = err.message;
+        errorBox.hidden = false;
+      } finally {
+        submitBtn.classList.remove("loading");
+        submitBtn.disabled = false;
+      }
+    });
+
+    function renderMatches(eligible, ineligibleVisible, u) {
+      const summaryEl = document.getElementById("matchSummary");
+      const fieldLabel = FIELD_LABELS[u.field] || u.field;
+
+      if (eligible.length === 0) {
+        summaryEl.innerHTML = `<p class="match-count"><strong>No strong matches</strong> across the bursaries we currently track for your profile (${fieldLabel}). Try widening your field, or check the universities directly — most run their own bursary schemes.</p>`;
+      } else {
+        summaryEl.innerHTML = `<p class="match-count">Found <strong>${eligible.length} bursar${eligible.length === 1 ? 'y' : 'ies'}</strong> you may qualify for, sorted by best match.</p>`;
+      }
+
+      const listEl = document.getElementById("bursaryList");
+      let html = "";
+
+      // Eligible matches
+      eligible.forEach(m => {
+        const b = m.bursary;
+        const typeLabel = { government: "Government", trust: "NGO / Trust", corporate: "Corporate", university: "University" }[b.type] || b.type;
+        const reasonsHtml = m.match.reasons.length ? `<ul class="match-reasons">${m.match.reasons.map(r => `<li>${escapeHtml(r)}</li>`).join("")}</ul>` : "";
+        const cautionsHtml = m.match.cautions.length ? `<div class="match-cautions"><strong>Heads up:</strong><ul>${m.match.cautions.map(c => `<li>${escapeHtml(c)}</li>`).join("")}</ul></div>` : "";
+
+        html += `<div class="bursary-card">
+          <div class="bursary-card-header">
+            <div>
+              <h3 class="bursary-name">${escapeHtml(b.name)}</h3>
+              <p class="bursary-org">${escapeHtml(b.organisation)}</p>
+            </div>
+            <span class="bursary-type-badge type-${b.type}">${typeLabel}</span>
+          </div>
+          <p class="bursary-coverage"><strong>Covers:</strong> ${escapeHtml(b.coverage)}</p>
+          <p class="bursary-description">${escapeHtml(b.description)}</p>
+          <p class="bursary-deadline"><strong>Deadline:</strong> ${escapeHtml(b.deadline)}</p>
+          ${reasonsHtml}
+          ${cautionsHtml}
+          <p class="bursary-tips"><strong>Tip:</strong> ${escapeHtml(b.tips)}</p>
+          <a href="${b.apply_url}" target="_blank" rel="noopener" class="bursary-apply-link">Visit ${escapeHtml(b.name)} application page &rarr;</a>
+        </div>`;
+      });
+
+      // Ineligible but worth knowing
+      if (ineligibleVisible.length > 0) {
+        html += `<h3 class="ineligible-heading">Worth knowing about, but not matches for you</h3>`;
+        ineligibleVisible.forEach(m => {
+          const b = m.bursary;
+          html += `<div class="bursary-card bursary-card-muted">
+            <div class="bursary-card-header">
+              <div>
+                <h3 class="bursary-name">${escapeHtml(b.name)}</h3>
+                <p class="bursary-org">${escapeHtml(b.organisation)}</p>
+              </div>
+            </div>
+            <p class="bursary-description">${escapeHtml(b.description)}</p>
+            <p class="match-cautions"><strong>Why not a match:</strong> ${m.match.cautions.map(c => escapeHtml(c)).join(" ")}</p>
+            <a href="${b.apply_url}" target="_blank" rel="noopener" class="bursary-apply-link">Visit anyway &rarr;</a>
+          </div>`;
+        });
+      }
+
+      listEl.innerHTML = html;
+
+      // Populate the AI letter dropdown with eligible matches
+      if (eligible.length > 0) {
+        letterPick.innerHTML = '<option value="">Select a bursary from your matches…</option>' +
+          eligible.map((m, idx) => `<option value="${idx}">${escapeHtml(m.bursary.name)}</option>`).join("");
+        aiLetterBlock.hidden = false;
+      } else {
+        aiLetterBlock.hidden = true;
+      }
+
+      aiLetterOutput.hidden = true;
+      aiLetterOutput.innerHTML = "";
+    }
+
+    // ----------- AI letter -----------
+    letterBtn.addEventListener("click", async function() {
+      const idx = letterPick.value;
+      if (idx === "") {
+        aiLetterOutput.innerHTML = "<p class='ai-error'>Pick a bursary from the dropdown first.</p>";
+        aiLetterOutput.hidden = false;
+        return;
+      }
+
+      const chosen = lastMatches[Number(idx)];
+      if (!chosen) return;
+
+      aiLetterOutput.hidden = false;
+      aiLetterOutput.innerHTML = "<p class='ai-loading'>Drafting a starter letter…</p>";
+      letterBtn.classList.add("loading");
+      letterBtn.disabled = true;
+
+      try {
+        const payload = {
+          bursary_name: chosen.bursary.name,
+          bursary_organisation: chosen.bursary.organisation,
+          bursary_description: chosen.bursary.description,
+          field: FIELD_LABELS[lastUserProfile.field] || lastUserProfile.field,
+          level: lastUserProfile.level,
+          average: lastUserProfile.average
+        };
+
+        const res = await fetch(WORKER_URL + "/funding-letter", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.error) throw new Error(data.error);
+        aiLetterOutput.innerHTML = `<div class="letter-disclaimer"><strong>This is a starter draft, not a finished letter.</strong> Read it through, then rewrite it in your own voice. The bracketed <code>[…]</code> bits are prompts for things only you can write — your specific story, the moment that sparked your interest, your community. Generic letters lose. Yours, with your real life in it, wins.</div>` + formatLetter(data.explanation || "");
+      } catch (err) {
+        aiLetterOutput.innerHTML = "<p class='ai-error'>Couldn't reach the letter helper right now. Please try again in a moment.</p>";
+      } finally {
+        letterBtn.classList.remove("loading");
+        letterBtn.disabled = false;
+      }
+    });
+
+    function formatLetter(text) {
+      // Same formatting logic as the other tools
+      text = text.replace(/^[ \t]*\*\*(.+?)\*\*[ \t]*$/gm, "<h3>$1</h3>");
+      text = text.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      text = text.replace(/(<\/h3>)\s*/g, "$1\n\n");
+      text = text.replace(/\[([^\]]+)\]/g, "<span class='letter-placeholder'>[$1]</span>");
+      const blocks = text.split(/\n\n+/).map(b => b.trim()).filter(Boolean);
+
+      function renderBlock(block) {
+        if (/^<h3>/.test(block)) return block;
+        const lines = block.split(/\n+/).map(l => l.trim()).filter(Boolean);
+
+        if (lines.length >= 2 && lines.every(l => /^\d+\.\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^\d+\.\s*/, "").trim() + "</li>").join("");
+          return "<ol>" + items + "</ol>";
+        }
+        if (lines.length >= 2 && lines.every(l => /^[-*]\s/.test(l))) {
+          const items = lines.map(l => "<li>" + l.replace(/^[-*]\s*/, "").trim() + "</li>").join("");
+          return "<ul>" + items + "</ul>";
+        }
+        return "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+      }
+      return "<div class='letter-content'>" + blocks.map(renderBlock).join("") + "</div>";
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+
+</body>
+</html>

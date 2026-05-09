@@ -1067,3 +1067,307 @@ input[readonly] {
   font-style: italic;
   color: var(--text-muted);
 }
+
+/* Funded Learning Path tool — bursary cards & matching styles */
+.field-help {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.match-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.match-count {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0;
+}
+
+.match-count strong {
+  color: var(--primary);
+}
+
+.bursary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.bursary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.bursary-card-muted {
+  border-left-color: var(--text-muted);
+  background: var(--footer-bg);
+  opacity: 0.92;
+}
+
+.bursary-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.bursary-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.15rem;
+  letter-spacing: -0.01em;
+}
+
+.bursary-org {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.bursary-type-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.type-government { background: var(--accent-soft); color: var(--accent); }
+.type-trust      { background: #E5F4EC; color: #2D8659; }
+.type-corporate  { background: rgba(15, 76, 92, 0.10); color: var(--primary); }
+.type-university { background: #F2F2F2; color: var(--text-muted); }
+
+.bursary-coverage {
+  font-size: 0.92rem;
+  color: var(--text);
+  margin: 0.6rem 0;
+  line-height: 1.55;
+}
+
+.bursary-description {
+  font-size: 0.92rem;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+  line-height: 1.55;
+}
+
+.bursary-deadline {
+  font-size: 0.88rem;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+}
+
+.match-reasons {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.match-reasons li {
+  font-size: 0.85rem;
+  color: #2D8659;
+  padding: 0.2rem 0 0.2rem 1.5rem;
+  position: relative;
+}
+
+.match-reasons li::before {
+  content: "✓";
+  position: absolute;
+  left: 0.25rem;
+  color: #2D8659;
+  font-weight: 700;
+}
+
+.match-cautions {
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  margin: 0.6rem 0;
+  font-size: 0.85rem;
+}
+
+.match-cautions strong {
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.match-cautions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.match-cautions li {
+  color: var(--text);
+  padding: 0.15rem 0;
+  line-height: 1.5;
+}
+
+.bursary-tips {
+  font-size: 0.88rem;
+  color: var(--text);
+  background: var(--footer-bg);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.9rem;
+  margin: 0.7rem 0;
+  line-height: 1.55;
+}
+
+.bursary-tips strong {
+  color: var(--primary);
+}
+
+.bursary-apply-link {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  margin-top: 0.5rem;
+}
+
+.bursary-apply-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.ineligible-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  letter-spacing: -0.005em;
+}
+
+/* AI letter block */
+.ai-letter-block {
+  background: var(--surface);
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ai-letter-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.005em;
+}
+
+.ai-letter-help {
+  font-size: 0.92rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.ai-letter-output {
+  margin-top: 1rem;
+  background: var(--footer-bg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+}
+
+.letter-disclaimer {
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.letter-disclaimer strong {
+  color: var(--accent);
+}
+
+.letter-disclaimer code {
+  font-family: 'Courier New', monospace;
+  background: var(--surface);
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+
+.letter-content {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.letter-content h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.letter-content h3:first-child {
+  margin-top: 0;
+}
+
+.letter-content p {
+  margin-bottom: 0.85rem;
+}
+
+.letter-content ol,
+.letter-content ul {
+  margin: 0.4rem 0 0.85rem 1.4rem;
+}
+
+.letter-content li {
+  margin-bottom: 0.4rem;
+}
+
+.letter-placeholder {
+  display: inline;
+  background: rgba(227, 111, 61, 0.18);
+  color: var(--accent);
+  padding: 0.05rem 0.4rem;
+  border-radius: 3px;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@media (max-width: 540px) {
+  .bursary-card-header {
+    flex-direction: column;
+  }
+  .bursary-type-badge {
+    align-self: flex-start;
+  }
+}
