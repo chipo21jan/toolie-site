@@ -626,6 +626,12 @@ main {
   margin: 0 auto;
 }
 
+/* Critical: ensure hidden attribute actually hides the banner.
+   Class selector specificity overrides the default [hidden] rule otherwise. */
+.signup-confirmation[hidden] {
+  display: none;
+}
+
 .signup-confirmation-icon {
   font-size: 1.5rem;
   line-height: 1;
@@ -663,6 +669,16 @@ main {
 
 .signup-confirmation-text a:hover {
   color: var(--accent);
+}
+
+.form-note-link {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.form-note-link:hover {
+  color: var(--primary);
 }
 
 .featured-tool-note {
