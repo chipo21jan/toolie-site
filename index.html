@@ -70,18 +70,51 @@
         <p class="featured-tool-note">More tools coming soon. Other SADC curricula, private universities, and international scholarships on the roadmap.</p>
 
         <div class="signup-block">
-          <p class="signup-prompt">Get notified when new tools launch.</p>
-          <form class="signup" name="signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?signed-up=1">
-            <input type="hidden" name="form-name" value="signup">
-            <p class="visually-hidden">
-              <label>Don't fill this out if you're a human: <input name="bot-field"></label>
-            </p>
-            <label for="email" class="visually-hidden">Your email address</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
-            <button type="submit">Notify me</button>
-          </form>
-          <p class="form-note">No spam, ever. One quiet email when something new is ready.</p>
+          <div class="signup-confirmation" id="signupConfirmationPending" hidden>
+            <div class="signup-confirmation-icon" aria-hidden="true">&check;</div>
+            <div class="signup-confirmation-text">
+              <p class="signup-confirmation-title">Almost there.</p>
+              <p>We've sent a confirmation email to your inbox &mdash; click the link inside to finalise your subscription. Check your spam folder if you don't see it within a few minutes.</p>
+            </div>
+          </div>
+          <div class="signup-confirmation" id="signupConfirmationDone" hidden>
+            <div class="signup-confirmation-icon" aria-hidden="true">&check;</div>
+            <div class="signup-confirmation-text">
+              <p class="signup-confirmation-title">You're in.</p>
+              <p>We'll email you when new Toolie tools launch &mdash; that's it. You can unsubscribe anytime using the unsubscribe link in any email we send, or by emailing <a href="mailto:hello@gettoolie.com">hello@gettoolie.com</a> directly.</p>
+            </div>
+          </div>
+          <div id="signupFormBlock">
+            <p class="signup-prompt">Get notified when new tools launch.</p>
+            <form class="signup" action="https://app.kit.com/forms/9426183/subscriptions" method="post" data-sv-form="9426183" data-uid="20e616cd2a" data-format="inline" data-version="5">
+              <label for="email" class="visually-hidden">Your email address</label>
+              <input type="email" id="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
+              <button type="submit">Notify me</button>
+            </form>
+            <p class="form-note">No spam, ever. One quiet email when something new is ready. Unsubscribe anytime.</p>
+          </div>
         </div>
+
+        <script>
+          (function() {
+            var params = new URLSearchParams(window.location.search);
+            var pending = document.getElementById("signupConfirmationPending");
+            var done = document.getElementById("signupConfirmationDone");
+            var formBlock = document.getElementById("signupFormBlock");
+
+            if (params.get("signed-up") === "1") {
+              if (pending) pending.hidden = false;
+              if (formBlock) formBlock.style.display = "none";
+            } else if (params.get("confirmed") === "1") {
+              if (done) done.hidden = false;
+              if (formBlock) formBlock.style.display = "none";
+            }
+
+            if ((params.get("signed-up") === "1" || params.get("confirmed") === "1") && window.history && window.history.replaceState) {
+              window.history.replaceState({}, "", window.location.pathname);
+            }
+          })();
+        </script>
       </div>
     </section>
   </main>
