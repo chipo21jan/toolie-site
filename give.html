@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0F4C5C">
+<meta name="description" content="Answer four quick questions and find real, vetted causes across Africa, South Asia, and Latin America that match your values — with a plain-English explanation of why each one fits.">
+<title>Toolie — Giving Matchmaker · Find causes that match your values</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0F4C5C; --teal-dark:#0A3642; --teal-light:#E8F1F3;
+    --amber:#E8A33D; --amber-soft:#FBF1E0;
+    --ink:#1C2B2F; --muted:#5C7077; --line:#DCE6E9;
+    --bg:#F7FAFB; --card:#FFFFFF; --green:#2E7D52; --green-soft:#E6F2EB;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  h1,h2,h3,.logo,.qtitle{font-family:'DM Sans','Inter',system-ui,sans-serif}
+  a{color:var(--teal)}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+  header{background:var(--teal);color:#fff;padding:14px 0}
+  header .wrap{display:flex;align-items:center;justify-content:space-between}
+  .logo{font-weight:700;font-size:1.25rem;letter-spacing:-.02em;color:#fff;text-decoration:none}
+  .logo span{color:var(--amber)}
+  .chip{background:rgba(255,255,255,.14);border-radius:999px;padding:4px 12px;font-size:.78rem}
+
+  .hero{background:var(--teal);color:#fff;padding:36px 0 44px}
+  .hero .cat{color:var(--amber);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+  .hero h1{font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.2;margin:10px 0 12px;letter-spacing:-.02em}
+  .hero p{color:#CFE0E5;max-width:600px}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin-top:-26px;box-shadow:0 8px 28px rgba(15,76,92,.08)}
+  .steps{display:flex;gap:6px;margin-bottom:22px}
+  .steps div{height:5px;flex:1;border-radius:99px;background:var(--line);transition:background .3s}
+  .steps div.on{background:var(--amber)}
+  .qtitle{font-size:1.2rem;font-weight:700;margin-bottom:4px}
+  .qsub{color:var(--muted);font-size:.92rem;margin-bottom:16px}
+
+  .opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+  .opt{border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;background:#fff;text-align:left;font-size:.95rem;transition:all .15s;font-family:inherit;color:var(--ink)}
+  .opt:hover{border-color:var(--teal)}
+  .opt.sel{border-color:var(--teal);background:var(--teal-light);font-weight:600}
+  .opt .em{font-size:1.15rem;margin-right:8px}
+  .opt small{display:block;color:var(--muted);font-weight:400;font-size:.8rem;margin-top:2px}
+
+  .amt-row{display:flex;align-items:baseline;gap:10px;margin:8px 0 4px}
+  .amt-big{font-size:2.2rem;font-weight:800;color:var(--teal)}
+  .amt-zar{color:var(--muted)}
+  input[type=range]{width:100%;accent-color:var(--teal);margin:14px 0}
+  .freq{display:flex;gap:8px;margin-top:8px}
+
+  .nav{display:flex;justify-content:space-between;margin-top:24px;align-items:center}
+  .btn{display:inline-block;text-decoration:none;text-align:center;background:var(--teal);color:#fff;border:none;border-radius:10px;padding:12px 26px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+  .btn:hover{background:var(--teal-dark)}
+  .btn:disabled{background:#B8C8CD;cursor:not-allowed}
+  .btn-ghost{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.95rem;font-family:inherit;padding:12px 6px;text-decoration:none}
+  .btn-ghost:hover{color:var(--teal)}
+  .btn-sm{padding:9px 18px;font-size:.9rem}
+  .btn-amber{background:var(--amber);color:#fff} .btn-amber:hover{background:#D08F2C}
+
+  .results-head{margin:34px 0 6px}
+  .results-head h2{font-size:1.5rem;letter-spacing:-.01em}
+  .results-head p{color:var(--muted);font-size:.95rem}
+  .sample-note{background:var(--green-soft);border:1px solid #BFDCCB;border-radius:10px;padding:10px 14px;font-size:.85rem;color:#235C3E;margin:14px 0 6px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin-top:16px}
+  .card-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+  .card h3{font-size:1.12rem;letter-spacing:-.01em}
+  .card .meta{color:var(--muted);font-size:.85rem;margin-top:2px}
+  .score{min-width:64px;text-align:center;background:var(--teal-light);border-radius:12px;padding:8px 10px}
+  .score b{display:block;font-size:1.3rem;color:var(--teal);line-height:1.1}
+  .score small{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .card p.blurb{font-size:.93rem;margin:10px 0}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+  .badge{font-size:.74rem;padding:3px 10px;border-radius:999px;background:var(--teal-light);color:var(--teal);font-weight:600}
+  .badge.ev{background:var(--green-soft);color:var(--green)}
+  .badge.tier{background:var(--amber-soft);color:#9A6B1F}
+  .fchips{display:flex;gap:8px;margin:14px 0 2px;flex-wrap:wrap;align-items:center}
+  .fchips span{font-size:.82rem;color:var(--muted)}
+  .fchip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:.85rem;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .15s}
+  .fchip:hover{border-color:var(--teal)}
+  .fchip.sel{border-color:var(--teal);background:var(--teal-light);color:var(--teal);font-weight:600}
+  .empty{background:var(--card);border:1px dashed var(--line);border-radius:var(--radius);padding:26px;margin-top:16px;color:var(--muted);font-size:.93rem}
+  .rule-note{background:var(--amber-soft);border-radius:8px;padding:8px 12px;font-size:.82rem;color:#7A5A1E;margin-top:10px}
+  .impact{background:var(--bg);border-radius:10px;padding:12px 14px;margin:12px 0;font-size:.92rem}
+  .impact b{color:var(--teal)}
+  .impact .src{display:block;margin-top:4px;font-size:.78rem;color:var(--muted)}
+  .why{margin-top:10px}
+  .why summary{cursor:pointer;font-size:.88rem;font-weight:600;color:var(--teal);list-style:none}
+  .why summary::before{content:"▸ "}
+  .why[open] summary::before{content:"▾ "}
+  .why-body{margin-top:8px;font-size:.87rem;color:var(--muted)}
+  .why-body table{width:100%;border-collapse:collapse;margin-top:6px}
+  .why-body td{padding:4px 0;border-bottom:1px dashed var(--line)}
+  .why-body td:last-child{text-align:right;font-weight:600;color:var(--ink)}
+  .card-actions{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center}
+
+  .rai{background:var(--teal);color:#fff;border-radius:var(--radius);padding:28px;margin:36px 0}
+  .rai h2{font-size:1.3rem;margin-bottom:6px}
+  .rai > p{color:#CFE0E5;font-size:.93rem;max-width:640px}
+  .rai-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}
+  .rai-grid div{background:rgba(255,255,255,.08);border-radius:10px;padding:16px}
+  .rai-grid h3{font-size:.95rem;margin-bottom:6px;color:var(--amber)}
+  .rai-grid p{font-size:.85rem;color:#D8E6EA}
+
+  footer{color:var(--muted);font-size:.83rem;text-align:center;padding:34px 20px 44px}
+  .hidden{display:none}
+  @media(max-width:560px){.panel{padding:20px}.card-top{flex-direction:column}.score{align-self:flex-start;display:flex;gap:8px;align-items:baseline}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="/">Tool<span>ie</span></a>
+    <span class="chip">Giving · Free · Prototype</span>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="cat">Giving · Free Donor Discovery Tool</div>
+    <h1>Find causes that match your values.</h1>
+    <p>Four quick questions. We'll match you with real, high-impact organisations working across Africa, South Asia, and Latin America — and show you exactly <em>why</em> each one fits. No black box, no pressure.</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- QUIZ -->
+  <div class="panel" id="quiz">
+    <div class="steps" id="stepDots"><div class="on"></div><div></div><div></div><div></div></div>
+
+    <!-- Step 1: causes -->
+    <div class="qstep" id="q1">
+      <div class="qtitle">What matters most to you?</div>
+      <div class="qsub">Pick up to three. There are no wrong answers — this is about <em>your</em> values.</div>
+      <div class="opts" id="themeOpts"></div>
+    </div>
+
+    <!-- Step 2: region -->
+    <div class="qstep hidden" id="q2">
+      <div class="qtitle">Where do you want your giving to go?</div>
+      <div class="qsub">Pick one. "Wherever it helps most" lets impact-per-dollar lead the ranking.</div>
+      <div class="opts" id="regionOpts"></div>
+    </div>
+
+    <!-- Step 3: style -->
+    <div class="qstep hidden" id="q3">
+      <div class="qtitle">What kind of giver are you?</div>
+      <div class="qsub">This shapes how we weigh evidence. All three are valid ways to do good.</div>
+      <div class="opts" id="styleOpts"></div>
+    </div>
+
+    <!-- Step 4: amount -->
+    <div class="qstep hidden" id="q4">
+      <div class="qtitle">How much would you like to give?</div>
+      <div class="qsub">Any amount counts. We'll translate it into real-world impact for each match.</div>
+      <div class="amt-row"><span class="amt-big" id="amtUsd">$25</span><span class="amt-zar" id="amtZar">≈ R465</span></div>
+      <input type="range" id="amtSlider" min="5" max="500" step="5" value="25">
+      <div class="freq">
+        <button class="opt sel" id="fMonthly" onclick="setFreq('monthly')">Monthly</button>
+        <button class="opt" id="fOnce" onclick="setFreq('once')">Once-off</button>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="btn-ghost" id="backBtn" onclick="back()" style="visibility:hidden">← Back</button>
+      <button class="btn" id="nextBtn" onclick="next()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results" class="hidden">
+    <div class="results-head">
+      <h2 id="resTitle">Your matches</h2>
+      <p id="resSub"></p>
+    </div>
+    <div class="sample-note">✅ <b>Real organisations, real figures.</b> Every profile below is an actual nonprofit. Impact costs are cited to GiveWell, independent evaluators, or the organisation's own published data (retrieved June 2026). Toolie is independent — no organisation paid to appear here, and none endorses this tool. Figures are estimates that change over time; check the linked source before making a large gift.</div>
+    <div class="fchips" id="tierChips">
+      <span>Show:</span>
+      <button class="fchip sel" data-f="all">All levels</button>
+      <button class="fchip" data-f="local">Locally led only</button>
+      <button class="fchip" data-f="grassroots">Grassroots only</button>
+    </div>
+    <div id="cards"></div>
+
+    <div class="rai">
+      <h2>How this tool treats you — and the data</h2>
+      <p>Responsible AI isn't a footnote here. It's the design.</p>
+      <div class="rai-grid">
+        <div><h3>No black box</h3><p>Every match shows its full score breakdown. The ranking logic is open and inspectable — you can see exactly why an organisation appears, and in what order.</p></div>
+        <div><h3>Bias, handled deliberately</h3><p>Published data favours organisations that already have Western funding. So the index spans all levels — international NGOs, Global South-founded organisations, and true grassroots groups — every card is labelled, and a disclosed representation rule guarantees locally-led organisations at least 2 of 6 places when they match your causes. <em>You</em> choose how evidence is weighed, and you can filter to grassroots only.</p></div>
+        <div><h3>Governance, judged — not assumed</h3><p>Concerns about governance are real, and they're why giving has traditionally been routed through international NGOs. This tool takes a different path: every organisation shows its own accountability markers — independent audits by reputable local firms, third-party vetting, published results, who leads and staffs it — rather than inheriting trust or suspicion from where it's based. As the index grows to include state-led programmes, the same proven model applies: donor-organised governance teams, regular independent audit cycles, and strict grant clauses that protect funds — the approach used by the Global Fund and Gavi.</p></div>
+        <div><h3>Your privacy</h3><p>Everything runs in your browser. Your answers are never stored, sent, or sold. Close the tab and they're gone.</p></div>
+        <div><h3>Data governance</h3><p>Profiles are built only from openly published data, cited at the source. The pilot version will move to a standard machine-readable nonprofit data format — so any AI tool, not just this one, can find and represent these organisations fairly.</p></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-bottom:10px">
+      <button class="btn-ghost" onclick="restart()">↻ Start over with different answers</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2026 Toolie · Giving Matchmaker prototype — built for the Gates Foundation AI &amp; Philanthropy challenge<br>
+  Made in Africa, reaching the world. · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
+</footer>
+
+<script>
+/* ---------- DATA: real organisations, openly published figures ----------
+   cost figures retrieved June 2026 — each cites its source on the card.
+   impact types: unit (cost per output) · passthrough (share delivered)
+                 multiplier (return per $1) · general (no clean unit)     */
+const ORGS = [
+  {name:"Against Malaria Foundation", regions:["west","east","southern"], countries:"Nigeria, DRC, Zambia, Togo + more",
+   themes:["disease","child"], evidence:"rct", ce:3,
+   blurb:"Funds insecticide-treated bed nets — one of the most proven, cheapest ways to prevent malaria deaths. Every distribution is published and independently verified.",
+   impact:{type:"unit", cost:6, unit:"insecticide-treated bed net delivered"},
+   source:{label:"GiveWell top charities, 2026", url:"https://www.givewell.org/charities/top-charities"},
+   transparency:"GiveWell top charity · publishes every distribution",
+   donate:"https://www.againstmalaria.com/Donation.aspx", site:"https://www.againstmalaria.com"},
+
+  {name:"Malaria Consortium — Seasonal Malaria Chemoprevention", regions:["west"], countries:"Nigeria, Burkina Faso, Chad, Togo",
+   themes:["disease","child","health"], evidence:"rct", ce:3,
+   blurb:"Gives children under five preventive antimalarial medicine through the rainy season, when transmission peaks. Independently evaluated at massive scale.",
+   impact:{type:"unit", cost:7, unit:"child protected through a full malaria season"},
+   source:{label:"GiveWell top charities, 2026", url:"https://www.givewell.org/charities/top-charities"},
+   transparency:"GiveWell top charity · programme data published",
+   donate:"https://www.malariaconsortium.org/support-us/donate.htm", site:"https://www.malariaconsortium.org"},
+
+  {name:"Helen Keller Intl — Vitamin A Supplementation", regions:["west"], countries:"Nigeria, Mali, Côte d'Ivoire, Guinea + more",
+   themes:["child","health","hunger"], evidence:"rct", ce:3,
+   blurb:"Delivers vitamin A supplements that protect young children from blindness and deadly infections — at roughly $2 per child per year.",
+   impact:{type:"unit", cost:2, unit:"child's vitamin A protection for a year"},
+   source:{label:"GiveWell top charities, 2026", url:"https://www.givewell.org/charities/top-charities"},
+   transparency:"GiveWell top charity",
+   donate:"https://helenkellerintl.org/donate/", site:"https://helenkellerintl.org"},
+
+  {name:"New Incentives", regions:["west"], countries:"Northern Nigeria",
+   themes:["child","disease","health"], evidence:"rct", ce:3,
+   blurb:"Small cash transfers to caregivers in northern Nigeria when their infants complete routine vaccinations. RCT-backed; reached over 3 million infants.",
+   impact:{type:"unit", cost:26, unit:"additional infant fully vaccinated"},
+   source:{label:"GiveWell lookback, 2025", url:"https://www.givewell.org/research/lookbacks/New-Incentives-2025"},
+   transparency:"GiveWell top charity · RCT-backed",
+   donate:"https://www.newincentives.org/donate", site:"https://www.newincentives.org"},
+
+  {name:"Evidence Action — Deworm the World", regions:["asia","east"], countries:"India, Pakistan, Kenya, Nigeria",
+   themes:["child","health","education"], evidence:"rct", ce:2,
+   blurb:"School-based deworming at under $0.50 a treatment — linked to better school attendance and long-run earnings. Over 1.8 billion treatments supported.",
+   impact:{type:"unit", cost:0.5, unit:"child's deworming treatment"},
+   source:{label:"Evidence Action", url:"https://www.evidenceaction.org/programs/deworm-the-world"},
+   transparency:"Independently audited treatment data",
+   donate:"https://www.evidenceaction.org/donate", site:"https://www.evidenceaction.org"},
+
+  {name:"Evidence Action — Dispensers for Safe Water", regions:["east"], countries:"Kenya, Uganda, Malawi",
+   themes:["water","health","child"], evidence:"rct", ce:2,
+   blurb:"Chlorine dispensers at rural water points — safe water for about $1.50 per person per year, serving nearly 4 million people.",
+   impact:{type:"unit", cost:1.5, unit:"person's safe water for a full year"},
+   source:{label:"Evidence Action", url:"https://www.evidenceaction.org/insights/dispensers-for-safe-water-innovation-with-impact"},
+   transparency:"Sensor-monitored usage data",
+   donate:"https://www.evidenceaction.org/donate", site:"https://www.evidenceaction.org"},
+
+  {name:"GiveDirectly", regions:["east","southern"], countries:"Kenya, Malawi, Mozambique, Rwanda + more",
+   themes:["economic","hunger"], evidence:"rct", ce:2,
+   blurb:"Sends money directly to families living in extreme poverty, no strings attached — backed by hundreds of studies on cash transfers. Families choose what they need most.",
+   impact:{type:"passthrough", rate:0.85},
+   source:{label:"GiveDirectly financials", url:"https://www.givedirectly.org/financials"},
+   transparency:"Publishes full financials and recipient research",
+   donate:"https://www.givedirectly.org/donate", site:"https://www.givedirectly.org"},
+
+  {name:"CAMFED", regions:["southern","east"], countries:"Zimbabwe, Zambia, Malawi, Tanzania, Ghana",
+   themes:["education","economic"], evidence:"community", ce:2,
+   blurb:"Supports marginalised girls through secondary school — fees, uniforms, and local mentors — governed by community committees of parents, teachers, and alumnae.",
+   impact:{type:"unit", cost:150, unit:"girl supported through a full year of secondary school"},
+   source:{label:"CAMFED", url:"https://camfed.org/us/why-girls-education/"},
+   transparency:"Community-governed · support tracked per girl",
+   donate:"https://camfed.org/us/donate/", site:"https://camfed.org"},
+
+  {name:"mothers2mothers", regions:["southern","east"], countries:"South Africa + 9 more African countries",
+   themes:["maternal","health"], evidence:"community", ce:1, tier:"national",
+   blurb:"Employs women living with HIV as 'Mentor Mothers' — paid frontline health workers supporting other mothers through pregnancy, HIV care, and early childhood. African-led, peer-reviewed results.",
+   impact:{type:"general", text:"helps employ Mentor Mothers — over 11,000 jobs created for women living with HIV, reaching more than 11 million mothers and children"},
+   source:{label:"mothers2mothers impact", url:"https://m2m.org/our-impact/"},
+   transparency:"Peer-reviewed programme evaluations",
+   donate:"https://m2m.org/donate/", site:"https://m2m.org"},
+
+  {name:"One Acre Fund", regions:["east","southern"], countries:"Kenya, Rwanda, Tanzania, Malawi, Zambia + more",
+   themes:["hunger","economic","climate"], evidence:"catalytic", ce:2,
+   blurb:"Supplies smallholder farmers with financing, seed, training, and climate-smart techniques. Org-measured: every $1 generates about $5.34 in new farmer profits and assets.",
+   impact:{type:"multiplier", factor:5.34, text:"in new profits and assets generated by smallholder farm families"},
+   source:{label:"One Acre Fund impact", url:"https://oneacrefund.org/our-impact"},
+   transparency:"Annual measured impact reports",
+   donate:"https://oneacrefund.org/donate", site:"https://oneacrefund.org"},
+
+  {name:"SolarAid", regions:["southern","east"], countries:"Malawi, Zambia",
+   themes:["climate","education","economic"], evidence:"catalytic", ce:1,
+   blurb:"Gets safe solar lights to off-grid families — replacing candles and kerosene, cutting costs, and giving children light to study by. Org-reported figure used below.",
+   impact:{type:"unit", cost:10, unit:"solar light subsidised for an off-grid family"},
+   source:{label:"SolarAid", url:"https://solar-aid.org/bright-solutions/our-impact/"},
+   transparency:"Annual impact research published",
+   donate:"https://solar-aid.org/donate/", site:"https://solar-aid.org"},
+
+  {name:"Fistula Foundation", regions:["east","asia"], countries:"Kenya, Ethiopia + 20 more in Africa & Asia",
+   themes:["maternal","health"], evidence:"rct", ce:2,
+   blurb:"Funds surgery that heals obstetric fistula — a devastating childbirth injury — restoring health and dignity. Average $624 per patient including post-op care and rehabilitation.",
+   impact:{type:"unit", cost:624, unit:"life-changing fistula repair surgery, with post-op care"},
+   source:{label:"Fistula Foundation FAQs", url:"https://fistulafoundation.org/about/faqs/"},
+   transparency:"4-star Charity Navigator rating since 2006",
+   donate:"https://fistulafoundation.org/donate/", site:"https://fistulafoundation.org"},
+
+  /* ---- locally-led and grassroots organisations (Global South-founded) ---- */
+  {name:"Gift of the Givers", regions:["southern"], countries:"South Africa + responses in 47 countries",
+   themes:["hunger","water","health"], evidence:"community", ce:1, tier:"national",
+   blurb:"Africa's largest home-grown disaster relief organisation, founded in Pietermaritzburg in 1992. Boreholes, food parcels, search-and-rescue, and hospital support — over R6 billion in aid delivered.",
+   impact:{type:"general", text:"funds rapid African-led disaster response — over R6 billion ($319m) in aid delivered across 47 countries in three decades"},
+   source:{label:"Gift of the Givers", url:"https://giftofthegivers.org/"},
+   transparency:"African-founded and led · 30+ year track record",
+   donate:"https://giftofthegivers.org/donate/", site:"https://giftofthegivers.org"},
+
+  {name:"SHOFCO — Shining Hope for Communities", regions:["east"], countries:"Kenya — Kibera + 40 of 47 counties",
+   themes:["water","education","economic","health"], evidence:"community", ce:1, tier:"grassroots",
+   blurb:"Founded inside Kibera, Africa's largest informal settlement, by Kennedy Odede with 20 cents and a soccer ball. Now Kenya's largest grassroots movement: girls' schools, clean water, clinics, and gender-violence support.",
+   impact:{type:"general", text:"powers a community-built network reaching 2.4 million people — schools, aerial water lines, clinics, run by people from the settlements they serve"},
+   source:{label:"SHOFCO on GlobalGiving (vetted)", url:"https://www.globalgiving.org/projects/shofco/"},
+   transparency:"GlobalGiving-vetted · Hilton Humanitarian Prize winner",
+   donate:"https://www.globalgiving.org/projects/shofco/", site:"https://www.shofco.org"},
+
+  {name:"Food4Education", regions:["east"], countries:"Kenya",
+   themes:["hunger","education","child"], evidence:"catalytic", ce:2, tier:"national",
+   blurb:"Founded by Kenyan nutritionist Wawira Njiru. Serves 600,000+ hot school lunches every school day at about $0.30 a plate, with parents co-paying via Tap2Eat wristbands. A blueprint built in Africa, now scaling.",
+   impact:{type:"unit", cost:0.3, unit:"hot, nutritious school lunch served"},
+   source:{label:"The Life You Can Save", url:"https://www.thelifeyoucansave.org/best-charities/food4education/"},
+   transparency:"Independently recommended · costs published",
+   donate:"https://food4education.org/donate/", site:"https://food4education.org"},
+
+  {name:"Kliptown Youth Program", regions:["southern"], countries:"Kliptown, Soweto, South Africa",
+   themes:["education","child"], evidence:"community", ce:1, tier:"grassroots",
+   blurb:"Started in 2007 by young people from Kliptown itself. Daily tutoring, meals, sport, and arts for children in one of Soweto's poorest corners — over 80% of its students pass matric, against roughly 1 in 3 locally.",
+   impact:{type:"general", text:"funds tutoring, daily meals, and after-school programmes run by Kliptown residents for Kliptown children"},
+   source:{label:"Kliptown Youth Program", url:"https://www.kliptownyouthprogram.org.za/about"},
+   transparency:"Community-founded and run · results shared openly",
+   donate:"https://www.kliptownyouthprogram.org.za/contribute", site:"https://www.kliptownyouthprogram.org.za"},
+
+  {name:"Zvandiri (Africaid)", regions:["southern"], countries:"Zimbabwe + model adopted across Africa",
+   themes:["health","disease","child"], evidence:"rct", ce:2, tier:"national",
+   blurb:"Zimbabwean organisation training young people living with HIV as peer counsellors (CATS). A randomised trial found 42% lower treatment failure or death among adolescents they support — local leadership, gold-standard evidence.",
+   impact:{type:"general", text:"supports peer counsellors living with HIV who keep other young people in treatment — RCT-proven, born and led in Zimbabwe"},
+   source:{label:"BMC Public Health RCT, 2019", url:"https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-019-6447-4"},
+   transparency:"Randomised-trial evidence · Zimbabwean-led",
+   donate:"https://www.zvandiri.org/", site:"https://www.zvandiri.org"},
+
+  {name:"Slum2School Africa", regions:["west"], countries:"Lagos + 10 states, Nigeria",
+   themes:["education","child"], evidence:"community", ce:1, tier:"grassroots",
+   blurb:"Founded by Otto Orondaam, who left his job to enrol slum children into school. Volunteer-powered: 1,660+ out-of-school children enrolled and 32,000+ supported with scholarships, mentorship, and health programmes.",
+   impact:{type:"general", text:"funds scholarships and learning support taking children from Nigeria's waterfront slums into school — 32,000+ supported so far"},
+   source:{label:"Slum2School Africa", url:"https://slum2school.org/"},
+   transparency:"Volunteer-driven · community-embedded",
+   donate:"https://slum2school.org/donations/iammore-donation/", site:"https://slum2school.org"},
+
+  {name:"BRAC", regions:["asia","east","west"], countries:"Bangladesh + 16 countries in Asia & Africa",
+   themes:["economic","education","health","hunger"], evidence:"rct", ce:2, tier:"national",
+   blurb:"The world's largest Global South-led development organisation, founded in Bangladesh in 1972. Its Ultra-Poor Graduation approach is RCT-tested across six countries — ~95% of participants lift their families out of extreme poverty.",
+   impact:{type:"general", text:"backs the Ultra-Poor Graduation approach — assets, training, and coaching that have helped 2.1 million+ households leave extreme poverty for good"},
+   source:{label:"BRAC USA", url:"https://www.bracusa.org/about/"},
+   transparency:"RCT-tested model · 50+ years, Global South-led",
+   donate:"https://www.bracusa.org/donate/", site:"https://www.bracusa.org"},
+
+  {name:"Educate Girls", regions:["asia"], countries:"Rural Rajasthan, MP & UP, India",
+   themes:["education","child"], evidence:"rct", ce:2, tier:"national",
+   blurb:"Indian-founded and led, working through 20,000+ village volunteers to find out-of-school girls and bring them back. 1.4 million+ girls enrolled, 93% retention — evaluated through the world's first development impact bond.",
+   impact:{type:"unit", cost:25, unit:"girl enrolled and supported in school for a year (Vidya programme)"},
+   source:{label:"Educate Girls", url:"https://www.educategirls.ngo/"},
+   transparency:"Impact-bond evaluated · village-volunteer powered",
+   donate:"https://www.globalgiving.org/projects/girls/", site:"https://www.educategirls.ngo"},
+
+  {name:"Panzi Foundation", regions:["central"], countries:"Bukavu, DR Congo",
+   themes:["maternal","health"], evidence:"community", ce:1, tier:"national",
+   blurb:"Founded by Dr Denis Mukwege, 2018 Nobel Peace Prize laureate. Panzi Hospital has treated 90,000+ survivors of sexual violence and childbirth injury since 1999 — 99% of staff are Congolese, working in their own community.",
+   impact:{type:"general", text:"supports Panzi Hospital's holistic care for survivors of sexual violence and complex childbirth injuries — healing, justice, and economic reintegration"},
+   source:{label:"Panzi Foundation", url:"https://panzifoundation.org/about-us/"},
+   transparency:"Nobel laureate-founded · 99% Congolese staff",
+   donate:"https://panzifoundation.org/donate/", site:"https://panzifoundation.org"},
+
+  {name:"HEAL Africa", regions:["central"], countries:"Goma + North Kivu & Maniema, DR Congo",
+   themes:["health","maternal","child"], evidence:"community", ce:1, tier:"national",
+   blurb:"A Congolese-led hospital in Goma plus 64 rural health centres, treating the physical and psychological wounds of conflict — surgery, maternal care, and support for survivors of gender-based violence.",
+   impact:{type:"general", text:"helps fund Congolese-led surgical and maternal care where conflict has shattered the health system"},
+   source:{label:"HEAL Africa via Peace Insight", url:"https://www.peaceinsight.org/en/organisations/heal-africa/"},
+   transparency:"Congolese-led · long-standing international partners",
+   donate:"https://healafrica.org/", site:"https://healafrica.org"},
+
+  {name:"Gerando Falcões", regions:["latam"], countries:"5,500+ favelas across Brazil",
+   themes:["education","economic"], evidence:"catalytic", ce:1, tier:"grassroots",
+   blurb:"Founded by Edu Lyra, raised in the favelas he now serves. An ecosystem of education, job training, and the 'Favela 3D' model — reaching 700,000+ people through leaders developed inside their own communities.",
+   impact:{type:"general", text:"backs favela-born leadership turning poverty into 'a museum piece' — education, work, and dignity designed from inside"},
+   source:{label:"Gerando Falcões / BrazilFoundation", url:"https://brazilfoundation.org/en/know-more/how-we-support/gerando-falcoes-fund/"},
+   transparency:"Favela-born and led · international fund via BrazilFoundation",
+   donate:"https://brazilfoundation.org/en/know-more/how-we-support/gerando-falcoes-fund/", site:"https://www.gerandofalcoes.com/"},
+
+  {name:"Fundación Paraguaya", regions:["latam"], countries:"Paraguay · model used in 59 countries",
+   themes:["economic","education"], evidence:"catalytic", ce:2, tier:"national",
+   blurb:"Created the Poverty Stoplight: families self-assess across 6 dimensions of poverty and design their own way out. In a study of 20,000 women entrepreneurs, extreme poverty fell from 10% to 3% in one year.",
+   impact:{type:"general", text:"funds the Poverty Stoplight approach — families map their own poverty and become the architects of their exit from it"},
+   source:{label:"Poverty Stoplight impact", url:"https://www.povertystoplight.org/en/impact/"},
+   transparency:"Paraguayan-founded · published impact studies",
+   donate:"https://www.fundacionparaguaya.org.py/", site:"https://www.povertystoplight.org/en/"},
+
+  {name:"Pro Mujer", regions:["latam"], countries:"Bolivia, Mexico, Argentina, Peru, Guatemala, Nicaragua",
+   themes:["economic","health","maternal"], evidence:"community", ce:1, tier:"national",
+   blurb:"Founded in El Alto, Bolivia in 1990 by two teachers. Small loans, health care, and training for low-income women — $4 billion+ disbursed, 10 million+ health interventions, 2 million women reached.",
+   impact:{type:"general", text:"funds loans, health screenings, and training that low-income Latin American women use to build their own businesses and futures"},
+   source:{label:"Pro Mujer", url:"https://promujer.org/"},
+   transparency:"Bolivian-rooted · 35 years of published annual reports",
+   donate:"https://promujer.org/", site:"https://promujer.org"},
+
+  {name:"Goonj", regions:["asia"], countries:"23 states, India",
+   themes:["economic","climate","hunger"], evidence:"community", ce:1, tier:"national",
+   blurb:"Founded by Anshu Gupta on a simple inversion: urban surplus as a resource, not charity. Communities build wells, roads, and schools through 'Cloth for Work' and earn material support with dignity — 6 million+ kg redistributed yearly.",
+   impact:{type:"general", text:"turns urban surplus into dignity-preserving rewards for village-led development work across 23 Indian states"},
+   source:{label:"Goonj", url:"https://goonj.org/"},
+   transparency:"Community-driven model · Magsaysay Award-winning founder",
+   donate:"https://goonj.org/donate/", site:"https://goonj.org"},
+];
+
+const THEMES = [
+  {id:"child", em:"🧒", label:"Child health", sub:"Vaccines, nutrition, survival"},
+  {id:"maternal", em:"🤱", label:"Maternal health", sub:"Safe pregnancy and birth"},
+  {id:"education", em:"📚", label:"Education", sub:"Literacy, school access"},
+  {id:"water", em:"💧", label:"Clean water", sub:"Safe water and sanitation"},
+  {id:"hunger", em:"🌾", label:"Hunger & nutrition", sub:"Food security, farming"},
+  {id:"disease", em:"🦟", label:"Disease prevention", sub:"Malaria, immunisation"},
+  {id:"economic", em:"💼", label:"Economic opportunity", sub:"Jobs, income, skills"},
+  {id:"climate", em:"🌍", label:"Climate resilience", sub:"Adapting to a changing climate"},
+  {id:"health", em:"🏥", label:"Health systems", sub:"Clinics, frontline care"},
+];
+
+const REGIONS = [
+  {id:"southern", em:"🇿🇦", label:"Southern Africa", sub:"SA, Zimbabwe, Zambia, Malawi…"},
+  {id:"east", em:"🌅", label:"East Africa", sub:"Kenya, Tanzania, Uganda…"},
+  {id:"west", em:"🌊", label:"West Africa", sub:"Nigeria, Ghana, Mali…"},
+  {id:"central", em:"🌳", label:"Central Africa", sub:"DRC, Cameroon…"},
+  {id:"asia", em:"🌏", label:"South Asia", sub:"India, Pakistan, Bangladesh…"},
+  {id:"latam", em:"🌎", label:"Latin America", sub:"Brazil, Paraguay, Bolivia…"},
+  {id:"any", em:"🧭", label:"Wherever it helps most", sub:"Let impact-per-dollar lead"},
+];
+
+const STYLES = [
+  {id:"rct", em:"🔬", label:"Show me proof", sub:"Independently evaluated, measurable results"},
+  {id:"catalytic", em:"🚀", label:"Back what's next", sub:"Promising newer models that need early believers"},
+  {id:"community", em:"🤝", label:"Trust local leadership", sub:"Community-led, accountable to the people served"},
+  {id:"none", em:"⚖️", label:"No strong preference", sub:"Balance all three"},
+];
+
+const REGION_NAMES = {southern:"Southern Africa", east:"East Africa", west:"West Africa", central:"Central Africa", asia:"South Asia", latam:"Latin America"};
+const EV_NAMES = {rct:"Independently evaluated", catalytic:"Promising & growing", community:"Community-led & monitored"};
+const CE_LABELS = {3:"GiveWell top charity", 2:"strong published cost-effectiveness evidence", 1:"not directly comparable across causes"};
+const TIER_NAMES = {grassroots:"🏠 Grassroots", national:"🌍 Locally led", international:"🌐 International"};
+const TIER_TIPS = {grassroots:"born inside the community it serves", national:"founded and headquartered in the Global South", international:"international NGO working in LMICs"};
+const ZAR = 18.6;
+
+/* ---------- STATE ---------- */
+let step = 1;
+const ans = {themes:[], region:null, style:null, amount:25, freq:"monthly"};
+
+/* ---------- QUIZ RENDERING ---------- */
+function renderOpts(elId, items, onPick, isSel){
+  const el = document.getElementById(elId);
+  el.innerHTML = "";
+  items.forEach(it=>{
+    const b = document.createElement("button");
+    b.className = "opt" + (isSel(it.id) ? " sel" : "");
+    b.innerHTML = `<span class="em">${it.em}</span>${it.label}<small>${it.sub}</small>`;
+    b.onclick = ()=>onPick(it.id);
+    el.appendChild(b);
+  });
+}
+function drawStep(){
+  document.querySelectorAll(".qstep").forEach((q,i)=>q.classList.toggle("hidden", i+1!==step));
+  document.querySelectorAll("#stepDots div").forEach((d,i)=>d.classList.toggle("on", i<step));
+  document.getElementById("backBtn").style.visibility = step===1 ? "hidden":"visible";
+  document.getElementById("nextBtn").textContent = step===4 ? "See my matches →" : "Next →";
+  validate();
+}
+function validate(){
+  const ok = (step===1 && ans.themes.length>0) || (step===2 && ans.region) || (step===3 && ans.style) || step===4;
+  document.getElementById("nextBtn").disabled = !ok;
+}
+function pickTheme(id){
+  const i = ans.themes.indexOf(id);
+  if(i>=0) ans.themes.splice(i,1);
+  else if(ans.themes.length<3) ans.themes.push(id);
+  renderOpts("themeOpts", THEMES, pickTheme, x=>ans.themes.includes(x));
+  validate();
+}
+function pickRegion(id){ ans.region=id; renderOpts("regionOpts", REGIONS, pickRegion, x=>x===id); validate(); }
+function pickStyle(id){ ans.style=id; renderOpts("styleOpts", STYLES, pickStyle, x=>x===id); validate(); }
+function setFreq(f){
+  ans.freq=f;
+  document.getElementById("fMonthly").classList.toggle("sel", f==="monthly");
+  document.getElementById("fOnce").classList.toggle("sel", f==="once");
+}
+document.getElementById("amtSlider").oninput = e=>{
+  ans.amount = +e.target.value;
+  document.getElementById("amtUsd").textContent = "$"+ans.amount;
+  document.getElementById("amtZar").textContent = "≈ R" + Math.round(ans.amount*ZAR).toLocaleString();
+};
+function next(){ if(step<4){step++;drawStep();} else showResults(); }
+function back(){ if(step>1){step--;drawStep();} }
+function restart(){
+  step=1; ans.themes=[]; ans.region=null; ans.style=null;
+  renderOpts("themeOpts", THEMES, pickTheme, ()=>false);
+  renderOpts("regionOpts", REGIONS, pickRegion, ()=>false);
+  renderOpts("styleOpts", STYLES, pickStyle, ()=>false);
+  document.getElementById("results").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  drawStep(); window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ---------- MATCHING ENGINE (transparent, rule-based) ----------
+   Score out of 100:
+   · Cause fit          max 40 — share of your chosen causes this org works on
+   · Region fit         max 20 — works in your chosen region (flat 15 if "wherever")
+   · Evidence fit       max 25 — matches the giving style YOU chose (flat 15 if no preference)
+   · Cost-effectiveness max 15 — strength of published cost-effectiveness evidence  */
+function scoreOrg(o){
+  const parts = [];
+  const overlap = ans.themes.filter(t=>o.themes.includes(t)).length;
+  const causePts = Math.round(40 * overlap / ans.themes.length);
+  parts.push({label:`Cause fit — works on ${overlap} of your ${ans.themes.length} chosen cause${ans.themes.length>1?"s":""}`, pts:causePts, max:40});
+
+  let regionPts;
+  if(ans.region==="any"){ regionPts=15; parts.push({label:"Region — you chose \"wherever it helps most\"", pts:15, max:20}); }
+  else { regionPts = o.regions.includes(ans.region) ? 20 : 0;
+         parts.push({label:`Region — ${o.regions.includes(ans.region) ? "works in" : "outside"} ${REGION_NAMES[ans.region]}`, pts:regionPts, max:20}); }
+
+  let evPts;
+  if(ans.style==="none"){ evPts=15; parts.push({label:"Evidence — no preference, balanced weighting", pts:15, max:25}); }
+  else { evPts = o.evidence===ans.style ? 25 : 8;
+         parts.push({label:`Evidence — ${EV_NAMES[o.evidence].toLowerCase()}${o.evidence===ans.style ? " (your preferred style)" : ""}`, pts:evPts, max:25}); }
+
+  const cePts = o.ce * 5;
+  parts.push({label:`Cost-effectiveness — ${CE_LABELS[o.ce]}`, pts:cePts, max:15});
+
+  return {parts, total: causePts + regionPts + evPts + cePts};
+}
+let tierFilter = "all";
+function isLocal(o){ return (o.tier||"international")!=="international"; }
+function rankOrgs(){
+  let pool = ORGS;
+  if(tierFilter==="local") pool = ORGS.filter(isLocal);
+  if(tierFilter==="grassroots") pool = ORGS.filter(o=>o.tier==="grassroots");
+  const scored = pool.map(o=>({o, ...scoreOrg(o), viaRule:false}))
+    .filter(s=>s.parts[0].pts>0)            // only orgs working on at least one of your causes
+    .sort((a,b)=>b.total-a.total);
+  const top = scored.slice(0,6);
+  /* Representation rule: when showing all levels, locally-led organisations are
+     guaranteed at least 2 of the 6 places (when any match your causes), so
+     data-rich international NGOs can't crowd them out. Disclosed on each card. */
+  if(tierFilter==="all"){
+    let localIn = top.filter(s=>isLocal(s.o)).length;
+    const waiting = scored.filter(s=>isLocal(s.o) && !top.includes(s));
+    while(localIn<2 && waiting.length){
+      let idx=-1;
+      for(let i=top.length-1;i>=0;i--){ if(!isLocal(top[i].o)){ idx=i; break; } }
+      if(idx<0) break;
+      top.splice(idx,1);
+      const c = waiting.shift(); c.viaRule = true; top.push(c); localIn++;
+    }
+    top.sort((a,b)=>b.total-a.total);
+  }
+  return top;
+}
+
+/* ---------- IMPACT TRANSLATION ---------- */
+function impactLine(o){
+  const yearly = ans.freq==="monthly" ? ans.amount*12 : ans.amount;
+  const span = ans.freq==="monthly" ? "a year of $"+ans.amount+"/month" : "a once-off $"+ans.amount;
+  const im = o.impact;
+  if(im.type==="passthrough")
+    return `<b>${span}</b> ≈ <b>$${Math.round(yearly*im.rate).toLocaleString()}</b> delivered straight into the hands of a family living in extreme poverty (org reports ~${Math.round(im.rate*100)}% of donations reach recipients)`;
+  if(im.type==="multiplier")
+    return `<b>${span}</b> ≈ <b>$${Math.round(yearly*im.factor).toLocaleString()}</b> ${im.text} (org-measured $${im.factor} per $1 donated)`;
+  if(im.type==="general")
+    return `<b>${span}</b> ${im.text}`;
+  const n = Math.floor(yearly / im.cost);
+  if(n < 1){
+    const pct = Math.round(100 * yearly / im.cost);
+    return `<b>${span}</b> covers <b>${pct}%</b> of one ${im.unit}`;
+  }
+  return `<b>${span}</b> ≈ <b>${n.toLocaleString()}×</b> ${im.unit}${n>1?"":" (plus change toward the next)"}`;
+}
+
+/* ---------- RESULTS ---------- */
+function showResults(){
+  document.getElementById("quiz").classList.add("hidden");
+  const res = document.getElementById("results");
+  res.classList.remove("hidden");
+  const picks = ans.themes.map(t=>THEMES.find(x=>x.id===t).label.toLowerCase()).join(", ");
+  document.getElementById("resSub").textContent =
+    `Based on your values (${picks}), ranked by fit — every score is explained below, nothing is hidden.`;
+  renderCards();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderCards(){
+  const cards = document.getElementById("cards");
+  cards.innerHTML = "";
+  const ranked = rankOrgs();
+  if(!ranked.length){
+    cards.innerHTML = `<div class="empty"><b>No organisations in our index match this yet.</b><br>
+      That's not because the work isn't happening — it's because grassroots organisations doing it haven't been made visible in published data.
+      That gap is exactly what this project exists to close. Try "All levels", or broaden your causes.</div>`;
+    return;
+  }
+  ranked.forEach(s=>{
+    const {o, parts, total, viaRule} = s;
+    const tier = o.tier || "international";
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <div class="card-top">
+        <div>
+          <h3>${o.name}</h3>
+          <div class="meta">${o.countries} · ${o.transparency}</div>
+        </div>
+        <div class="score"><b>${total}</b><small>match /100</small></div>
+      </div>
+      <div class="badges">
+        <span class="badge tier" title="${TIER_TIPS[tier]}">${TIER_NAMES[tier]}</span>
+        <span class="badge ev">${EV_NAMES[o.evidence]}</span>
+        ${o.themes.map(t=>{const th=THEMES.find(x=>x.id===t);return `<span class="badge">${th.em} ${th.label}</span>`}).join("")}
+      </div>
+      <p class="blurb">${o.blurb}</p>
+      <div class="impact">💡 ${impactLine(o)}
+        <span class="src">Figure source: <a href="${o.source.url}" target="_blank" rel="noopener">${o.source.label}</a> · retrieved June 2026</span>
+      </div>
+      ${viaRule ? `<div class="rule-note">✊ <b>Included by the representation rule:</b> locally-led organisations are guaranteed at least 2 of these places when they match your causes — so organisations with big research budgets can't crowd out the ones closest to the work.</div>` : ""}
+      <details class="why">
+        <summary>Why you're seeing this — full score breakdown</summary>
+        <div class="why-body">
+          <table>${parts.map(p=>`<tr><td>${p.label}</td><td>${p.pts} / ${p.max}</td></tr>`).join("")}
+          <tr><td><b>Total</b></td><td><b>${total} / 100</b></td></tr></table>
+          <p style="margin-top:8px">This ranking is rule-based and identical for everyone with your answers. No engagement tricks, no paid placement.${viaRule ? " This organisation was placed by the locally-led representation rule, shown above." : ""}</p>
+        </div>
+      </details>
+      <div class="card-actions">
+        <a class="btn btn-sm btn-amber" href="${o.donate}" target="_blank" rel="noopener">Donate on their site →</a>
+        <a class="btn-ghost btn-sm" href="${o.site}" target="_blank" rel="noopener">Learn more</a>
+      </div>`;
+    cards.appendChild(card);
+  });
+}
+
+document.getElementById("tierChips").addEventListener("click", e=>{
+  const b = e.target.closest(".fchip");
+  if(!b) return;
+  tierFilter = b.dataset.f;
+  document.querySelectorAll(".fchip").forEach(c=>c.classList.toggle("sel", c===b));
+  renderCards();
+});
+
+/* ---------- INIT ---------- */
+renderOpts("themeOpts", THEMES, pickTheme, ()=>false);
+renderOpts("regionOpts", REGIONS, pickRegion, ()=>false);
+renderOpts("styleOpts", STYLES, pickStyle, ()=>false);
+drawStep();
+</script>
+</body>
+</html>
