@@ -322,7 +322,7 @@ const ORGS = [
    impact:{type:"general", text:"funds rapid African-led disaster response — over R6 billion ($319m) in aid delivered across 47 countries in three decades"},
    source:{label:"Gift of the Givers", url:"https://giftofthegivers.org/"},
    transparency:"African-founded and led · 30+ year track record",
-   donate:"https://giftofthegivers.org/donate/", site:"https://giftofthegivers.org"},
+   donate:"https://giftofthegivers.org/make-a-difference/", site:"https://giftofthegivers.org"},
 
   {name:"SHOFCO — Shining Hope for Communities", regions:["east"], countries:"Kenya — Kibera + 40 of 47 counties",
    themes:["water","education","economic","health"], evidence:"community", ce:1, tier:"grassroots",
@@ -348,13 +348,13 @@ const ORGS = [
    transparency:"Community-founded and run · results shared openly",
    donate:"https://www.kliptownyouthprogram.org.za/contribute", site:"https://www.kliptownyouthprogram.org.za"},
 
-  {name:"Zvandiri (Africaid)", regions:["southern"], countries:"Zimbabwe + model adopted across Africa",
+  {name:"Zvandiri (Africaid)", regions:["southern"], countries:"Zimbabwe + 14 more countries — 280,000+ young people supported",
    themes:["health","disease","child"], evidence:"rct", ce:2, tier:"national",
    blurb:"Zimbabwean organisation training young people living with HIV as peer counsellors (CATS). A randomised trial found 42% lower treatment failure or death among adolescents they support — local leadership, gold-standard evidence.",
    impact:{type:"general", text:"supports peer counsellors living with HIV who keep other young people in treatment — RCT-proven, born and led in Zimbabwe"},
    source:{label:"BMC Public Health RCT, 2019", url:"https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-019-6447-4"},
    transparency:"Randomised-trial evidence · Zimbabwean-led",
-   donate:"https://www.zvandiri.org/", site:"https://www.zvandiri.org"},
+   donate:"https://www.justgiving.com/maruva", site:"https://zvandiri.org"},
 
   {name:"Slum2School Africa", regions:["west"], countries:"Lagos + 10 states, Nigeria",
    themes:["education","child"], evidence:"community", ce:1, tier:"grassroots",
@@ -394,7 +394,7 @@ const ORGS = [
    impact:{type:"general", text:"helps fund Congolese-led surgical and maternal care where conflict has shattered the health system"},
    source:{label:"HEAL Africa via Peace Insight", url:"https://www.peaceinsight.org/en/organisations/heal-africa/"},
    transparency:"Congolese-led · long-standing international partners",
-   donate:"https://healafrica.org/", site:"https://healafrica.org"},
+   donate:"https://healafrica.org/donate/", site:"https://healafrica.org"},
 
   {name:"Gerando Falcões", regions:["latam"], countries:"5,500+ favelas across Brazil",
    themes:["education","economic"], evidence:"catalytic", ce:1, tier:"grassroots",
@@ -409,8 +409,8 @@ const ORGS = [
    blurb:"Created the Poverty Stoplight: families self-assess across 6 dimensions of poverty and design their own way out. In a study of 20,000 women entrepreneurs, extreme poverty fell from 10% to 3% in one year.",
    impact:{type:"general", text:"funds the Poverty Stoplight approach — families map their own poverty and become the architects of their exit from it"},
    source:{label:"Poverty Stoplight impact", url:"https://www.povertystoplight.org/en/impact/"},
-   transparency:"Paraguayan-founded · published impact studies",
-   donate:"https://www.fundacionparaguaya.org.py/", site:"https://www.povertystoplight.org/en/"},
+   transparency:"Paraguayan-founded · GlobalGiving-vetted · published impact studies",
+   donate:"https://www.globalgiving.org/donate/776/fundacion-paraguaya/", site:"https://www.povertystoplight.org/en/"},
 
   {name:"Pro Mujer", regions:["latam"], countries:"Bolivia, Mexico, Argentina, Peru, Guatemala, Nicaragua",
    themes:["economic","health","maternal"], evidence:"community", ce:1, tier:"national",
@@ -418,7 +418,7 @@ const ORGS = [
    impact:{type:"general", text:"funds loans, health screenings, and training that low-income Latin American women use to build their own businesses and futures"},
    source:{label:"Pro Mujer", url:"https://promujer.org/"},
    transparency:"Bolivian-rooted · 35 years of published annual reports",
-   donate:"https://promujer.org/", site:"https://promujer.org"},
+   donate:"https://promujer.org/donate/", site:"https://promujer.org"},
 
   {name:"Goonj", regions:["asia"], countries:"23 states, India",
    themes:["economic","climate","hunger"], evidence:"community", ce:1, tier:"national",
@@ -427,6 +427,34 @@ const ORGS = [
    source:{label:"Goonj", url:"https://goonj.org/"},
    transparency:"Community-driven model · Magsaysay Award-winning founder",
    donate:"https://goonj.org/donate/", site:"https://goonj.org"},
+
+  /* ---- disability inclusion: umbrella alliance & funds channelling to OPDs ----
+     persons with disabilities are routinely marginalised in mainstream funding;
+     these entries route money through accountable umbrella structures            */
+  {name:"International Disability Alliance (IDA) — Secretariat", regions:["southern","east","west","central","asia","latam"], countries:"Global — 14 member federations incl. the African Disability Forum",
+   themes:["disability"], evidence:"community", ce:1,
+   blurb:"The alliance of 14 global and regional federations of persons with disabilities, holding civil society's central role in the UN CRPD system. Its Secretariat receives and administers funds, channelling resources, training, and advocacy capacity to member organisations — governance handled centrally, impact delivered by the disability movement itself.",
+   impact:{type:"general", text:"supports the Secretariat that channels resources and CRPD advocacy capacity to organisations of persons with disabilities worldwide — a group mainstream funding routinely overlooks"},
+   source:{label:"International Disability Alliance", url:"https://www.internationaldisabilityalliance.org/content/ida-members"},
+   transparency:"OPD-led alliance · UN CRPD standing · publishes legal & financials",
+   donateLabel:"Contact the Secretariat to give →",
+   donate:"https://www.internationaldisabilityalliance.org/content/contact", site:"https://www.internationaldisabilityalliance.org"},
+
+  {name:"Disability Rights Fund", regions:["southern","east","west","asia","latam"], countries:"Grants to OPDs across Africa, Asia-Pacific & Haiti",
+   themes:["disability"], evidence:"community", ce:1,
+   blurb:"A pooled fund that moves donor money as grants to disability-led organisations in the Global South. Grantees shape priorities through participatory grantmaking — donors get one accountable channel, grassroots OPDs get funding that rarely reaches them otherwise.",
+   impact:{type:"general", text:"pools your gift with other donors and regrants it to grassroots organisations of persons with disabilities, with governance and due diligence handled by the fund"},
+   source:{label:"Disability Rights Fund", url:"https://www.disabilityrightsfund.org/about/"},
+   transparency:"Candid Platinum transparency · participatory grantmaking",
+   donate:"https://www.disabilityrightsfund.org/donate/", site:"https://www.disabilityrightsfund.org"},
+
+  {name:"ADD International", regions:["southern","east","west","asia"], countries:"Tanzania, Uganda, Bangladesh, Cambodia + more",
+   themes:["disability","economic"], evidence:"catalytic", ce:1,
+   blurb:"A participatory grant-maker for disability justice: activists with disabilities in Africa and Asia sit on the panels that decide which projects get funded. Shifts money and power to the disability movement rather than spending it on their behalf.",
+   impact:{type:"general", text:"flows into participatory grants where disability-justice activists themselves decide what gets funded"},
+   source:{label:"ADD International", url:"https://add.org.uk/participatory-grant-making/"},
+   transparency:"UK Charity Commission-registered · open information policy",
+   donate:"https://add.org.uk/donate/", site:"https://add.org.uk"},
 ];
 
 const THEMES = [
@@ -439,6 +467,7 @@ const THEMES = [
   {id:"economic", em:"💼", label:"Economic opportunity", sub:"Jobs, income, skills"},
   {id:"climate", em:"🌍", label:"Climate resilience", sub:"Adapting to a changing climate"},
   {id:"health", em:"🏥", label:"Health systems", sub:"Clinics, frontline care"},
+  {id:"disability", em:"♿", label:"Disability inclusion", sub:"Rights and services, led by persons with disabilities"},
 ];
 
 const REGIONS = [
@@ -651,7 +680,7 @@ function renderCards(){
         </div>
       </details>
       <div class="card-actions">
-        <a class="btn btn-sm btn-amber" href="${o.donate}" target="_blank" rel="noopener">Donate on their site →</a>
+        <a class="btn btn-sm btn-amber" href="${o.donate}" target="_blank" rel="noopener">${o.donateLabel || "Donate on their site →"}</a>
         <a class="btn-ghost btn-sm" href="${o.site}" target="_blank" rel="noopener">Learn more</a>
       </div>`;
     cards.appendChild(card);
