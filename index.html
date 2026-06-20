@@ -3,166 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toolie — Africa's everyday tools, in one place</title>
-  <meta name="description" content="Smart, simple tools for Southern African life. Calculators, planners, and decision-helpers — free, made with care.">
-  <meta property="og:title" content="Toolie — Africa's everyday tools, in one place">
-  <meta property="og:description" content="Smart, simple tools for Southern African life. Free, made with care.">
+  <title>Guides — Toolie</title>
+  <meta name="description" content="In-depth guides on South African education, bursaries, solar, cross-border shopping, and more. Plain-language reads from Toolie.">
+  <meta property="og:title" content="Guides — Toolie">
+  <meta property="og:description" content="In-depth guides on South African education, bursaries, solar, cross-border shopping, and more.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gettoolie.com">
+  <meta property="og:url" content="https://gettoolie.com/guides">
   <meta name="theme-color" content="#0F4C5C">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9742354292252484" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <header class="site-header">
+  <header class="site-header tool-header">
     <a href="/" class="logo" aria-label="Toolie home">Toolie</a>
+    <nav class="tool-nav">
+      <a href="/" class="nav-link">All tools</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <span class="status">6 tools live &middot; more coming</span>
-
-        <h1>Africa's everyday tools,<br><span class="hl">in one place.</span></h1>
-
-        <p class="lead">Smart, simple tools for life across Southern Africa, expanding across the continent. Free. Made with care.</p>
-
-        <div class="tools-grid">
-          <a class="featured-tool" href="/import" aria-label="Open the Shein, Temu and AliExpress landed cost calculator">
-            <span class="featured-tool-pill">Shopping &middot; Free</span>
-            <h2 class="featured-tool-title">Shein, Temu &amp; AliExpress Cost Calculator</h2>
-            <p class="featured-tool-desc">See what your cross-border online order will actually cost by the time it lands in South Africa &mdash; with SARS customs duty, VAT, and courier fees included. No more checkout-price surprises.</p>
-            <span class="featured-tool-cta">Open the tool &rarr;</span>
-          </a>
-
-          <a class="featured-tool" href="/solar" aria-label="Open the Solar and Backup Power Decision Tool">
-            <span class="featured-tool-pill">Energy &middot; Free</span>
-            <h2 class="featured-tool-title">Solar &amp; Backup Power Decision Tool</h2>
-            <p class="featured-tool-desc">Work out the inverter size, battery capacity, and tier of system you actually need to survive load-shedding &mdash; or go fully off-grid. With realistic SA cost ranges and an installer-question checklist.</p>
-            <span class="featured-tool-cta">Open the tool &rarr;</span>
-          </a>
-
-          <a class="featured-tool" href="/funding" aria-label="Open the Funded Learning Path bursary matcher">
-            <span class="featured-tool-pill">SA Bursaries &middot; Free</span>
-            <h2 class="featured-tool-title">Funded Learning Path</h2>
-            <p class="featured-tool-desc">Find the South African bursaries you actually qualify for &mdash; across NSFAS, Funza Lushaka, ISFAP, Allan Gray, and the major corporate funders. Plus a starter motivation letter draft when you're ready to apply.</p>
-            <span class="featured-tool-cta">Open the tool &rarr;</span>
-          </a>
-
-          <a class="featured-tool" href="/aps" aria-label="Open the APS Calculator and University Matcher">
-            <span class="featured-tool-pill">SA Matric &middot; Free</span>
-            <h2 class="featured-tool-title">APS Calculator + University Matcher</h2>
-            <p class="featured-tool-desc">Calculate your APS score and see which South African universities you qualify for, by faculty. Honest about minimums versus what's actually competitive.</p>
-            <span class="featured-tool-cta">Open the tool &rarr;</span>
-          </a>
-
-          <a class="featured-tool" href="/homework" aria-label="Open the Parent Homework Helper tool">
-            <span class="featured-tool-pill">CAPS Grade R&ndash;7 &middot; Free</span>
-            <h2 class="featured-tool-title">Parent Homework Helper</h2>
-            <p class="featured-tool-desc">A parent-friendly explanation of any Grade R&ndash;7 CAPS homework question. Help your child even if school was a long time ago.</p>
-            <span class="featured-tool-cta">Open the tool &rarr;</span>
-          </a>
-
-          <a class="featured-tool" href="/give" aria-label="Open the Giving Matchmaker donor discovery tool">
-            <span class="featured-tool-pill">Giving &middot; Free</span>
-            <h2 class="featured-tool-title">Giving Matchmaker</h2>
-            <p class="featured-tool-desc">Four quick questions match you with real, vetted causes across Africa, South Asia, and Latin America &mdash; from GiveWell top charities to grassroots groups born in the communities they serve. Every match explained, no black box.</p>
-            <span class="featured-tool-cta">Open the tool &rarr;</span>
-          </a>
-        </div>
-        <p class="featured-tool-note">More tools coming soon. Other SADC curricula, private universities, and international scholarships on the roadmap.</p>
-
-        <div class="signup-block">
-          <div class="signup-confirmation" id="signupConfirmationPending" hidden>
-            <div class="signup-confirmation-icon" aria-hidden="true">&check;</div>
-            <div class="signup-confirmation-text">
-              <p class="signup-confirmation-title">Almost there.</p>
-              <p>We've sent a confirmation email to your inbox &mdash; click the link inside to finalise your subscription. Check your spam folder if you don't see it within a few minutes.</p>
-            </div>
-          </div>
-          <div class="signup-confirmation" id="signupConfirmationDone" hidden>
-            <div class="signup-confirmation-icon" aria-hidden="true">&check;</div>
-            <div class="signup-confirmation-text">
-              <p class="signup-confirmation-title">You're in.</p>
-              <p>We'll email you when new Toolie tools launch &mdash; that's it. You can unsubscribe anytime using the unsubscribe link in any email we send, or by emailing <a href="mailto:hello@gettoolie.com">hello@gettoolie.com</a> directly.</p>
-            </div>
-          </div>
-          <div id="signupFormBlock">
-            <p class="signup-prompt">Get notified when new tools launch.</p>
-            <form class="signup" action="https://app.kit.com/forms/9426183/subscriptions" method="post" data-sv-form="9426183" data-uid="20e616cd2a" data-format="inline" data-version="5">
-              <label for="email" class="visually-hidden">Your email address</label>
-              <input type="email" id="email" name="email_address" placeholder="your@email.com" required autocomplete="email">
-              <button type="submit">Notify me</button>
-            </form>
-            <p class="form-note">No spam, ever. One quiet email when something new is ready. <a href="mailto:hello@gettoolie.com?subject=Unsubscribe%20me%20from%20Toolie%20launch%20list" class="form-note-link">Unsubscribe anytime</a>.</p>
-          </div>
-        </div>
-
-        <script>
-          (function() {
-            var params = new URLSearchParams(window.location.search);
-            var pending = document.getElementById("signupConfirmationPending");
-            var done = document.getElementById("signupConfirmationDone");
-            var formBlock = document.getElementById("signupFormBlock");
-
-            if (params.get("signed-up") === "1") {
-              if (pending) pending.hidden = false;
-              if (formBlock) formBlock.style.display = "none";
-            } else if (params.get("confirmed") === "1") {
-              if (done) done.hidden = false;
-              if (formBlock) formBlock.style.display = "none";
-            }
-
-            if ((params.get("signed-up") === "1" || params.get("confirmed") === "1") && window.history && window.history.replaceState) {
-              window.history.replaceState({}, "", window.location.pathname);
-            }
-          })();
-        </script>
-      </div>
+  <main class="tool-main">
+    <section class="tool-hero">
+      <span class="tool-pill">Guides &middot; Free</span>
+      <h1 class="tool-title">Toolie Guides</h1>
+      <p class="tool-subtitle">In-depth, plain-language reads on the topics our tools touch &mdash; written for life in Southern Africa. Each guide walks through the practical detail beyond what a calculator alone can tell you.</p>
     </section>
 
-    <section class="why-toolie">
-      <h2>Why we built Toolie</h2>
+    <section class="guides-list">
+      <a href="/guides/understanding-aps" class="guide-card">
+        <span class="guide-card-meta">Education &middot; Grade 12</span>
+        <h2>Understanding APS: Everything Grade 12 students need to know</h2>
+        <p>What APS actually is, how it's calculated, why Life Orientation doesn't count, the difference between minimum and competitive scores, and what to do if your APS doesn't quite make the cut. A complete reference for matrics and parents.</p>
+        <span class="guide-card-cta">Read the guide &rarr;</span>
+      </a>
 
-      <p>The internet has a thousand free calculators, planners, and explainers. Almost none of them are built for life in Southern Africa. They speak in dollars and yards, reference school systems and curricula nobody here uses, default to American customs rules and Northern Hemisphere seasons. When a parent in Mahikeng tries to help with Grade 4 maths, when a Grade 12 in Polokwane wants to know if their results are good enough for Wits, when a small trader anywhere in Southern Africa tries to work out the landed cost of a Shein order, the tools that come up first on Google were built for somebody else's life.</p>
+      <a href="/guides/shein-customs-south-africa" class="guide-card">
+        <span class="guide-card-meta">Shopping &middot; Cross-border</span>
+        <h2>Shein customs in South Africa: The 2024 SARS rule changes explained</h2>
+        <p>Why your Shein orders cost more than they used to, what changed in 2024, how customs duty actually works on clothing, footwear, and electronics, and the real strategy for ordering smarter from Shein, Temu, and AliExpress.</p>
+        <span class="guide-card-cta">Read the guide &rarr;</span>
+      </a>
 
-      <p>Toolie exists to close that gap, one well-made tool at a time. Each tool we build solves a real, specific, daily problem for people across South Africa and the wider SADC region. We aim for tools that are honest about their limits, plain in their language, and free of the dark patterns that make so much of the modern web exhausting to use.</p>
+      <a href="/guides/how-to-apply-for-nsfas" class="guide-card">
+        <span class="guide-card-meta">Funding &middot; NSFAS</span>
+        <h2>How to apply for NSFAS: A complete parent's guide for 2027</h2>
+        <p>Who qualifies, what NSFAS actually covers, the application timeline that matters, the documents you'll need ready, what to do if rejected, and how to keep your funding once you're in. The full walkthrough.</p>
+        <span class="guide-card-cta">Read the guide &rarr;</span>
+      </a>
 
-      <h3>What's actually live right now</h3>
+      <a href="/guides/going-solar-south-africa" class="guide-card">
+        <span class="guide-card-meta">Energy &middot; Solar &amp; Backup</span>
+        <h2>Going solar in South Africa: A beginner's complete guide</h2>
+        <p>The first-time-buyer's overview of backup vs hybrid vs off-grid, realistic costs, the questions to ask installers, CoC and SSEG explained, battery and inverter brand notes, and the SARS Section 12B tax rebate.</p>
+        <span class="guide-card-cta">Read the guide &rarr;</span>
+      </a>
+    </section>
 
-      <p>The <a href="/homework">Parent Homework Helper</a> takes any Grade R-7 CAPS homework question and explains the concept in parent-mode — what the question is asking, how to walk your child through it, where children typically get stuck, and a practice example to try together. It deliberately doesn't give a copy-paste answer, because handing your child an answer they don't understand helps nobody.</p>
-
-      <p>The <a href="/aps">APS Calculator + University Matcher</a> turns Grade 12 marks into a clear picture of where a learner stands. Calculate your Admission Point Score, then see which of South Africa's top 10 public universities you actually qualify for, by faculty, with honest minimum and competitive thresholds. The accompanying AI explainer walks through what your score realistically means for engineering, health sciences, commerce, humanities, and other fields.</p>
-
-      <p>The <a href="/funding">Funded Learning Path</a> matches students to the bursaries they may qualify for across 27 major South African funders — NSFAS, Funza Lushaka, ISFAP, Allan Gray Orbis, Mandela Rhodes, SAICA Thuthuka, and the major corporates from Sasol to Discovery to MTN. We then draft a starter motivation letter you can personalise, structured around the funder's stated values.</p>
-
-      <p>The <a href="/solar">Solar &amp; Backup Power Decision Tool</a> tells you exactly what size inverter and battery you need to survive load-shedding, recommends a system tier with realistic SA cost ranges (from R15,000 basic backup to R600,000 full off-grid), and gives you a checklist of questions to ask before you sign with an installer. The AI explainer covers SSEG registration, the SARS Section 12B tax rebate, insurance impact, and lithium versus lead-acid trade-offs.</p>
-
-      <p>The <a href="/import">Shein, Temu &amp; AliExpress Cost Calculator</a> shows what your cross-border order will actually cost by the time it lands in South Africa — with SARS customs duty by category, the 15% VAT (which now applies to all imports since the 2024 de minimis removal), and your courier's handling fee. No more checkout-price surprises when the courier hands you the bill.</p>
-
-      <p>The <a href="/give">Giving Matchmaker</a> takes a different angle. Four quick questions about what you care about, and it matches you with real, vetted causes across South Africa, the wider African continent, South Asia, and Latin America. From GiveWell-recommended top charities to grassroots groups born in the communities they serve. Every match comes with a plain-language explanation of why it fits your values, so you can give with confidence rather than guesswork.</p>
-
-      <h3>Made for here, designed for the future</h3>
-
-      <p>Every Toolie tool defaults to South African realities first: Rand pricing, SARS tax rates, CAPS curriculum, the universities and bursaries that matter here, the courier and customs reality of buying online into the country. As we grow, we'll incorporate other Southern African countries' tax regimes and curricula — gradually expanding across the whole African continent. We'll also broaden the project's services portfolio over time, adding new categories of tools beyond the education and funding focus we've started with.</p>
-
-      <p>The tools are free for users. Always. To keep the lights on, we plan to display modest, non-intrusive ads and earn small affiliate commissions when a tool helpfully points someone toward a product they were already going to buy (a solar inverter, a bursary application service, a textbook). We will never charge users for the core tools, and we'll never sell your information. You can read the full detail in our <a href="/privacy">Privacy Policy</a>.</p>
-
-      <h3>Built by one person, for many</h3>
-
-      <p>Toolie is a small, independent project — not a venture-backed startup, not a big team, not a faceless content farm. It's built by Chipo in South Africa, working through the slow and careful process of turning useful ideas into real tools, on evenings and weekends. We answer our own emails. If you have ideas, complaints, a tool you wish existed for your specific situation, or you've spotted something we've got wrong, email us at <a href="mailto:hello@gettoolie.com">hello@gettoolie.com</a>. We read everything.</p>
-
-      <p>You can read more about the project, its values, and what's coming next on our <a href="/about">About page</a>.</p>
+    <section class="tool-note">
+      <p><strong>More guides coming.</strong> We're adding guides covering NSFAS applications, going solar in South Africa, bursary motivation letters that win, choosing between ISFAP and NSFAS, and more. If there's a topic you'd like us to cover next, email <a href="mailto:hello@gettoolie.com?subject=Guide%20suggestion%20for%20Toolie">hello@gettoolie.com</a> &mdash; we read every suggestion.</p>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <p class="copyright">&copy; 2026 Toolie. Made in Africa, reaching the world. <a href="/privacy" class="footer-link">Privacy</a> &middot; <a href="/terms" class="footer-link">Terms</a> &middot; <a href="/about" class="footer-link">About</a></p>
+      <p class="copyright">&copy; 2026 Toolie. Made in Africa, reaching the world. <a href="/privacy" class="footer-link">Privacy</a> &middot; <a href="/terms" class="footer-link">Terms</a> &middot; <a href="/about" class="footer-link">About</a> &middot; <a href="/guides" class="footer-link">Guides</a></p>
       <p class="elroi-credit" tabindex="0" aria-label="Powered by Elroi">
         <svg class="hand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M18 11V6a2 2 0 0 0-4 0v5"/>
